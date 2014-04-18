@@ -1,0 +1,9 @@
+<launch>
+
+	<!-- run hyq model in gazebo -->
+	<include file="$(find hyq_description)/launch/hyq_empty_world.launch"/>
+
+	<!-- run pd controller -->
+<!--	<include file="$(find hyq_controllers)/launch/hyq_pd_controller.launch" />-->
+	<include file="$(find hyq_controllers)/launch/hyq_ik_controller.launch" />
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+
+	<include file="$(find hyq_model)/launch/hyq_empty_world.launch" />
+
+</launch>

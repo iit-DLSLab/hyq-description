@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+	<!-- Things that are needed only for Gazebo (not the physical robot). These include sensor and controller plugin specifications -->
+	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.transmission.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.gazebo.xacro"/>
+
+
+	<!-- ================================== Leg ================================== -->
+	<!-- The xacro macro xacro:hyq_leg contains: hip assembly, upper and lower leg -->
+	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front">
+
+		<!-- Joints -->
+		<!-- Fake joint -->
+		<joint name="${name}_haa_fake_joint" type="fixed">
+			<insert_block name="origin"/>
+			<parent link="${parent}"/>
+			<child  link="${name}_haa_fake"/>
+		</joint>
+		<!-- Hip joint assembly -->
+		<joint name="${name}_haa_joint" type="revolute">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${haa_pos0}"/>
+			<parent link="${name}_haa_fake"/>
+			<child  link="${name}_hip_assembly"/>
+			<limit effort="200.0" velocity="1000.0" lower="${-PI/2-haa_pos0}" upper="${PI/6-haa_pos0}"/>
+			<axis xyz="0 0 1"/>
+     <dynamics damping="0.1" friction="0" />
+     <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+		</joint>
+		<!-- Upper leg joint -->
+		<joint name="${name}_hfe_joint" type="revolute">
+			<origin xyz="${d_tbb} 0.0 0.0" rpy="${reflect_upper*PI/2} ${-reflect_hip*hfe_pos0} 0.0"/>
+			<parent link="${name}_hip_assembly"/>
+			<child  link="${name}_upper_leg"/>
+			<limit effort="200.0" velocity="1.0" lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36-reflect_front*hfe_pos0}" upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36-reflect_front*hfe_pos0}"/>
+			<axis xyz="0 0 1"/>
+     <dynamics damping="0.1" friction="0" />
+     <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+		</joint>
+		<!-- Lower leg joint -->
+		<joint name="${name}_kfe_joint" type="revolute">
+			<origin xyz="${d_p1p2} 0.0 0.0" rpy="0.0 0.0 ${reflect_front*kfe_pos0}"/>
+			<parent link="${name}_upper_leg"/>
+			<child  link="${name}_lower_leg"/>
+			<limit effort="200.0" velocity="1.0" lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18-reflect_front*kfe_pos0}" upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18-reflect_front*kfe_pos0}"/>
+			<axis xyz="0 0 1"/>
+     <dynamics damping="0.1" friction="0" />
+     <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+		<!-- Foot joint -->
+		</joint>
+		<joint name="${name}_foot_joint" type="fixed">
+			<origin xyz="0.35 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<parent link="${name}_lower_leg"/>
+			<child  link="${name}_foot"/>
+		</joint>
+
+
+		<!-- Links -->
+		<!-- Fake hip assembly link -->
+		<link name="${name}_haa_fake">
+			<inertial>
+				<origin xyz="0.0 0.0 0.0"/>
+				<mass value="0.01"/>
+				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+			</inertial>
+		</link>
+		<!-- Hip assembly link -->
+		<link name="${name}_hip_assembly">
+			<inertial>
+				<origin xyz="0.01310 ${reflect_hip*0.00010} ${reflect_hip*0.05730}"/>
+				<mass value="${m_hip}"/>
+				<inertia ixx="${ixx_hip}" iyy="${iyy_hip}" izz="${izz_hip}" ixy="${ixy_hip}" ixz="${-reflect_hip*ixz_hip}" iyz="${iyz_hip}"/>
+			</inertial>
+			<visual>
+				<origin xyz="0.0 0.0 0.0" rpy="${(1-reflect_hip)*PI/2} 0.0 0.0"/>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/leg/hip.dae" scale="1 1 1"/>
+				</geometry>
+				<material name="white"/>
+			</visual>
+			<collision>
+				<origin xyz="0.0 0.0 0.0" rpy="${(1+reflect_hip)*PI/2} ${-reflect_hip*PI/2} 0.0"/>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/leg/hip_convex.dae" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+		<!-- Upper leg link -->
+		<link name="${name}_upper_leg">
+			<inertial>
+				<origin xyz="0.14796 ${reflect_upper*0.02958} 0.0"/>
+				<mass value="${m_upper}"/>
+				<inertia ixx="${ixx_upper}" iyy="${iyy_upper}" izz="${izz_upper}" ixy="${ixy_upper}" ixz="${ixz_upper}" iyz="${iyz_upper}"/>
+			</inertial>
+			<visual> 
+				<origin xyz="0.0 0.0 0.0" rpy="${(1-reflect_front)*PI/2} 0.0 0.0"/>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/leg/upper.dae" scale="1 1 1"/>
+				</geometry>
+				<material name="white"/>
+			</visual>
+			<collision>
+				<origin xyz="0.0 0.0 0.0" rpy="${(1+reflect_front)*PI/2} 0.0 0.0"/>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/leg/upper_convex.dae" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+		<!-- Lower leg link -->
+		<link name="${name}_lower_leg">
+			<inertial>
+				<origin xyz=" 0.17830  0.00030 -0.00010"/>
+				<mass value="${m_lower}"/>
+				<inertia ixx="${ixx_lower}" iyy="${iyy_lower}" izz="${izz_lower}" ixy="${ixy_lower}" ixz="${ixz_lower}" iyz="${iyz_lower}"/>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/leg/lower.dae" scale="1 1 1"/>
+				</geometry>
+				<material name="white"/>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/leg/lower_convex.dae" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+		<!-- Foot link -->
+		<link name="${name}_foot">
+			<inertial>
+				<origin xyz="0.0 0.0 0.0"/>
+				<mass value="0.01"/>
+				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+			</inertial>
+		</link>
+		
+		<!-- Extensions -->
+		<xacro:leg_transmission name="${name}"/>
+		<xacro:leg_gazebo name="${name}"/>
+	</xacro:macro>
+
+</robot>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<root xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.gazebo.xacro" />
+
+	<!-- ===================================== VELODYNE ==================================== -->
+	<!-- The xacro macro xacro:velodyne contains: velodyne combo -->
+	<xacro:macro name="velodyne" params="name parent *origin">
+		<!-- Joints -->
+		<joint name="${name}_velodyne_joint" type="fixed">
+			<insert_block name="origin"/>
+			<parent link="${parent}"/>
+			<child link="${name}_velodyne_link"/>
+		</joint>
+		<!-- velodyne sensor physical attachment -->
+		<joint name="${name}_velodyne_sensor_joint" type="fixed">
+			<origin xyz="${velodyne_x} -${velodyne_y} ${velodyne_z}" rpy="0.0 0.0 0.0"/>
+			<parent link="${name}_velodyne_link"/>
+			<child link="${name}_velodyne_sensor_link"/>
+		</joint>
+		<!-- velodyne sensor frame -->
+		<joint name="${name}_velodyne_optical_frame_joint" type="fixed">
+			<origin xyz="0 0 0"	rpy="0 0 0"/>
+			<parent link="${name}_velodyne_sensor_link"/>
+			<child link="${name}_velodyne_sensor_optical_frame"/>
+		</joint>
+
+
+		<!-- Links -->
+		<link name="${name}_velodyne_link">
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+			</inertial>
+			<visual>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/sensors/velodyne_hdl32e.dae" scale="1 1 1" />
+				</geometry>
+				<material name="gray">
+					<color rgba="0.5 0.5 0.5 1"/>
+				</material>
+			</visual>
+			<collision>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.0005"/>
+				</geometry>
+			</collision>
+		</link>
+		<!-- velodyne sensor link -->
+		<link name="${name}_velodyne_sensor_link">
+			<inertial>
+				<mass value="0.1" />
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+			</inertial>
+			<visual>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.0005"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.0005"/>
+				</geometry>
+			</collision>
+		</link>
+		<!-- rgb optical sensor link -->
+		<link name="${name}_velodyne_sensor_optical_frame"/>
+
+
+	<!-- gazebo extensions -->
+	<xacro:velodyne_sensor link_name="${name}_velodyne_sensor_link" frame_name="${name}_velodyne_sensor_optical_frame" lidar_name="${name}_velodyne" />
+	</xacro:macro>
+
+</root>
