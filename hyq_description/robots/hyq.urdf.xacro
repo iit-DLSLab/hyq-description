@@ -74,9 +74,9 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 
 	<!-- Asus Xtion Pro -->
-<!--	<xacro:asus_xtion_camera name="head_mount" parent="trunk"> 
-		<origin xyz="0.63 0.0 0.095" rpy="0.0 ${PI/6} 0.0"/>
-	</xacro:asus_xtion_camera>--> <!-- <origin xyz="0.63 0.0 0.095" rpy="0.0 0.0 0.0"/> --> <!-- ptu_mount_link -->
+	<xacro:asus_xtion_camera name="head_mount" parent="ptu_mount_link">
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0.0 0.095" rpy="0.0 ${PI/6} 0.0"/> --> <!-- ptu_mount_link -->
 
 	<!-- Velodyne -->
 <!--	<xacro:velodyne name="trunk_mount" parent="trunk">
