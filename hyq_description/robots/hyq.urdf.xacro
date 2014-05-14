@@ -20,6 +20,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -66,17 +67,21 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.3 0.0 0.095" rpy="0.0 ${-PI} 0.0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
-	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera name="head_mount" parent="trunk">
+	<!-- PTU unit -->	
+	<xacro:ptu_d46 name="ptu" parent="trunk" >
 		<origin xyz="0.63 0.0 0.095" rpy="0.0 0.0 0.0"/>
-	</xacro:asus_xtion_camera>
-<!-- rpy="0.0 1.2 0.0" -->
+	</xacro:ptu_d46>
+
+
+	<!-- Asus Xtion Pro -->
+<!--	<xacro:asus_xtion_camera name="head_mount" parent="trunk"> 
+		<origin xyz="0.63 0.0 0.095" rpy="0.0 ${PI/6} 0.0"/>
+	</xacro:asus_xtion_camera>--> <!-- <origin xyz="0.63 0.0 0.095" rpy="0.0 0.0 0.0"/> --> <!-- ptu_mount_link -->
 
 	<!-- Velodyne -->
-	<xacro:velodyne name="trunk_mount" parent="trunk">
+<!--	<xacro:velodyne name="trunk_mount" parent="trunk">
 		<origin xyz="0.39 0.0 0.269" rpy="0.0 0.0 0.0"/>
-	</xacro:velodyne>
-
+	</xacro:velodyne> -->
 
 	<!-- Kinect mount -->
 <!--	<xacro:kinect_camera name="head_mount" parent="trunk">

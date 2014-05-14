@@ -47,7 +47,15 @@
 	<property name="izz_lower" value="0.0775"/>
 	<property name="ixy_lower" value="-0.0"/>
 	<property name="ixz_lower" value="-0.0"/>
-	 <property name="iyz_lower" value="0.0"/>
+	<property name="iyz_lower" value="0.0"/>
+
+	<!-- PTU unit -->
+	<property name="pan_velocity" value="1.0" />
+	<property name="pan_range" value="2.775" />
+	<property name="tilt_velocity" value="1.0" />
+	<property name="tilt_up_range" value="0.52" />
+	<property name="tilt_down_range" value="0.82" />
+	<property name="joint_effort" value="30" /> 
 
 	<!-- Asus Xtion Camera Location (Nominally 0) -->
 	<property name="asus_xtion_x" value="0.009"/>
