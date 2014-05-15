@@ -21,6 +21,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -43,49 +44,91 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:hyq_trunk name="base" />
 
 	<!-- LF leg -->
-	<xacro:hyq_leg name="lf" parent="trunk" reflect_hip="1" reflect_upper="1" reflect_front="1">
-		<origin xyz="${d_fh/2} ${d_lr/2} 0.0" rpy="0.0 ${PI/2} ${PI}"/>
+	<xacro:hyq_leg
+		name="lf"
+		parent="trunk"
+		reflect_hip="1"
+		reflect_upper="1"
+		reflect_front="1">
+		<origin xyz="${d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
 	<!-- RF leg -->
-	<xacro:hyq_leg name="rf" parent="trunk" reflect_hip="-1" reflect_upper="-1" reflect_front="1">
-		<origin xyz="${d_fh/2} ${-d_lr/2} 0.0" rpy="0.0 ${PI/2} 0.0"/>
+	<xacro:hyq_leg
+		name="rf"
+		parent="trunk"
+		reflect_hip="-1"
+		reflect_upper="-1"
+		reflect_front="1">
+		<origin xyz="${d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
 	<!-- LH leg -->
-	<xacro:hyq_leg name="lh" parent="trunk" reflect_hip="-1" reflect_upper="1" reflect_front="-1">
-		<origin xyz="${-d_fh/2} ${d_lr/2} 0.0" rpy="0.0 ${PI/2} ${PI}"/>
+	<xacro:hyq_leg
+		name="lh"
+		parent="trunk"
+		reflect_hip="-1"
+		reflect_upper="1"
+		reflect_front="-1">
+		<origin xyz="${-d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
 	<!-- RH leg -->
-	<xacro:hyq_leg name="rh" parent="trunk" reflect_hip="1" reflect_upper="-1" reflect_front="-1">
-		<origin xyz="${-d_fh/2} ${-d_lr/2} 0.0" rpy="0.0 ${PI/2} 0.0"/>
+	<xacro:hyq_leg
+		name="rh"
+		parent="trunk"
+		reflect_hip="1"
+		reflect_upper="-1"
+		reflect_front="-1">
+		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
 	<!-- IMU runk -->
-	<xacro:microstrain_3dmgx325_imu parent="trunk" imu_name="3dmgx325_trunk_imu" imu_topic="trunk_imu/data" update_rate="100.0" stdev="0.00017">
-		<origin xyz="0.3 0.0 0.095" rpy="0.0 ${-PI} 0.0"/>
+	<xacro:microstrain_3dmgx325_imu
+		parent="trunk"
+		imu_name="3dmgx325_trunk_imu"
+		imu_topic="trunk_imu/data"
+		update_rate="100.0"
+		stdev="0.00017">
+		<origin xyz="0.3 0 0.095" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
 	<!-- PTU unit -->	
-	<xacro:ptu_d46 name="ptu" parent="trunk" >
-		<origin xyz="0.63 0.0 0.095" rpy="0.0 0.0 0.0"/>
-	</xacro:ptu_d46>
+<!--	<xacro:ptu_d46
+		name="ptu"
+		parent="trunk">
+		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
+	</xacro:ptu_d46>-->
 
 
 	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera name="head_mount" parent="ptu_mount_link">
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0.0 0.095" rpy="0.0 ${PI/6} 0.0"/> --> <!-- ptu_mount_link -->
+	<xacro:asus_xtion_camera
+		name="head_mount"
+		parent="trunk">
+		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
+	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
 
 	<!-- Velodyne -->
-<!--	<xacro:velodyne name="trunk_mount" parent="trunk">
-		<origin xyz="0.39 0.0 0.269" rpy="0.0 0.0 0.0"/>
+<!--	<xacro:velodyne
+		name="trunk_mount"
+		parent="trunk">
+		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
 	</xacro:velodyne> -->
 
 	<!-- Kinect mount -->
-<!--	<xacro:kinect_camera name="head_mount" parent="trunk">
-		<origin xyz="0.63 0.0 0.095" rpy="0.0 0.0 0.0"/>
+<!--	<xacro:kinect_camera
+		name="head_mount"
+		parent="trunk">
+		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
 	</xacro:kinect_camera>-->
+	
+	<!-- Bumblebee -->
+<!--	<xacro:bumblebee_66
+		parent_link="ptu_mount_link"
+		xyz="0 0 0"
+		rpy="${PI/2} 0 ${PI/2}"
+		ns="bumblebee"
+		frame_prefix="bumblebee_"
+		high_res="false"/>--> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
 
 </robot>

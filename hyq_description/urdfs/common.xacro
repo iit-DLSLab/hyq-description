@@ -74,6 +74,12 @@
 	<property name="kinect_roll" value="${-PI/2}"/>
 	<property name="kinect_pitch" value="0.0"/>
 	<property name="kinect_yaw" value="${-PI/2}"/>
+	
+	<!-- Bumblebee mass and lengths for computing inertia tensor -->
+	<property name="b2mass" value="0.342"/>
+	<property name="b2lx" value="0.157"/>
+	<property name="b2ly" value="0.036"/>
+	<property name="b2lz" value="0.0474"/>
 
 	<!-- Velodyne Lidar Location (Nominally 0) -->
 	<property name="velodyne_x" value="0.0"/>
