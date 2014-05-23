@@ -11,9 +11,9 @@
 	<property name="d_p1p2" value="0.35"/>
 
 	<!-- Initial joint positions -->
-	<property name="haa_pos0" value="-0.3"/>
-	<property name="hfe_pos0" value="0.6"/>
-	<property name="kfe_pos0" value="-1.4"/>
+	<property name="haa_pos0" value="0.0"/>
+	<property name="hfe_pos0" value="0.0"/>
+	<property name="kfe_pos0" value="0.0"/>
 
 	<!-- Inertial values -->
 	<!-- Trunk with hydraulic system -->
@@ -59,8 +59,8 @@
 
 	<!-- Asus Xtion Camera Location (Nominally 0) -->
 	<property name="asus_xtion_x" value="0.009"/>
-	<property name="asus_xtion_ir_y" value="0.0285"/>
-	<property name="asus_xtion_rgb_y" value="0.0185"/>
+	<property name="asus_xtion_depth_y" value="0.049"/>
+	<property name="asus_xtion_rgb_y" value="0.022"/>
 	<property name="asus_xtion_z" value="0.035"/>
 	<property name="asus_xtion_roll" value="${-PI/2}"/>
 	<property name="asus_xtion_pitch" value="0.0"/>

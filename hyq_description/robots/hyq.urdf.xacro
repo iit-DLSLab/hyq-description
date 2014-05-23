@@ -2,8 +2,6 @@
 
 <robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-
-
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
 	<!-- HyQ base -->
@@ -25,9 +23,6 @@
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
-
-
-
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
@@ -83,7 +78,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
-	<!-- IMU runk -->
+	<!-- IMU trunk -->
 	<xacro:microstrain_3dmgx325_imu
 		parent="trunk"
 		imu_name="3dmgx325_trunk_imu"
@@ -109,11 +104,11 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
 
 	<!-- Velodyne -->
-<!--	<xacro:velodyne
+	<xacro:velodyne
 		name="trunk_mount"
 		parent="trunk">
 		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne> -->
+	</xacro:velodyne> 
 
 	<!-- Kinect mount -->
 <!--	<xacro:kinect_camera

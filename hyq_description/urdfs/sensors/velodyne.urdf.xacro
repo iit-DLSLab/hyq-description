@@ -11,24 +11,18 @@
 		<joint name="${name}_velodyne_joint" type="fixed">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
-			<child link="${name}_velodyne_link"/>
+			<child link="${name}_velodyne_frame"/>
 		</joint>
-		<!-- velodyne sensor physical attachment -->
-		<joint name="${name}_velodyne_sensor_joint" type="fixed">
-			<origin xyz="${velodyne_x} ${velodyne_y} ${velodyne_z}" rpy="0.0 0.0 0.0"/>
-			<parent link="${name}_velodyne_link"/>
-			<child link="${name}_velodyne_sensor_link"/>
-		</joint>
-		<!-- velodyne sensor frame -->
+		<!-- velodyne sensor optical frame -->
 		<joint name="${name}_velodyne_optical_frame_joint" type="fixed">
-			<origin xyz="0 0 0"	rpy="0 0 0"/>
-			<parent link="${name}_velodyne_sensor_link"/>
-			<child link="${name}_velodyne_sensor_optical_frame"/>
+			<origin xyz="${velodyne_x} ${velodyne_y} ${velodyne_z}" rpy="0.0 0.0 0.0"/>
+			<parent link="${name}_velodyne_frame"/>
+			<child link="${name}_velodyne_optical_frame"/>
 		</joint>
 
 
 		<!-- Links -->
-		<link name="${name}_velodyne_link">
+		<link name="${name}_velodyne_frame">
 			<inertial>
 				<mass value="0.1"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -46,36 +40,16 @@
 			<collision>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 				<geometry>
-					<sphere radius="0.0005"/>
-				</geometry>
-			</collision>
-		</link>
-		<!-- velodyne sensor link -->
-		<link name="${name}_velodyne_sensor_link">
-			<inertial>
-				<mass value="0.1" />
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-			</inertial>
-			<visual>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-				<geometry>
-					<sphere radius="0.0005"/>
-				</geometry>
-			</visual>
-			<collision>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-				<geometry>
-					<sphere radius="0.0005"/>
+					<box size="0.1 0.18 0.1" />
 				</geometry>
 			</collision>
 		</link>
 		<!-- rgb optical sensor link -->
-		<link name="${name}_velodyne_sensor_optical_frame"/>
+		<link name="${name}_velodyne_optical_frame"/>
 
 
 	<!-- gazebo extensions -->
-	<xacro:velodyne_sensor link_name="${name}_velodyne_sensor_link" frame_name="${name}_velodyne_sensor_optical_frame" lidar_name="${name}_velodyne" />
+	<xacro:velodyne_sensor link_name="${name}_velodyne_optical_frame" frame_name="${name}_velodyne_frame" lidar_name="${name}_velodyne" />
 	</xacro:macro>
 
 </root>
