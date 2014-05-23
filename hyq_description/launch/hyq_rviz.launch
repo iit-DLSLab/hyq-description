@@ -21,6 +21,9 @@
 		<param name="publish_frequency" value="200" />
 	</node>
 
+	<node name="hyq_odom" pkg="hyq_odom" type="hyq_odom" respawn="true">
+	</node>
+
 	<!-- run rviz -->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf) -f trunk" respawn="true"/>
 
