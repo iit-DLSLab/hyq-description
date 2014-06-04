@@ -89,41 +89,22 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:microstrain_3dmgx325_imu>
 
 	<!-- PTU unit -->	
-<!--	<xacro:ptu_d46
+	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
 		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:ptu_d46>-->
+	</xacro:ptu_d46>
 
 
-	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera
-		name="head_mount"
-		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
-	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
 
-	<!-- Velodyne -->
-	<xacro:velodyne
-		name="trunk_mount"
-		parent="trunk">
-		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne> 
-
-	<!-- Kinect mount -->
-<!--	<xacro:kinect_camera
-		name="head_mount"
-		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:kinect_camera>-->
 	
 	<!-- Bumblebee -->
-<!--	<xacro:bumblebee_66
+	<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
 		xyz="0 0 0"
-		rpy="${PI/2} 0 ${PI/2}"
+		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/>--> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
+		high_res="false"/><!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
 
 </robot>

@@ -11,9 +11,9 @@
 	<property name="d_p1p2" value="0.35"/>
 
 	<!-- Initial joint positions -->
-	<property name="haa_pos0" value="0.0"/>
-	<property name="hfe_pos0" value="0.0"/>
-	<property name="kfe_pos0" value="0.0"/>
+	<property name="haa_pos0" value="-0.8"/>
+	<property name="hfe_pos0" value="0.6"/>
+	<property name="kfe_pos0" value="-1.4"/>
 
 	<!-- Inertial values -->
 	<!-- Trunk with hydraulic system -->

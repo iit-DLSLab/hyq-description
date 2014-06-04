@@ -14,19 +14,20 @@
 		<joint name="${frame_prefix}optical_joint" type="fixed">
 			<parent link="${frame_prefix}mount_link"/>
 			<child link="${frame_prefix}optical_frame"/>
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<!--<origin xyz="0 0 0" rpy="0 0 0"/>-->
+			<origin xyz="0 -0.06 0.00" rpy="-${PI/2} 0 -${PI/2}"/>
 		</joint>
 
 
 		<link name="${frame_prefix}mount_link">
 			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>  
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/sensors/bumblebee.dae"/>
 				</geometry>
 			</visual>
 			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/sensors/bumblebee.dae"/>
 				</geometry>
@@ -49,8 +50,8 @@
 
 		<xacro:if value="${high_res}">
 			<xacro:stereo_camera 
-				reference="${frame_prefix}optical_frame" 
-				frame_id="${frame_prefix}optical_frame"
+				reference="${frame_prefix}mount_link" 
+				frame_id="${frame_prefix}mount_link"
 				ns="${ns}"
 				hfov="${hfov}"
 				baseline="0.120"
@@ -62,8 +63,8 @@
 
 		<xacro:unless value="${high_res}">
 			<xacro:stereo_camera 
-				reference="${frame_prefix}optical_frame" 
-				frame_id="${frame_prefix}optical_frame"
+				reference="${frame_prefix}mount_link" 
+				frame_id="${frame_prefix}mount_link"
 				ns="${ns}"
 				hfov="${hfov}"
 				baseline="0.120"
