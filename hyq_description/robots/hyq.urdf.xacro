@@ -92,7 +92,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
+		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
 	</xacro:ptu_d46>
 
 
