@@ -40,7 +40,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
-		name="lf"
+		name="LF"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
@@ -50,7 +50,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RF leg -->
 	<xacro:hyq_leg
-		name="rf"
+		name="RF"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
@@ -60,7 +60,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LH leg -->
 	<xacro:hyq_leg
-		name="lh"
+		name="LH"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
@@ -70,7 +70,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RH leg -->
 	<xacro:hyq_leg
-		name="rh"
+		name="RH"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"
@@ -88,27 +88,19 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.3 0 0.095" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
-	<!-- PTU unit -->	
-<!--	<xacro:ptu_d46
-		name="ptu"
-		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:ptu_d46>-->
-
-
-	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera
+<!-- Asus Xtion Pro -->
+<!--	<xacro:asus_xtion_camera
 		name="head_mount"
 		parent="trunk">
 		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
-	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
+	</xacro:asus_xtion_camera> --> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
 
 	<!-- Velodyne -->
-	<xacro:velodyne
+<!--	<xacro:velodyne
 		name="trunk_mount"
 		parent="trunk">
 		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne> 
+	</xacro:velodyne>-->
 
 	<!-- Kinect mount -->
 <!--	<xacro:kinect_camera
@@ -116,14 +108,21 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		parent="trunk">
 		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
 	</xacro:kinect_camera>-->
-	
+
+	<!-- PTU unit -->	
+	<xacro:ptu_d46
+		name="ptu"
+		parent="trunk">
+		<origin xyz="0.6357 0.04397 0.08809" rpy="-0.041779 0.31978 -0.061764"/>
+	</xacro:ptu_d46>
+
 	<!-- Bumblebee -->
-<!--	<xacro:bumblebee_66
+	<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
 		xyz="0 0 0"
-		rpy="${PI/2} 0 ${PI/2}"
+		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/>--> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
+		high_res="false"/> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
 
 </robot>

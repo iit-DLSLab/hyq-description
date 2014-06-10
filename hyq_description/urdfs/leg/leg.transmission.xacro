@@ -7,7 +7,7 @@
     	<!-- Hip assembly -->
 		<transmission name="${name}_haa_trans">
 			<type>transmission_interface/SimpleTransmission</type>
-			<joint name="${name}_haa_joint"/>
+			<joint name="${name}_HAA"/>
 			<actuator name="${name}_haa_motor">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
@@ -16,7 +16,7 @@
     	<!-- Upper leg -->
 		<transmission name="${name}_hfe_upper_trans">
 			<type>transmission_interface/SimpleTransmission</type>
-			<joint name="${name}_hfe_joint"/>
+			<joint name="${name}_HFE"/>
 			<actuator name="${name}_hfe_motor">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
@@ -25,7 +25,7 @@
     	<!-- Lower leg -->
 		<transmission name="${name}_kfe_trans">
 			<type>transmission_interface/SimpleTransmission</type>
-			<joint name="${name}_kfe_joint"/>
+			<joint name="${name}_KFE"/>
 			<actuator name="${name}_hfe_motor">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
