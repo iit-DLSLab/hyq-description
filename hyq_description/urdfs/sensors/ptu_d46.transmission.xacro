@@ -7,7 +7,7 @@
     	<!-- Pan assembly -->
 		<transmission name="${name}_pan_trans">
 			<type>transmission_interface/SimpleTransmission</type>
-			<joint name="${name}_pan_joint"/>
+			<joint name="${name}_pan"/>
 			<actuator name="${name}_pan_motor">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
@@ -17,7 +17,7 @@
 		<!-- Tilt assembly -->
 		<transmission name="${name}_tilt_trans">
 			<type>transmission_interface/SimpleTransmission</type>
-			<joint name="${name}_tilt_joint"/>
+			<joint name="${name}_tilt"/>
 			<actuator name="${name}_tilt_motor">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
