@@ -2,8 +2,10 @@
 
 <robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+
+
 	<!-- The following included files set up definitions of parts of the robot body -->
-	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/common_gazebo.xacro"/>
 	<!-- HyQ base -->
 	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
 
@@ -24,6 +26,9 @@
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
 
+
+
+
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
 	<!-- The first use of a macro. This one was defined in trunk.urdf.xacro above.
@@ -40,7 +45,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
-		name="LF"
+		name="lf"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
@@ -50,7 +55,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RF leg -->
 	<xacro:hyq_leg
-		name="RF"
+		name="rf"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
@@ -60,7 +65,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LH leg -->
 	<xacro:hyq_leg
-		name="LH"
+		name="lh"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
@@ -70,7 +75,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RH leg -->
 	<xacro:hyq_leg
-		name="RH"
+		name="rh"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"
@@ -78,7 +83,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
-	<!-- IMU trunk -->
+	<!-- IMU runk -->
 	<xacro:microstrain_3dmgx325_imu
 		parent="trunk"
 		imu_name="3dmgx325_trunk_imu"
@@ -88,12 +93,20 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.3 0 0.095" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
-<!-- Asus Xtion Pro -->
-<!--	<xacro:asus_xtion_camera
+	<!-- PTU unit -->	
+<!--	<xacro:ptu_d46
+		name="ptu"
+		parent="trunk">
+		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
+	</xacro:ptu_d46>-->
+
+
+	<!-- Asus Xtion Pro -->
+	<xacro:asus_xtion_camera
 		name="head_mount"
 		parent="trunk">
 		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
-	</xacro:asus_xtion_camera> --> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
+	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
 
 	<!-- Velodyne -->
 <!--	<xacro:velodyne
@@ -108,21 +121,14 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		parent="trunk">
 		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
 	</xacro:kinect_camera>-->
-
-	<!-- PTU unit -->	
-	<xacro:ptu_d46
-		name="ptu"
-		parent="trunk">
-		<origin xyz="0.6357 0.04397 0.08809" rpy="-0.041779 0.31978 -0.061764"/>
-	</xacro:ptu_d46>
-
+	
 	<!-- Bumblebee -->
-	<xacro:bumblebee_97
+<!--	<xacro:bumblebee_66
 		parent_link="ptu_mount_link"
 		xyz="0 0 0"
-		rpy="0 0 0"
+		rpy="${PI/2} 0 ${PI/2}"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
+		high_res="false"/>--> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
 
 </robot>
