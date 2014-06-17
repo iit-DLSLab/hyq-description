@@ -17,18 +17,6 @@
 			<parent link="${name}_link"/>
 			<child link="trunk"/>
 		</joint>
-		<!-- Front Frame Joint -->
-		<joint name="front_frame" type="fixed">
-			<origin xyz="0.5 0.0 0.085" rpy="0.0 0.0 0.0"/>
-			<parent link="trunk"/>
-			<child link="front_frame"/>
-		</joint>
-		<!-- Hip Frame Joint -->
-		<joint name="hip_frame" type="fixed">
-			<origin xyz="-0.5 0.0 0.085" rpy="0.0 0.0 0.0"/>
-			<parent link="trunk"/>
-			<child link="hip_frame"/>
-		</joint>
 
 		<!-- Links -->
 		<!-- Footprint link -->
@@ -51,59 +39,13 @@
 			</inertial>
 			<collision>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/trunk/trunk_frame.dae" scale="1 1 1"/>
 				</geometry>
 			</collision>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
-				</geometry>
-					<material name="white">
-				<color rgba="1 1 1 1"/>
-				</material>
-			</visual>
-		</link>
-		<!-- Front Frame link -->
-		<link name="front_frame">
-			<inertial>
-				<origin xyz="0 0 0"/>
-				<mass value="0.01"/>
-				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
-			<collision>
-				<origin xyz="0 0 0" rpy="0 0 3.1416" />
-				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/frame.dae" scale="1 1 1"/>
-				</geometry>
-			</collision>
-			<visual>
-				<origin xyz="0 0 0" rpy="0 0 ${PI}" />
-				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/frame.dae" scale="1 1 1"/>
-				</geometry>
-					<material name="white">
-				<color rgba="1 1 1 1"/>
-				</material>
-			</visual>
-		</link>
-		<!-- Hip Frame link -->
-		<link name="hip_frame">
-			<inertial>
-				<origin xyz="0 0 0"/>
-				<mass value="0.01"/>
-				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
-			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/frame.dae" scale="1 1 1"/>
-				</geometry>
-			</collision>
-			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/frame.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/trunk/trunk_frame.dae" scale="1 1 1"/>
 				</geometry>
 					<material name="white">
 				<color rgba="1 1 1 1"/>
