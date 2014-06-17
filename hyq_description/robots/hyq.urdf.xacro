@@ -40,7 +40,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
-		name="LF"
+		name="lf"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
@@ -50,7 +50,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RF leg -->
 	<xacro:hyq_leg
-		name="RF"
+		name="rf"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
@@ -60,7 +60,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LH leg -->
 	<xacro:hyq_leg
-		name="LH"
+		name="lh"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
@@ -70,7 +70,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RH leg -->
 	<xacro:hyq_leg
-		name="RH"
+		name="rh"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"

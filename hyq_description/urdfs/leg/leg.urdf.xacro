@@ -20,9 +20,9 @@
 			<child  link="${name}_haa_fake"/>
 		</joint>-->
 		<!-- Hip joint assembly -->
-		<joint name="${name}_HAA" type="revolute">
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${haa_pos0}"/> 
-			<!--<parent link="${name}_haa_fake"/>-->
+		<joint name="${name}_haa_joint" type="revolute">
+			<!--<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${haa_pos0}"/> 
+			<parent link="${name}_haa_fake"/>-->
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
 			<child  link="${name}_hip_assembly"/>
@@ -32,7 +32,7 @@
      <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
 		</joint>
 		<!-- Upper leg joint -->
-		<joint name="${name}_HFE" type="revolute">
+		<joint name="${name}_hfe_joint" type="revolute">
 			<origin xyz="${d_tbb} 0.0 0.0" rpy="${reflect_upper*PI/2} ${-reflect_hip*hfe_pos0} 0.0"/>
 			<parent link="${name}_hip_assembly"/>
 			<child  link="${name}_upper_leg"/>
@@ -42,7 +42,7 @@
      <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
 		</joint>
 		<!-- Lower leg joint -->
-		<joint name="${name}_KFE" type="revolute">
+		<joint name="${name}_kfe_joint" type="revolute">
 			<origin xyz="${d_p1p2} 0.0 0.0" rpy="0.0 0.0 ${reflect_front*kfe_pos0}"/>
 			<parent link="${name}_upper_leg"/>
 			<child  link="${name}_lower_leg"/>
