@@ -14,7 +14,9 @@
 	<!-- send hyq urdf to param server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
 
-	<arg name="gui" default="True"/>
+
+
+	<arg name="gui" default="False"/>
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz_confs/hyq_model_tf.rviz"/>
 	
 
@@ -34,7 +36,7 @@
 	
 	  <node name="ptu_driver" pkg="flir_ptu_driver" type="ptu_node" ns="ptu">
 	    <param name="port" value="$(arg port)" />
-	    <remap from="state" to="/joint_states" />
+	    <remap from="state" to="/hyq_ptu/joint_states" /> 
 	  </node>
 
 

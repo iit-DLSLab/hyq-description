@@ -40,7 +40,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
-		name="lf"
+		name="LF"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
@@ -50,7 +50,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RF leg -->
 	<xacro:hyq_leg
-		name="rf"
+		name="RF"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
@@ -60,7 +60,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LH leg -->
 	<xacro:hyq_leg
-		name="lh"
+		name="LH"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
@@ -70,7 +70,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RH leg -->
 	<xacro:hyq_leg
-		name="rh"
+		name="RH"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"
@@ -92,12 +92,9 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
+		<origin xyz="0.684637 -0.024200 0.051570" rpy="0.071069 0.619695 0.020771"/>
 	</xacro:ptu_d46>
 
-
-
-	
 	<!-- Bumblebee -->
 	<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
@@ -105,6 +102,6 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/><!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
+		high_res="false"/> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
 
 </robot>
