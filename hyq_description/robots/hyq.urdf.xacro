@@ -95,6 +95,13 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
 	</xacro:asus_xtion_camera> --> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
 
+	<xacro:asus_xtion_camera
+		name="head_mount"
+		parent="ptu_mount_link">
+		<origin xyz="0.0 0 0.04" rpy="0 0 0"/>
+	</xacro:asus_xtion_camera> 
+
+
 	<!-- Velodyne -->
 <!--	<xacro:velodyne
 		name="trunk_mount"
@@ -113,7 +120,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
-		<origin xyz="0.6357 0.04397 0.08809" rpy="-0.041779 0.31978 -0.061764"/>
+<!-- 		<origin xyz="0.6357 0.04397 0.08809" rpy="-0.041779 0.31978 -0.061764"/> -->
+		<origin xyz="0.684637 -0.024200 0.051570" rpy="0.071069 0.619695 0.020771"/>
 	</xacro:ptu_d46>
 
 	<!-- Bumblebee -->
