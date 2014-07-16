@@ -1,22 +1,9 @@
 <launch>
 
-	  <arg name="port" default="/dev/ttyUSB0" />
-
-	  <!-- When you integrate into your platform, use the provided xacro macro to include
-	       the D46 URDF with your larger platform description, and have your platform's
-	       joint_state_publisher subscribe to the ptu state. -->
-	  <!--param name="robot_description" textfile="$(find flir_ptu_description)/urdf/example.urdf" /--> 
-	  <!--<param name="robot_description" textfile="$(find flir_ptu_description)/urdf/full_model.urdf" /> -->
-	<!--  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find flir_ptu_viz)/rviz/urdf.rviz" required="true" /> -->
-	
-
-
 	<!-- send hyq urdf to param server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
 
-
-
-	<arg name="gui" default="False"/>
+	<arg name="gui" default="True"/>
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz_confs/hyq_model_tf.rviz"/>
 	
 
@@ -33,20 +20,53 @@
 		type="state_publisher" respawn="true">
 		<param name="publish_frequency" value="200" />
 		<param name="rate" value="200" />
-
 	</node>
-	
-	  <node name="ptu_driver" pkg="flir_ptu_driver" type="ptu_node" ns="ptu">
-	    <param name="port" value="$(arg port)" />
-	    <remap from="state" to="/hyq_ptu/joint_states" /> 
-	  </node>
 
+	<node name="hyq_odom" pkg="hyq_odom" type="hyq_odom" respawn="true">
+	</node>
 
 	<!-- run rviz -->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf) -f trunk" respawn="true"/>
 
+	<include file="$(find openni2_launch)/launch/openni2.launch">
+		<arg name="camera" value="head_mount_asus_xtion" />
+		<arg name="depth_registration" value="true" />
+		<arg name="color_depth_synchronization" value="true" />
+		<arg name="publish_tf" value="false" />
+		<!-- <arg name="color_mode" value="8" /> -->
+		<!-- <arg name="depth_mode" value="8"/> -->
+	</include>
 
+	<node name="$(anon dynparam)" pkg="dynamic_reconfigure" type="dynparam"
+		args="set_from_parameters /head_mount_asus_xtion/driver">
+		<param name="ir_mode" type="int" value="11" />
+		<param name="color_mode" type="int" value="11" />
+		<param name="depth_mode" type="int" value="11" />
+	</node>
+  
+     <node name="velodyne_node" pkg="velodyne_driver" type="velodyne_node" respawn="true" >
+<!--      <param name="pcap" value="/home/ihavoutis/groovy_workspace/pcap-downstairs" /> -->
+<!--      <param name="pcap" value="/home/ihavoutis/groovy_workspace/Building-Side.pcap" /> -->
+      <param name="model" value="32E" />
+<!--      <param name="interface" value="eth1" /> --> 
+	<param name="interface" value="eth0:1" />
+	<param name="frame_id" value="trunk_mount_velodyne_frame" />
+	frame_id 
+    </node>
 
+	<arg name="full_clouds" default="False" />
+    <node name="cloud_node" pkg="velodyne_pointcloud" type="cloud_node" respawn="true" >
+      <param name="calibration" value="/home/ihavoutis/groovy_workspace/velodyne_calibration/hyq_calibration.yaml" />
+      <param name="min_range" value="1.0" />
+      <param name="max_range" value="10.0" />
+    </node>
+
+    <node name="height_example" pkg="velodyne_height_map" type="heightmap_node" respawn="true" >
+      <param name="grid_dimensions" value="100" />
+      <param name="cell_size" value="0.1" />
+      <param name="full_clouds" value="$(arg full_clouds)" />
+      <param name="height_threshold" value="0.5" />
+    </node>
 
 </launch>
 
