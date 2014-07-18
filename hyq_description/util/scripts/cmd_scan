@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+# Author: ioannis.havoutis@iit.it
+
+import roslib; 
+import rospy
+import sys
+import time
+import math
+
+from sensor_msgs.msg import JointState
+
+def get_param(name, value=None):
+    private = "~%s" % name
+    if rospy.has_param(private):
+        return rospy.get_param(private)
+    elif rospy.has_param(name):
+        return rospy.get_param(name)
+    else:
+        return value
+
+def main():
+	print "Ptu unit scanning in progress ... for ever ... prect ctrl^C to stop"
+	hz = get_param("rate", 20) # 20hz
+	r = rospy.Rate(hz)
+	pub = rospy.Publisher("cmd", JointState)
+	#time.sleep(0.5)
+	rel_time = 0.0;
+	js = JointState()
+	js.name = [ "ptu_pan", "ptu_tilt" ]
+	js.velocity = [ 0.5, 0.5 ]
+
+	while not rospy.is_shutdown():
+		pan = math.sin(rel_time) * 0.8
+		tilt = -0.4 + math.sin(rel_time*2) * -0.4
+		js.position = [ pan, tilt ]
+		#print js.position
+		pub.publish(js)
+		rel_time = rel_time + 1/float(hz)
+		#print rel_time
+		#print rospy.Time.now().to_sec()
+		r.sleep()
+	
+if __name__ == '__main__':
+	try:
+		rospy.init_node('ptu_cmd_scan')
+		main()
+	except rospy.ROSInterruptException: pass

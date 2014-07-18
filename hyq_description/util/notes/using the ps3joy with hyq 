@@ -1,0 +1,25 @@
+(assumes that you have already installed the ros-drivers/joystick_drivers
+so that you have the ps3joy stuff in your ros distro, and have pulled and 
+compiled the hyq_ps3joy repo)
+the joy reading driver needs access to the bluetooth so either go root or give 
+appropriate permissions... here we go root!
+sudo bash
+cd ~/blah_blah/iit_dlsl_hyq/hyq_ps3joy
+roslaunch hyq_ps3joy.launch 
+press the ps3 button on the joy pad and you should see smth like
+...[][] Opened joystick ..blah...
+
+then on another terminal type
+rosrun hyq_ps3joy hyq_ps3joy
+
+all is set on the ros side!
+
+go to the RCF_with_planning_hyqgen0.1 branch in hyq_user
+launch SL (xenoros/ros) and choose st/task: WCPG
+stw to start trotting 
+toggle_ROS_input to enable/disable the joypad control
+
+take it easy if you're on the real robot ;)
+
+enjoy,
+-ioannis
