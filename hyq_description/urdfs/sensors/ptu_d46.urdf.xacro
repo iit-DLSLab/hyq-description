@@ -110,7 +110,7 @@
 			<parent link="${name}_tilt_link"/>
 			<origin xyz="0 0 0" rpy="-${PI/2} 0 0"/>
 			<child link="${name}_tilted_link"/>
-			<axis xyz="0 1 0"/>
+			<axis xyz="0 1 0"/> <!-- 0 1 0-->
 			<limit lower="${-tilt_down_range}" upper="${tilt_up_range}" effort="${joint_effort}" velocity="${tilt_velocity}"/>
 		</joint>
 
