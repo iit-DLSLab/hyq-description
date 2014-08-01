@@ -40,7 +40,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
-		name="LF"
+		name="lf"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
@@ -50,7 +50,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RF leg -->
 	<xacro:hyq_leg
-		name="RF"
+		name="rf"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
@@ -60,7 +60,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- LH leg -->
 	<xacro:hyq_leg
-		name="LH"
+		name="lh"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
@@ -70,7 +70,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- RH leg -->
 	<xacro:hyq_leg
-		name="RH"
+		name="rh"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"
@@ -88,11 +88,37 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.3 0 0.095" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
+
+	<!-- Asus Xtion Pro -->
+	<xacro:asus_xtion_camera
+		name="head_mount"
+		parent="ptu_mount_link">
+		<origin xyz="0.0 0 0.015" rpy="0 0 0"/>
+<!-- The vertical offset between the middle of xtion and the middle of bumblebee is 5 cm-->
+<!-- but since bumblebee_mount_link is computed in the middle of the camera and the xtion on its base instead -->
+<!-- we have 5 cm - 3.5 cm (vertical distance between xtion optical frame and base) = 1.5 cm -->
+	</xacro:asus_xtion_camera> 
+
+
+	<!-- Velodyne -->
+	<!--xacro:velodyne
+		name="trunk_mount"
+		parent="trunk">
+		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
+	</xacro:velodyne-->
+
+	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
+	<!--xacro:kinect_camera
+		name="head_mount"
+		parent="trunk">
+		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
+	</xacro:kinect_camera-->
+
 	<!-- PTU unit -->	
 	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
-		<origin xyz="0.684637 -0.024200 0.051570" rpy="0.071069 0.619695 0.020771"/>
+		<origin xyz="0.693327 -0.015447 0.119533" rpy="-0.013127 0.574478 -0.007748"/>
 	</xacro:ptu_d46>
 
 	<!-- Bumblebee -->
@@ -102,6 +128,5 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
-
+		high_res="false"/>
 </robot>
