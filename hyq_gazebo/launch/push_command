@@ -1,0 +1,1 @@
+rosservice call /gazebo/apply_body_wrench '{body_name: "hyq::base_footprint", wrench: {force: {x: 0, y: 0, z: -800}}, start_time: 10000000000, duration: 1000000000}'

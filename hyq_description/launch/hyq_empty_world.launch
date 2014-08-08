@@ -7,6 +7,7 @@
 	<arg name="headless" default="false"/>
 	<arg name="debug" default="false"/>
 	<arg name="world_name" default="worlds/empty.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+	<arg name="simulation" default="false"/>
 
 	<!-- set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
@@ -31,6 +32,8 @@
 	</group>
 
 	<!-- send hyq urdf to param server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch" />
+	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+		<arg name="simulation" value="$(arg simulation)"/>
+	</include>
 
 </launch>

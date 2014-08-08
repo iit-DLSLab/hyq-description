@@ -1,7 +1,10 @@
 <launch>
 
+	<arg name="simulation" default="false"/>
 	<!-- send hyq urdf to param server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
+	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+		<arg name="simulation" value="$(arg simulation)"/>
+	</include>
 
 	<arg name="gui" default="True"/>
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz_confs/hyq_model_tf.rviz"/>

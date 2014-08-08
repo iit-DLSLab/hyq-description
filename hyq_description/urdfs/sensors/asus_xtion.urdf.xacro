@@ -11,36 +11,36 @@
 		<joint name="${name}_joint" type="fixed">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
-			<child link="${name}_asus_xtion_link"/>
+			<child link="${name}_link"/>
 		</joint>
 		<!-- asus ir sensor physical attachment -->
-		<joint name="${name}_asus_xtion_depth_joint" type="fixed">
+		<joint name="${name}_depth_joint" type="fixed">
 			<origin xyz="${asus_xtion_x} ${asus_xtion_depth_y} ${asus_xtion_z}" rpy="0.0 0.0 0.0"/>
-			<parent link="${name}_asus_xtion_link"/>
-			<child link="${name}_asus_xtion_depth_frame"/>
+			<parent link="${name}_link"/>
+			<child link="${name}_depth_frame"/>
 		</joint>
 		<!-- asus xtion ir sensor frame -->
-		<joint name="${name}_asus_xtion_depth_optical_frame_joint" type="fixed">
+		<joint name="${name}_depth_optical_frame_joint" type="fixed">
 			<origin xyz="0 0 0"	rpy="${asus_xtion_roll} ${asus_xtion_pitch} ${asus_xtion_yaw}"/>
-			<parent link="${name}_asus_xtion_depth_frame"/>
-			<child link="${name}_asus_xtion_depth_optical_frame"/>
+			<parent link="${name}_depth_frame"/>
+			<child link="${name}_depth_optical_frame"/>
 		</joint>
 		<!-- asus_xtion rgb sensor physical attachment -->
-		<joint name="${name}_asus_xtion_rgb_joint" type="fixed">
+		<joint name="${name}_rgb_joint" type="fixed">
 			<origin xyz="${asus_xtion_x} ${asus_xtion_rgb_y} ${asus_xtion_z}" rpy="0.0 0.0 0.0"/>
-			<parent link="${name}_asus_xtion_link"/>
-			<child link="${name}_asus_xtion_rgb_frame"/>
+			<parent link="${name}_link"/>
+			<child link="${name}_rgb_frame"/>
 		</joint>
 		<!-- asus xtion rgb sensor frame -->
-		<joint name="${name}_asus_xtion_rgb_optical_frame_joint" type="fixed">
+		<joint name="${name}_rgb_optical_frame_joint" type="fixed">
 			<origin xyz="0 0 0"	rpy="${asus_xtion_roll} ${asus_xtion_pitch} ${asus_xtion_yaw}"/>
-			<parent link="${name}_asus_xtion_rgb_frame"/>
-			<child link="${name}_asus_xtion_rgb_optical_frame"/>
+			<parent link="${name}_rgb_frame"/>
+			<child link="${name}_rgb_optical_frame"/>
 		</joint>
 
 
 		<!-- Links -->
-		<link name="${name}_asus_xtion_link">
+		<link name="${name}_link">
 			<inertial>
 				<mass value="0.1"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -63,7 +63,7 @@
 	</collision>
 		</link>
 		<!-- ir sensor link -->
-		<link name="${name}_asus_xtion_depth_frame">
+		<link name="${name}_depth_frame">
 			<inertial>
 				<mass value="0.1" />
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -83,9 +83,9 @@
 			</collision>
 		</link>
 		<!-- ir optical sensor link -->
-		<link name="${name}_asus_xtion_depth_optical_frame"/>
+		<link name="${name}_depth_optical_frame"/>
 		<!-- rgb sensor link -->
-		<link name="${name}_asus_xtion_rgb_frame" >
+		<link name="${name}_rgb_frame" >
 			<inertial>
 				<mass value="0.1" />
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -105,13 +105,13 @@
 			</collision>
 		</link>
 		<!-- rgb optical sensor link -->
-		<link name="${name}_asus_xtion_rgb_optical_frame"/>
+		<link name="${name}_rgb_optical_frame"/>
 
 
 	<!-- gazebo extensions -->
-	<xacro:asus_xtion_depth_sensor link_name="${name}_asus_xtion_depth_frame" frame_name="${name}_asus_xtion_depth_optical_frame" camera_name="${name}_asus_xtion" />
+	<xacro:asus_xtion_depth_sensor link_name="${name}_depth_frame" frame_name="${name}_depth_optical_frame" camera_name="${name}" />
 
-	<xacro:asus_xtion_rgb_sensor link_name="${name}_asus_xtion_rgb_frame" frame_name="${name}_asus_xtion_rgb_optical_frame" camera_name="${name}_asus_xtion" />
+	<xacro:asus_xtion_rgb_sensor link_name="${name}_rgb_frame" frame_name="${name}_rgb_optical_frame" camera_name="${name}" />
 
 	</xacro:macro>
 </root>

@@ -1,0 +1,10 @@
+<launch>
+
+	<!-- run hyq model in gazebo -->
+	<include file="$(find hyq_description)/launch/hyq_empty_world.launch">
+		<arg name="simulation" value="true"/>
+	</include>
+
+	<!-- HyQ gazebo controllers -->
+	<include file="$(find hyq_controllers)/launch/hyq_gazebo_controllers.launch" />
+</launch>

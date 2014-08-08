@@ -5,11 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Status1
-        - /RobotModel1
-        - /TF1
-        - /PointCloud21
-        - /OccupancyGrid1
       Splitter Ratio: 0.5
     Tree Height: 565
   - Class: rviz/Selection
@@ -30,7 +25,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -72,35 +67,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        bumblebee_mount_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        bumblebee_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        head_mount_asus_xtion_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_asus_xtion_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        head_mount_asus_xtion_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_asus_xtion_rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_asus_xtion_rgb_optical_frame:
+        lf_assembly:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -123,6 +90,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        lh_assembly:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         lh_foot:
           Alpha: 1
           Show Axes: false
@@ -164,6 +135,10 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        rf_assembly:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         rf_foot:
           Alpha: 1
           Show Axes: false
@@ -183,6 +158,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        rh_assembly:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         rh_foot:
           Alpha: 1
           Show Axes: false
@@ -222,19 +201,7 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
-        bumblebee_mount_link:
-          Value: true
-        bumblebee_optical_frame:
-          Value: true
-        head_mount_asus_xtion_depth_frame:
-          Value: true
-        head_mount_asus_xtion_depth_optical_frame:
-          Value: true
-        head_mount_asus_xtion_link:
-          Value: true
-        head_mount_asus_xtion_rgb_frame:
-          Value: true
-        head_mount_asus_xtion_rgb_optical_frame:
+        lf_assembly:
           Value: true
         lf_foot:
           Value: true
@@ -244,6 +211,8 @@ Visualization Manager:
           Value: true
         lf_upper_leg:
           Value: true
+        lh_assembly:
+          Value: true
         lh_foot:
           Value: true
         lh_hip_assembly:
@@ -251,8 +220,6 @@ Visualization Manager:
         lh_lower_leg:
           Value: true
         lh_upper_leg:
-          Value: true
-        odom:
           Value: true
         ptu_base_link:
           Value: true
@@ -264,6 +231,8 @@ Visualization Manager:
           Value: true
         ptu_tilted_link:
           Value: true
+        rf_assembly:
+          Value: true
         rf_foot:
           Value: true
         rf_hip_assembly:
@@ -271,6 +240,8 @@ Visualization Manager:
         rf_lower_leg:
           Value: true
         rf_upper_leg:
+          Value: true
+        rh_assembly:
           Value: true
         rh_foot:
           Value: true
@@ -288,41 +259,35 @@ Visualization Manager:
       Show Axes: false
       Show Names: false
       Tree:
-        odom:
-          base_link:
-            trunk:
-              3dmgx325_trunk_imu:
-                {}
+        base_link:
+          trunk:
+            3dmgx325_trunk_imu:
+              {}
+            lf_assembly:
               lf_hip_assembly:
                 lf_upper_leg:
                   lf_lower_leg:
                     lf_foot:
                       {}
+            lh_assembly:
               lh_hip_assembly:
                 lh_upper_leg:
                   lh_lower_leg:
                     lh_foot:
                       {}
-              ptu_base_link:
-                ptu_pan_link:
-                  ptu_tilt_link:
-                    ptu_tilted_link:
-                      ptu_mount_link:
-                        bumblebee_mount_link:
-                          bumblebee_optical_frame:
-                            {}
-                        head_mount_asus_xtion_link:
-                          head_mount_asus_xtion_depth_frame:
-                            head_mount_asus_xtion_depth_optical_frame:
-                              {}
-                          head_mount_asus_xtion_rgb_frame:
-                            head_mount_asus_xtion_rgb_optical_frame:
-                              {}
+            ptu_base_link:
+              ptu_pan_link:
+                ptu_tilt_link:
+                  ptu_tilted_link:
+                    ptu_mount_link:
+                      {}
+            rf_assembly:
               rf_hip_assembly:
                 rf_upper_leg:
                   rf_lower_leg:
                     rf_foot:
                       {}
+            rh_assembly:
               rh_hip_assembly:
                 rh_upper_leg:
                   rh_lower_leg:
@@ -330,44 +295,6 @@ Visualization Manager:
                       {}
       Update Interval: 0
       Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: RGB8
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Max Intensity: 4096
-      Min Color: 0; 0; 0
-      Min Intensity: 0
-      Name: PointCloud2
-      Position Transformer: XYZ
-      Queue Size: 10
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.01
-      Style: Points
-      Topic: /head_mount_asus_xtion/depth_registered/points
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Class: octomap_rviz_plugin/OccupancyGrid
-      Enabled: true
-      Max. Octree Depth: 16
-      Name: OccupancyGrid
-      Octomap Topic: /octomap_binary
-      Queue Size: 3
-      Value: true
-      Voxel Coloring: Z-Axis
-      Voxel Rendering: Occupied Voxels
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -392,22 +319,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.00396
+      Distance: 3.1833
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.26642
-        Y: 0.49641
-        Z: -0.376785
+        X: -0.184226
+        Y: -0.128359
+        Z: -0.448661
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.550398
+      Pitch: 0.270398
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.0054
+      Yaw: 0.8354
     Saved: ~
 Window Geometry:
   Displays:
@@ -425,5 +352,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1200
-  X: 121
-  Y: 74
+  X: 542
+  Y: 83

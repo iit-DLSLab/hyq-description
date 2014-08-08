@@ -2,8 +2,6 @@
 
 <robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-
-
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common_gazebo.xacro"/>
 	<!-- HyQ base -->
@@ -25,9 +23,6 @@
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
-
-
-
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
@@ -83,7 +78,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
-	<!-- IMU runk -->
+	<!-- IMU trunk -->
 	<xacro:microstrain_3dmgx325_imu
 		parent="trunk"
 		imu_name="3dmgx325_trunk_imu"
@@ -94,41 +89,42 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:microstrain_3dmgx325_imu>
 
 	<!-- PTU unit -->	
-<!--	<xacro:ptu_d46
+	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:ptu_d46>-->
-
+		<origin xyz="0.693327 -0.015447 0.119533" rpy="-0.013127 0.574478 -0.007748"/>
+	</xacro:ptu_d46>
 
 	<!-- Asus Xtion Pro -->
+	<!-- The vertical offset between the middle of xtion and the middle of bumblebee is 5 cm-->
+	<!-- but since bumblebee_mount_link is computed in the middle of the camera and the xtion on its base instead -->
+	<!-- we have 5 cm - 3.5 cm (vertical distance between xtion optical frame and base) = 1.5 cm -->
 	<xacro:asus_xtion_camera
-		name="head_mount"
-		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/>
-	</xacro:asus_xtion_camera> <!-- <origin xyz="0.63 0 0.095" rpy="0 ${PI/6} 0"/> --> <!-- ptu_mount_link -->
+		name="head_mount_asus_xtion"
+		parent="ptu_mount_link">
+		<origin xyz="0.0 0 0.015" rpy="0 0 0"/>
+	</xacro:asus_xtion_camera>
 
 	<!-- Velodyne -->
-<!--	<xacro:velodyne
+	<!--<xacro:velodyne
 		name="trunk_mount"
 		parent="trunk">
 		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne>-->
+	</xacro:velodyne-->
 
-	<!-- Kinect mount -->
-<!--	<xacro:kinect_camera
+	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
+	<!--<xacro:kinect_camera
 		name="head_mount"
 		parent="trunk">
 		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:kinect_camera>-->
-	
+	</xacro:kinect_camera-->
+
 	<!-- Bumblebee -->
-<!--	<xacro:bumblebee_66
+	<!--<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
 		xyz="0 0 0"
-		rpy="${PI/2} 0 ${PI/2}"
+		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/>--> <!-- xyz="0.63 0 0.095" rpy="0 0 0" -->
-
+		high_res="false"/>-->
 </robot>
