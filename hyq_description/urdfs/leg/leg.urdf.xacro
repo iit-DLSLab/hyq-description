@@ -82,7 +82,7 @@
 				</geometry>
 			</visual>
 			<collision>
-				<origin xyz="0.0 0.0 0.0" rpy="${(1+reflect_hip)*PI/2} ${-reflect_hip*PI/2} 0.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="${(1-reflect_hip)*PI/2} 0.0 0.0"/>
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/hip.dae" scale="1 1 1"/>
 				</geometry>
@@ -102,7 +102,7 @@
 				</geometry>
 			</visual>
 			<collision>
-				<origin xyz="0.0 0.0 0.0" rpy="${(1+reflect_front)*PI/2} 0.0 0.0"/>
+				<origin xyz="0.0 0.0 0.0" rpy="${(1-reflect_front)*PI/2} 0.0 0.0"/>
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/upper.dae" scale="1 1 1"/>
 				</geometry>
@@ -134,6 +134,18 @@
 				<mass value="0.01"/>
 				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
+			<!--<visual>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.021"/>
+				</geometry>
+			</visual>-->
+			<collision>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.021"/>
+				</geometry>
+			</collision>
 		</link>
 		
 		<!-- Extensions -->
