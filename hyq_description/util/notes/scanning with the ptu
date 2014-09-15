@@ -6,4 +6,4 @@ are connected (I personaly prefer the serial port than the usb-fake-serial port)
 reset the ptu (optional) (ROS_NAMESPACE=ptu) rosrun flir_ptu_driver cmd_angles 0 0
 start the scanning!
 (ROS_NAMESPACE=ptu) rosrun flir_ptu_driver cmd_scan
-stop the scanning whenever you want with ctrl^C
+stop the scanning whenever you want with ctrl
