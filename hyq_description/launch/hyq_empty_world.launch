@@ -36,4 +36,7 @@
 		<arg name="simulation" value="$(arg simulation)"/>
 	</include>
 
+	<!-- Spawn a robot into Gazebo -->
+	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.60"/>
+
 </launch>
