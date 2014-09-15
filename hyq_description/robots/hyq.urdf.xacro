@@ -106,11 +106,11 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:asus_xtion_camera> 
 
 	<!-- Velodyne -->
-	<!--xacro:velodyne
+	<xacro:velodyne
 		name="trunk_mount"
 		parent="trunk">
 		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne-->
+	</xacro:velodyne>
 
 	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
 	<!--xacro:kinect_camera
@@ -127,4 +127,5 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
 		high_res="false"/>
+
 </robot>

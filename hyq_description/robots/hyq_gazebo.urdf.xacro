@@ -100,17 +100,17 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<!-- but since bumblebee_mount_link is computed in the middle of the camera and the xtion on its base instead -->
 	<!-- we have 5 cm - 3.5 cm (vertical distance between xtion optical frame and base) = 1.5 cm -->
 	<xacro:asus_xtion_camera
-		name="head_mount_asus_xtion"
+		name="head_mount"
 		parent="ptu_mount_link">
 		<origin xyz="0.0 0 0.015" rpy="0 0 0"/>
-	</xacro:asus_xtion_camera>
+	</xacro:asus_xtion_camera> 
 
 	<!-- Velodyne -->
-	<!--<xacro:velodyne
+	<xacro:velodyne
 		name="trunk_mount"
 		parent="trunk">
 		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne-->
+	</xacro:velodyne>
 
 	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
 	<!--<xacro:kinect_camera
@@ -120,11 +120,12 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:kinect_camera-->
 
 	<!-- Bumblebee -->
-	<!--<xacro:bumblebee_97
+	<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
 		xyz="0 0 0"
 		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/>-->
+		high_res="false"/>
+
 </robot>

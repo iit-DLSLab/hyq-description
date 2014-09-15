@@ -10,7 +10,7 @@
 			<inertial>
 				<origin xyz="0.0 0.0 0.0"/>
 				<mass value="0.65"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
 			<visual>
 				<material name="ptu_body_color">
@@ -72,7 +72,7 @@
 			<child link="${name}_pan_link"/>
 		</joint>
 		<!-- The pan joint -->
-		<joint name="${name}_pan" type="fixed">
+		<joint name="${name}_pan" type="revolute">
 			<origin xyz="0 0 0.066" rpy="-${PI/2} 0 0"/>
 			<parent link="${name}_pan_link"/>
 			<child link="${name}_tilt_link"/>
@@ -80,7 +80,7 @@
 			<limit lower="${-pan_range}" upper="${pan_range}" effort="${joint_effort}" velocity="${pan_velocity}"/>
 		</joint>
 		<!-- The tilt joint -->
-		<joint name="${name}_tilt" type="fixed">
+		<joint name="${name}_tilt" type="revolute">
 			<origin xyz="0 0 0" rpy="-${PI/2} 0 0"/>
 			<parent link="${name}_tilt_link"/>
 			<child link="${name}_tilted_link"/>
@@ -102,7 +102,7 @@
 			<inertial>
 				<origin xyz="0.0 0.0 0.0"/>
 				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
 			<visual>
 				<geometry>
@@ -121,7 +121,7 @@
 			<inertial>
 				<origin xyz="0.0 0.0 0.0"/>
 				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
 			<visual>
 				<geometry>
@@ -140,7 +140,7 @@
 			<inertial>
 				<origin xyz="0.0 0.0 0.0"/>
 				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
 			<visual>
 				<geometry>
@@ -157,7 +157,7 @@
 		</link>
 		
 		<!-- Extensions -->
-		<!--<xacro:ptu_transmission name="${name}"/>-->
+		<xacro:ptu_transmission name="${name}"/>
 	</xacro:macro>
 
 </robot>
