@@ -14,7 +14,7 @@
 			</inertial>
 			<visual>
 				<material name="ptu_body_color">
-					<color rgba="0.3 0.3 0.3 1.0"/>
+					<color rgba="0.28 0.28 0.28 1"/>
 				</material>
 				<geometry>
 					<box size="0.045 0.065 0.044"/>
@@ -22,6 +22,7 @@
 				<origin xyz="0 0.011 0"/>
 			</visual>
 			<visual>
+
 				<geometry>
 					<box size="0.046 0.044 0.044"/>
 				</geometry>
@@ -53,6 +54,9 @@
 				<origin xyz="-0.074 0.021 0" rpy="0 1.57 0"/>
 			</collision>
 		</link>
+		<gazebo reference="${ptu_name}_${joint_name}_link">
+			<material>Gazebo/Grey</material>
+		</gazebo>
 	</xacro:macro>
 
 
