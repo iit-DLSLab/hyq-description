@@ -47,8 +47,8 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/trunk/trunk_frame.dae" scale="1 1 1"/>
 				</geometry>
-					<material name="white">
-				<color rgba="1 1 1 1"/>
+				<material name="white">
+					<color rgba="1 1 1 1"/>
 				</material>
 			</visual>
 		</link>
