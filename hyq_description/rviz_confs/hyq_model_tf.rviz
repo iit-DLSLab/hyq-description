@@ -67,6 +67,38 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        bumblebee_mount_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bumblebee_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        head_mount_asus_xtion_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        head_mount_asus_xtion_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        head_mount_asus_xtion_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        head_mount_asus_xtion_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        head_mount_asus_xtion_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         lf_assembly:
           Alpha: 1
           Show Axes: false
@@ -75,6 +107,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         lf_hip_assembly:
           Alpha: 1
           Show Axes: false
@@ -98,6 +131,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         lh_hip_assembly:
           Alpha: 1
           Show Axes: false
@@ -117,10 +151,12 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         ptu_mount_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         ptu_pan_link:
           Alpha: 1
           Show Axes: false
@@ -135,6 +171,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         rf_assembly:
           Alpha: 1
           Show Axes: false
@@ -143,6 +180,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         rf_hip_assembly:
           Alpha: 1
           Show Axes: false
@@ -166,6 +204,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         rh_hip_assembly:
           Alpha: 1
           Show Axes: false
@@ -186,6 +225,15 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        trunk_mount_velodyne_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        trunk_mount_velodyne_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -201,6 +249,20 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
+        bumblebee_mount_link:
+          Value: true
+        bumblebee_optical_frame:
+          Value: true
+        head_mount_asus_xtion_depth_frame:
+          Value: true
+        head_mount_asus_xtion_depth_optical_frame:
+          Value: true
+        head_mount_asus_xtion_link:
+          Value: true
+        head_mount_asus_xtion_rgb_frame:
+          Value: true
+        head_mount_asus_xtion_rgb_optical_frame:
+          Value: true
         lf_assembly:
           Value: true
         lf_foot:
@@ -252,6 +314,10 @@ Visualization Manager:
         rh_upper_leg:
           Value: true
         trunk:
+          Value: true
+        trunk_mount_velodyne_frame:
+          Value: true
+        trunk_mount_velodyne_optical_frame:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -280,7 +346,16 @@ Visualization Manager:
                 ptu_tilt_link:
                   ptu_tilted_link:
                     ptu_mount_link:
-                      {}
+                      bumblebee_mount_link:
+                        bumblebee_optical_frame:
+                          {}
+                      head_mount_asus_xtion_link:
+                        head_mount_asus_xtion_depth_frame:
+                          head_mount_asus_xtion_depth_optical_frame:
+                            {}
+                        head_mount_asus_xtion_rgb_frame:
+                          head_mount_asus_xtion_rgb_optical_frame:
+                            {}
             rf_assembly:
               rf_hip_assembly:
                 rf_upper_leg:
@@ -293,11 +368,14 @@ Visualization Manager:
                   rh_lower_leg:
                     rh_foot:
                       {}
+            trunk_mount_velodyne_frame:
+              trunk_mount_velodyne_optical_frame:
+                {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 255; 255; 255
     Fixed Frame: trunk
     Frame Rate: 30
   Name: root
@@ -319,7 +397,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.1833
+      Distance: 6.28327
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -331,10 +409,10 @@ Visualization Manager:
         Z: -0.448661
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.270398
+      Pitch: 0.315399
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.8354
+      Yaw: 2.1454
     Saved: ~
 Window Geometry:
   Displays:
@@ -352,5 +430,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1200
-  X: 542
+  X: 535
   Y: 83
