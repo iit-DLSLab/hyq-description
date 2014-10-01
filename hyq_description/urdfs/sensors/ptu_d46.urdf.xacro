@@ -22,7 +22,6 @@
 				<origin xyz="0 0.011 0"/>
 			</visual>
 			<visual>
-
 				<geometry>
 					<box size="0.046 0.044 0.044"/>
 				</geometry>
