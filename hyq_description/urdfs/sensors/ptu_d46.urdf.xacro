@@ -10,11 +10,11 @@
 			<inertial>
 				<origin xyz="0.0 0.0 0.0"/>
 				<mass value="0.65"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
 			<visual>
 				<material name="ptu_body_color">
-					<color rgba="0.3 0.3 0.3 1.0"/>
+					<color rgba="0.28 0.28 0.28 1"/>
 				</material>
 				<geometry>
 					<box size="0.045 0.065 0.044"/>
@@ -53,36 +53,14 @@
 				<origin xyz="-0.074 0.021 0" rpy="0 1.57 0"/>
 			</collision>
 		</link>
+		<gazebo reference="${ptu_name}_${joint_name}_link">
+			<material>Gazebo/Grey</material>
+		</gazebo>
 	</xacro:macro>
 
 
 	<xacro:macro name="ptu_d46" params="name parent *origin">
-		<d46_stepper_module ptu_name="${name}" joint_name="pan" />
-		<d46_stepper_module ptu_name="${name}" joint_name="tilt" />
-		<link name="${name}_base_link">
-			<inertial>
-				<origin xyz="0.0 0.0 0.0"/>
-				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
-		</link>
-		<link name="${name}_tilted_link">
-			<inertial>
-				<origin xyz="0.0 0.0 0.0"/>
-				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
-		</link>
-		<link name="${name}_mount_link">
-			<inertial>
-				<origin xyz="0.0 0.0 0.0"/>
-				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
-		</link>
-
-
-
+		<!-- Joints -->
 		<joint name="${name}_joint" type="fixed">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
@@ -100,17 +78,16 @@
 		<joint name="${name}_pan" type="revolute">
 			<origin xyz="0 0 0.066" rpy="-${PI/2} 0 0"/>
 			<parent link="${name}_pan_link"/>
-			<!--<parent link="${name}_base_link"/>-->
 			<child link="${name}_tilt_link"/>
-			<axis xyz="0 -1 0" rpy="0 0 0"/>
+			<axis xyz="0 -1 0"/>
 			<limit lower="${-pan_range}" upper="${pan_range}" effort="${joint_effort}" velocity="${pan_velocity}"/>
 		</joint>
 		<!-- The tilt joint -->
 		<joint name="${name}_tilt" type="revolute">
-			<parent link="${name}_tilt_link"/>
 			<origin xyz="0 0 0" rpy="-${PI/2} 0 0"/>
+			<parent link="${name}_tilt_link"/>
 			<child link="${name}_tilted_link"/>
-			<axis xyz="0 1 0"/> <!-- 0 1 0-->
+			<axis xyz="0 1 0"/>
 			<limit lower="${-tilt_down_range}" upper="${tilt_up_range}" effort="${joint_effort}" velocity="${tilt_velocity}"/>
 		</joint>
 
@@ -121,10 +98,67 @@
 			<child link="${name}_mount_link"/>
 		</joint>
 
-
-
-	
-	
+		<!-- Links -->
+		<d46_stepper_module ptu_name="${name}" joint_name="pan" />
+		<d46_stepper_module ptu_name="${name}" joint_name="tilt" />
+		<link name="${name}_base_link">
+			<inertial>
+				<origin xyz="0.0 0.0 0.0"/>
+				<mass value="0.01"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
+			</inertial>
+			<visual>
+				<geometry>
+					<box size="0.001 0.001 0.001"/>
+				</geometry>
+				<origin xyz="0 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.001 0.001 0.001"/>
+				</geometry>
+				<origin xyz="0 0 0"/>
+			</collision>
+		</link>
+		<link name="${name}_tilted_link">
+			<inertial>
+				<origin xyz="0.0 0.0 0.0"/>
+				<mass value="0.01"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
+			</inertial>
+			<visual>
+				<geometry>
+					<box size="0.001 0.001 0.001"/>
+				</geometry>
+				<origin xyz="0 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.001 0.001 0.001"/>
+				</geometry>
+				<origin xyz="0 0 0"/>
+			</collision>
+		</link>
+		<link name="${name}_mount_link">
+			<inertial>
+				<origin xyz="0.0 0.0 0.0"/>
+				<mass value="0.01"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
+			</inertial>
+			<visual>
+				<geometry>
+					<box size="0.001 0.001 0.001"/>
+				</geometry>
+				<origin xyz="0 0 0"/>
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.001 0.001 0.001"/>
+				</geometry>
+				<origin xyz="0 0 0"/>
+			</collision>
+		</link>
+		
 		<!-- Extensions -->
 		<xacro:ptu_transmission name="${name}"/>
 	</xacro:macro>

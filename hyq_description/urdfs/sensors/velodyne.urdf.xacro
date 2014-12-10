@@ -45,11 +45,16 @@
 			</collision>
 		</link>
 		<!-- rgb optical sensor link -->
-		<link name="${name}_velodyne_optical_frame"/>
+		<link name="${name}_velodyne_optical_frame">
+			<inertial>
+				<mass value="0.1"/>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+			</inertial>
+		</link>
 
-
-	<!-- gazebo extensions -->
-	<xacro:velodyne_sensor link_name="${name}_velodyne_optical_frame" frame_name="${name}_velodyne_frame" lidar_name="${name}_velodyne" />
+		<!-- gazebo extensions -->
+		<xacro:velodyne_sensor link_name="${name}_velodyne_optical_frame" frame_name="${name}_velodyne_frame" lidar_name="${name}_velodyne" />
 	</xacro:macro>
 
 </root>

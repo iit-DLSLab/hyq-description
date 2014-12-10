@@ -58,10 +58,10 @@
 	<property name="joint_effort" value="30" /> 
 
 	<!-- Asus Xtion Camera Location (Nominally 0) -->
-	<property name="asus_xtion_x" value="0.009"/>
-	<property name="asus_xtion_depth_y" value="0.049"/>
-	<property name="asus_xtion_rgb_y" value="0.022"/>
-	<property name="asus_xtion_z" value="0.035"/>
+	<property name="asus_xtion_x" value="0.015"/>
+	<property name="asus_xtion_depth_y" value="0.069"/>
+	<property name="asus_xtion_rgb_y" value="0.042"/>
+	<property name="asus_xtion_z" value="0.03"/>
 	<property name="asus_xtion_roll" value="${-PI/2}"/>
 	<property name="asus_xtion_pitch" value="0.0"/>
 	<property name="asus_xtion_yaw" value="${-PI/2}"/>

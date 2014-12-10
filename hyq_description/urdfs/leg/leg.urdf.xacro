@@ -13,23 +13,23 @@
 	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front">
 
 		<!-- Joints -->
-		<!-- Fake joint
-		<joint name="${name}_haa_fake_joint" type="fixed">
+		<!-- Hip assembly joint -->
+		<joint name="${name}_haa_assembly_joint" type="fixed">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
-			<child  link="${name}_haa_fake"/>
-		</joint>-->
+			<child  link="${name}_assembly"/>
+		</joint>
 		<!-- Hip joint assembly -->
 		<joint name="${name}_haa_joint" type="revolute">
-			<!--<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${haa_pos0}"/> 
-			<parent link="${name}_haa_fake"/>-->
-			<insert_block name="origin"/>
-			<parent link="${parent}"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${haa_pos0}"/> 
+			<parent link="${name}_assembly"/>
+			<!--<insert_block name="origin"/>-->
+			<!--<parent link="${parent}"/>-->
 			<child  link="${name}_hip_assembly"/>
 			<limit effort="200.0" velocity="1000.0" lower="${-PI/2-haa_pos0}" upper="${PI/6-haa_pos0}"/>
 			<axis xyz="0 0 1"/>
-     <dynamics damping="0.1" friction="0" />
-     <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+			<dynamics damping="0.1" friction="0" />
+			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
 		</joint>
 		<!-- Upper leg joint -->
 		<joint name="${name}_hfe_joint" type="revolute">
@@ -38,8 +38,8 @@
 			<child  link="${name}_upper_leg"/>
 			<limit effort="200.0" velocity="1.0" lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36-reflect_front*hfe_pos0}" upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36-reflect_front*hfe_pos0}"/>
 			<axis xyz="0 0 1"/>
-     <dynamics damping="0.1" friction="0" />
-     <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+			<dynamics damping="0.1" friction="0" />
+			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
 		</joint>
 		<!-- Lower leg joint -->
 		<joint name="${name}_kfe_joint" type="revolute">
@@ -48,27 +48,26 @@
 			<child  link="${name}_lower_leg"/>
 			<limit effort="200.0" velocity="1.0" lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18-reflect_front*kfe_pos0}" upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18-reflect_front*kfe_pos0}"/>
 			<axis xyz="0 0 1"/>
-     <dynamics damping="0.1" friction="0" />
-     <safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+			<dynamics damping="0.1" friction="0" />
+			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
 		<!-- Foot joint -->
 		</joint>
 		<joint name="${name}_foot_joint" type="fixed">
-			<origin xyz="0.35 0.0 0.0" rpy="${PI/2} 0.0 ${-PI/2}"/>
+			<origin xyz="0.34 0.0 0.0" rpy="${PI/2} 0.0 ${-PI/2}"/>
 			<parent link="${name}_lower_leg"/>
 			<child  link="${name}_foot"/>
 		</joint>
 
 
 		<!-- Links -->
-		<!-- Fake hip assembly link 
-		<link name="${name}_haa_fake">
+		<!-- Hip assembly link -->
+		<link name="${name}_assembly">
 			<inertial>
 				<origin xyz="0.0 0.0 0.0"/>
 				<mass value="0.01"/>
-				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
+				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
 		</link>
-		-->
 		<!-- Hip assembly link -->
 		<link name="${name}_hip_assembly">
 			<inertial>
@@ -81,7 +80,6 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/hip.dae" scale="1 1 1"/>
 				</geometry>
-				<material name="white"/>
 			</visual>
 			<collision>
 				<origin xyz="0.0 0.0 0.0" rpy="${(1-reflect_hip)*PI/2} 0.0 0.0"/>
@@ -102,7 +100,6 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/upper.dae" scale="1 1 1"/>
 				</geometry>
-				<material name="white"/>
 			</visual>
 			<collision>
 				<origin xyz="0.0 0.0 0.0" rpy="${(1-reflect_front)*PI/2} 0.0 0.0"/>
@@ -137,6 +134,18 @@
 				<mass value="0.01"/>
 				<inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" ixz="0.0" iyz="0.0"/>
 			</inertial>
+			<!--<visual>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.021"/>
+				</geometry>
+			</visual>-->
+			<collision>
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<sphere radius="0.02175"/>
+				</geometry>
+			</collision>
 		</link>
 		
 		<!-- Extensions -->

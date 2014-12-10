@@ -55,12 +55,12 @@
 					<color rgba="0.5 0.5 0.5 1"/>
 				</material>
 			</visual>
-	<collision>
-		<origin xyz="0.0 0.0 ${asus_xtion_z}" rpy="0 0 0" />
-		<geometry>
-			<box size="0.05 .18 0.035" />
-		</geometry>
-	</collision>
+			<collision>
+				<origin xyz="0.0 0.0 ${asus_xtion_z}" rpy="0 0 0" />
+				<geometry>
+					<box size="0.05 .18 0.035" />
+				</geometry>
+			</collision>
 		</link>
 		<!-- ir sensor link -->
 		<link name="${name}_asus_xtion_depth_frame">

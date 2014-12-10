@@ -25,9 +25,6 @@
 				<geometry>
 					<cylinder length="0.01" radius="0.01"/>
 				</geometry>
-				<material name="blue">
-					<color rgba="0 0 .8 1"/>
-				</material>
 			</visual>
 		</link>
 		<!-- Trunk link -->
@@ -47,9 +44,6 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/trunk/trunk_frame.dae" scale="1 1 1"/>
 				</geometry>
-					<material name="white">
-				<color rgba="1 1 1 1"/>
-				</material>
 			</visual>
 		</link>
 

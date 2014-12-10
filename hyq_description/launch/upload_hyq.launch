@@ -1,17 +1,19 @@
 <launch>
 
 	<arg name="arm" default="false"/>
+	<arg name="simulation" default="false"/>
 
 	<!-- send HyQ urdf to param server -->
 	<group if="$(arg arm)">
 		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_with_arms.urdf.xacro'"/>
 	</group>
 	<group unless="$(arg arm)">
-		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro'"/>
+		<group if="$(arg simulation)">
+			<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_gazebo.urdf.xacro'"/>
+		</group>
+		<group unless="$(arg simulation)">
+			<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro'"/>
+		</group>
 	</group>
-
-	<!-- Spawn a robot into Gazebo -->
-	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.60"/>
-
 
 </launch>
