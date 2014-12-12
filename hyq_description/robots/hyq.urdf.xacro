@@ -100,7 +100,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:asus_xtion_camera
 		name="head_mount"
 		parent="ptu_mount_link">
-		<origin xyz="0 0 0.050" rpy="0 0 0"/><!--<origin xyz="0 0 0.036" rpy="0 0 0"/> with Bumblebee setup -->
+		<origin xyz="0 0 0.04397" rpy="0 0 0"/><!--<origin xyz="0 0 0.036" rpy="0 0 0"/> with Bumblebee setup -->
 	</xacro:asus_xtion_camera>
 
 	<!-- Velodyne -->
