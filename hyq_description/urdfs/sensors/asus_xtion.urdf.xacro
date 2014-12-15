@@ -11,12 +11,12 @@
 		<joint name="${name}_joint" type="fixed">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
-			<child link="${name}_asus_xtion_link"/>
+			<child link="${name}_asus_xtion_mount_link"/>
 		</joint>
 		<!-- asus ir sensor physical attachment -->
 		<joint name="${name}_asus_xtion_depth_joint" type="fixed">
 			<origin xyz="${asus_xtion_x} ${asus_xtion_depth_y} ${asus_xtion_z}" rpy="0.0 0.0 0.0"/>
-			<parent link="${name}_asus_xtion_link"/>
+			<parent link="${name}_asus_xtion_mount_link"/>
 			<child link="${name}_asus_xtion_depth_frame"/>
 		</joint>
 		<!-- asus xtion ir sensor frame -->
@@ -28,7 +28,7 @@
 		<!-- asus_xtion rgb sensor physical attachment -->
 		<joint name="${name}_asus_xtion_rgb_joint" type="fixed">
 			<origin xyz="${asus_xtion_x} ${asus_xtion_rgb_y} ${asus_xtion_z}" rpy="0.0 0.0 0.0"/>
-			<parent link="${name}_asus_xtion_link"/>
+			<parent link="${name}_asus_xtion_mount_link"/>
 			<child link="${name}_asus_xtion_rgb_frame"/>
 		</joint>
 		<!-- asus xtion rgb sensor frame -->
@@ -40,14 +40,14 @@
 
 
 		<!-- Links -->
-		<link name="${name}_asus_xtion_link">
+		<link name="${name}_asus_xtion_mount_link">
 			<inertial>
 				<mass value="0.1"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
 			</inertial>
 			<visual>
-				<origin xyz="-0.015 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/sensors/asus_xtion.dae" scale="1 1 1" />
 				</geometry>
