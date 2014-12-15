@@ -20,6 +20,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -96,13 +97,10 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:ptu_d46>
 
 	<!-- Asus Xtion Pro -->
-	<!-- The vertical offset between the middle of xtion and the middle of bumblebee is 5 cm-->
-	<!-- but since bumblebee_mount_link is computed in the middle of the camera and the xtion on its base instead -->
-	<!-- we have 5 cm - 3.5 cm (vertical distance between xtion optical frame and base) = 1.5 cm -->
 	<xacro:asus_xtion_camera
 		name="head_mount"
 		parent="ptu_mount_link">
-		<origin xyz="0 0 0.015" rpy="0 0 0"/>
+		<origin xyz="0 0 0.04397" rpy="0 0 0"/><!--<origin xyz="0 0 0.036" rpy="0 0 0"/> with Bumblebee setup -->
 	</xacro:asus_xtion_camera>
 
 	<!-- Velodyne -->
@@ -120,12 +118,18 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:kinect_camera-->
 
 	<!-- Bumblebee -->
-	<xacro:bumblebee_97
+<!--	<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
-		xyz="0 0 0"
+		xyz="0 0 0.018"
 		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"
-		high_res="false"/>
+		high_res="false"/>-->
 
+	<xacro:vislab_3dve_72
+		name="vislab_3dve"
+		parent="ptu_mount_link"
+		xyz="0 0 0.025"
+		rpy="0 0 0"
+		high_res="false"/>
 </robot>
