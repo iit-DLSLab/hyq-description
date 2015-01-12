@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<root xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.gazebo.xacro" />
+
 
 	<!-- ===================================== VELODYNE ==================================== -->
 	<!-- The xacro macro xacro:velodyne contains: velodyne combo -->
@@ -29,7 +29,7 @@
 				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
 			</inertial>
 			<visual>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/sensors/velodyne_hdl32e.dae" scale="1 1 1" />
 				</geometry>
@@ -38,7 +38,7 @@
 				</material>
 			</visual>
 			<collision>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<box size="0.1 0.18 0.1" />
 				</geometry>
@@ -48,7 +48,7 @@
 		<link name="${name}_velodyne_optical_frame">
 			<inertial>
 				<mass value="0.1"/>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
 			</inertial>
 		</link>
@@ -57,4 +57,4 @@
 		<xacro:velodyne_sensor link_name="${name}_velodyne_optical_frame" frame_name="${name}_velodyne_frame" lidar_name="${name}_velodyne" />
 	</xacro:macro>
 
-</root>
+</robot>

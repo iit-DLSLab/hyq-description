@@ -4,14 +4,11 @@
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
-	<!-- HyQ base -->
+	<!-- HyQ trunk -->
 	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
 
 	<!-- HyQ legs -->
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
-
-	<!-- HyQ torso -->
-<!--  <xacro:include filename="$(find hyq_model)/urdfs/torso/torso.urdf.xacro" />-->
 
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx325_imu.urdf.xacro"/>
@@ -21,7 +18,6 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vicon.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -38,7 +34,9 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- body -->
 	<!-- trunk -->
-	<xacro:hyq_trunk name="base" />
+	<xacro:hyq_trunk name="base">
+		<origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/>
+	</xacro:hyq_trunk>
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
@@ -137,7 +135,5 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		rpy="0 0 0"
 		high_res="false"/>-->
 
-		<xacro:vicon parent="base_link">
-			<origin xyz="0.443 0.191 0.276" rpy="0 0 0"/>
-		</xacro:vicon>
+
 </robot>

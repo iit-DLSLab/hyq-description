@@ -4,6 +4,9 @@
 
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx325_imu.gazebo.xacro"/>
 
+
+	<!-- ============================ IMU microstrain ============================== -->
+	<!-- The xacro macro xacro:microstrain_3dmgx325_imu: imu frame -->
 	<xacro:macro name="microstrain_3dmgx325_imu" params="parent *origin imu_name imu_topic update_rate stdev">
 
 		<!-- Joint -->

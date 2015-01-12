@@ -4,6 +4,8 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/stereo_camera.gazebo.xacro"/>
   
 
+	<!-- ================================ Bumblebee ============================== -->
+	<!-- The xacro macro xacro:bumblebee contains: camera, mount and optical frame -->
 	<xacro:macro name="bumblebee" params="parent_link xyz rpy ns frame_prefix high_res hfov">
 		<joint name="bumblebee_mount_joint" type="fixed">
 			<parent link="${parent_link}"/>
@@ -15,7 +17,7 @@
 			<parent link="${frame_prefix}mount_link"/>
 			<child link="${frame_prefix}optical_frame"/>
 			<!--<origin xyz="0 0 0" rpy="0 0 0"/>-->
-			<origin xyz="0 -0.06 0.00" rpy="-${PI/2} 0 -${PI/2}"/>
+			<origin xyz="0 -0.06 0" rpy="-${PI/2} 0 -${PI/2}"/>
 		</joint>
 
 
@@ -113,5 +115,3 @@
 			hfov="0.75049157835"/>
 	</xacro:macro>
 </robot>
-
-      

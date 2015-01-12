@@ -9,11 +9,9 @@
 	<!-- ================================ Trunk ================================ -->
 	<!-- The xacro macro xacro:hyq_base contains: base and trunk -->
 	<xacro:macro name="hyq_trunk" params="name">
-
 		<!-- Floating-base Joint -->
-		<joint name="floating_base" type="fixed">
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-			<!--<origin xyz="0.0 0.0 -0.49"  rpy="3.1416 0.0 0.0" />-->
+		<joint name="floating_base" type="floating">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<parent link="${name}_link"/>
 			<child link="trunk"/>
 		</joint>
