@@ -15,7 +15,7 @@
 		</joint>
 		<!-- asus ir sensor physical attachment -->
 		<joint name="${name}_asus_xtion_depth_joint" type="fixed">
-			<origin xyz="${asus_xtion_x} ${asus_xtion_depth_y} ${asus_xtion_z}" rpy="0.0 0.0 0.0"/>
+			<origin xyz="${asus_xtion_x} ${asus_xtion_depth_y} ${asus_xtion_z}" rpy="0 0 0"/>
 			<parent link="${name}_asus_xtion_mount_link"/>
 			<child link="${name}_asus_xtion_depth_frame"/>
 		</joint>
@@ -27,7 +27,7 @@
 		</joint>
 		<!-- asus_xtion rgb sensor physical attachment -->
 		<joint name="${name}_asus_xtion_rgb_joint" type="fixed">
-			<origin xyz="${asus_xtion_x} ${asus_xtion_rgb_y} ${asus_xtion_z}" rpy="0.0 0.0 0.0"/>
+			<origin xyz="${asus_xtion_x} ${asus_xtion_rgb_y} ${asus_xtion_z}" rpy="0 0 0"/>
 			<parent link="${name}_asus_xtion_mount_link"/>
 			<child link="${name}_asus_xtion_rgb_frame"/>
 		</joint>
@@ -43,7 +43,7 @@
 		<link name="${name}_asus_xtion_mount_link">
 			<inertial>
 				<mass value="0.1"/>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
 			</inertial>
 			<visual>
@@ -56,7 +56,7 @@
 				</material>
 			</visual>
 			<collision>
-				<origin xyz="0.0 0.0 ${asus_xtion_z}" rpy="0 0 0" />
+				<origin xyz="0 0 ${asus_xtion_z}" rpy="0 0 0" />
 				<geometry>
 					<box size="0.05 .18 0.035" />
 				</geometry>
@@ -66,17 +66,17 @@
 		<link name="${name}_asus_xtion_depth_frame">
 			<inertial>
 				<mass value="0.1" />
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
 			</inertial>
 			<visual>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<sphere radius="0.0005"/>
 				</geometry>
 			</visual>
 			<collision>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<sphere radius="0.0005"/>
 				</geometry>
@@ -88,17 +88,17 @@
 		<link name="${name}_asus_xtion_rgb_frame" >
 			<inertial>
 				<mass value="0.1" />
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
 			</inertial>
 			<visual>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<sphere radius="0.0005"/>
 				</geometry>
 			</visual>
 			<collision>
-				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
 					<sphere radius="0.0005"/>
 				</geometry>

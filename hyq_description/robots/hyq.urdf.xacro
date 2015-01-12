@@ -21,6 +21,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vicon.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -89,28 +90,29 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.3 0 0.095" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
-	<!-- PTU unit -->	
-	<xacro:ptu_d46
-		name="ptu"
-		parent="trunk">
-		<origin xyz="0.693327 -0.015447 0.119533" rpy="-0.013127 0.574478 -0.007748"/>
-	</xacro:ptu_d46>
-
-	<!-- Asus Xtion Pro -->
-	<!--<origin xyz="0 0 0.036" rpy="0 0 0"/> with Bumblebee setup -->
-	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
-	<xacro:asus_xtion_camera
-		name="head_mount"
-		parent="ptu_mount_link">
-		<origin xyz="0 0 0.036" rpy="0 0 0"/>
-	</xacro:asus_xtion_camera>
-
 	<!-- Velodyne -->
 	<xacro:velodyne
 		name="trunk_mount"
 		parent="trunk">
 		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
 	</xacro:velodyne>
+
+	<!-- PTU unit -->
+	<xacro:ptu_d46
+		name="ptu"
+		parent="trunk">
+		<origin xyz="0.657353 0.015447 0.119533" rpy="-0.013127 0.569257 -0.007748"/>
+<!--		<origin xyz="0.667353 -0.010101 0.160544" rpy="0.043239 0.569257 0.041771"/>-->
+	</xacro:ptu_d46>
+
+	<!-- Asus Xtion Pro -->
+	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
+	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
+	<xacro:asus_xtion_camera
+		name="head_mount"
+		parent="ptu_mount_link">
+		<origin xyz="0 0.005 0.036" rpy="0 0 0"/>
+	</xacro:asus_xtion_camera>
 
 	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
 	<!--xacro:kinect_camera
@@ -134,4 +136,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		xyz="0 0 0.025"
 		rpy="0 0 0"
 		high_res="false"/>-->
+
+		<xacro:vicon parent="base_link">
+			<origin xyz="0.443 0.191 0.276" rpy="0 0 0"/>
+		</xacro:vicon>
 </robot>
