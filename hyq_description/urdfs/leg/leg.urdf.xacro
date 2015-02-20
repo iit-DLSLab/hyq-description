@@ -26,7 +26,7 @@
 			<!--<insert_block name="origin"/>-->
 			<!--<parent link="${parent}"/>-->
 			<child  link="${name}_hip_assembly"/>
-			<limit effort="200.0" velocity="1000.0" lower="${-PI/2-haa_pos0}" upper="${PI/6-haa_pos0}"/>
+			<limit effort="150.0" velocity="12.0" lower="${-PI/2-haa_pos0}" upper="${PI/6-haa_pos0}"/>
 			<axis xyz="0 0 1"/>
 			<dynamics damping="0.1" friction="0" />
 			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
@@ -36,7 +36,7 @@
 			<origin xyz="${d_tbb} 0.0 0.0" rpy="${reflect_upper*PI/2} ${-reflect_hip*hfe_pos0} 0.0"/>
 			<parent link="${name}_hip_assembly"/>
 			<child  link="${name}_upper_leg"/>
-			<limit effort="200.0" velocity="1.0" lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36-reflect_front*hfe_pos0}" upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36-reflect_front*hfe_pos0}"/>
+			<limit effort="150.0" velocity="12.0" lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36-reflect_front*hfe_pos0}" upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36-reflect_front*hfe_pos0}"/>
 			<axis xyz="0 0 1"/>
 			<dynamics damping="0.1" friction="0" />
 			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
@@ -46,7 +46,7 @@
 			<origin xyz="${d_p1p2} 0 0" rpy="0 0 ${reflect_front*kfe_pos0}"/>
 			<parent link="${name}_upper_leg"/>
 			<child  link="${name}_lower_leg"/>
-			<limit effort="200.0" velocity="1.0" lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18-reflect_front*kfe_pos0}" upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18-reflect_front*kfe_pos0}"/>
+			<limit effort="150.0" velocity="12.0" lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18-reflect_front*kfe_pos0}" upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18-reflect_front*kfe_pos0}"/>
 			<axis xyz="0 0 1"/>
 			<dynamics damping="0.1" friction="0" />
 			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
