@@ -28,21 +28,21 @@
 		<!-- Trunk link -->
 		<link name="trunk">
 			<inertial>
-				<origin xyz="-0.00020  0.00010  0.00110"/>
+				<origin xyz="${xcom_trunk} ${ycom_trunk} ${zcom_trunk}"/>
 				<mass value="${m_trunk}"/>
-				<inertia ixx="${ixx_trunk}" iyy="${iyy_trunk}" izz="${izz_trunk}" ixy="${ixy_trunk}" ixz="${ixz_trunk}" iyz="${iyz_trunk}"/>
+				<inertia ixx="${ixx_trunk}" iyy="${iyy_trunk}" izz="${izz_trunk}"
+						 ixy="${ixy_trunk}" ixz="${ixz_trunk}" iyz="${iyz_trunk}"/>
 			</inertial>
-			<collision>
-				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/trunk_frame.dae" scale="1 1 1"/>
-				</geometry>
-			</collision>
 			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/trunk_frame.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
 				</geometry>
 			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
+				</geometry>
+			</collision>
 		</link>
 
 		<!-- Extensions -->

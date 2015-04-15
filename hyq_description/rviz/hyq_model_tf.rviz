@@ -4,8 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /TF1
         - /TF1/Frames1
         - /TF1/Tree1
       Splitter Ratio: 0.681208
@@ -88,7 +86,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        head_mount_asus_xtion_link:
+        head_mount_asus_xtion_mount_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -102,50 +100,42 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        lf_assembly:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         lf_foot:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lf_hip_assembly:
+        lf_hipassembly:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lf_lower_leg:
+        lf_lowerleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lf_upper_leg:
+        lf_upperleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lh_assembly:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         lh_foot:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lh_hip_assembly:
+        lh_hipassembly:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lh_lower_leg:
+        lh_lowerleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lh_upper_leg:
+        lh_upperleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -175,50 +165,42 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        rf_assembly:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         rf_foot:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rf_hip_assembly:
+        rf_hipassembly:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rf_lower_leg:
+        rf_lowerleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rf_upper_leg:
+        rf_upperleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rh_assembly:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         rh_foot:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rh_hip_assembly:
+        rh_hipassembly:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rh_lower_leg:
+        rh_lowerleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rh_upper_leg:
+        rh_upperleg:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -248,80 +230,72 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         3dmgx325_trunk_imu:
-          Value: false
+          Value: true
         All Enabled: false
         base_link:
-          Value: false
+          Value: true
         bumblebee_mount_link:
           Value: true
         bumblebee_optical_frame:
-          Value: false
+          Value: true
         head_mount_asus_xtion_depth_frame:
-          Value: false
+          Value: true
         head_mount_asus_xtion_depth_optical_frame:
-          Value: false
-        head_mount_asus_xtion_link:
-          Value: false
+          Value: true
+        head_mount_asus_xtion_mount_link:
+          Value: true
         head_mount_asus_xtion_rgb_frame:
-          Value: false
+          Value: true
         head_mount_asus_xtion_rgb_optical_frame:
-          Value: false
-        lf_assembly:
-          Value: false
+          Value: true
         lf_foot:
-          Value: false
-        lf_hip_assembly:
-          Value: false
-        lf_lower_leg:
-          Value: false
-        lf_upper_leg:
-          Value: false
-        lh_assembly:
-          Value: false
+          Value: true
+        lf_hipassembly:
+          Value: true
+        lf_lowerleg:
+          Value: true
+        lf_upperleg:
+          Value: true
         lh_foot:
-          Value: false
-        lh_hip_assembly:
-          Value: false
-        lh_lower_leg:
-          Value: false
-        lh_upper_leg:
-          Value: false
+          Value: true
+        lh_hipassembly:
+          Value: true
+        lh_lowerleg:
+          Value: true
+        lh_upperleg:
+          Value: true
         ptu_base_link:
-          Value: false
+          Value: true
         ptu_mount_link:
           Value: true
         ptu_pan_link:
-          Value: false
+          Value: true
         ptu_tilt_link:
           Value: true
         ptu_tilted_link:
-          Value: false
-        rf_assembly:
-          Value: false
+          Value: true
         rf_foot:
-          Value: false
-        rf_hip_assembly:
-          Value: false
-        rf_lower_leg:
-          Value: false
-        rf_upper_leg:
-          Value: false
-        rh_assembly:
-          Value: false
+          Value: true
+        rf_hipassembly:
+          Value: true
+        rf_lowerleg:
+          Value: true
+        rf_upperleg:
+          Value: true
         rh_foot:
-          Value: false
-        rh_hip_assembly:
-          Value: false
-        rh_lower_leg:
-          Value: false
-        rh_upper_leg:
-          Value: false
+          Value: true
+        rh_hipassembly:
+          Value: true
+        rh_lowerleg:
+          Value: true
+        rh_upperleg:
+          Value: true
         trunk:
-          Value: false
+          Value: true
         trunk_mount_velodyne_frame:
-          Value: false
+          Value: true
         trunk_mount_velodyne_optical_frame:
-          Value: false
+          Value: true
       Marker Scale: 0.4
       Name: TF
       Show Arrows: false
@@ -332,18 +306,16 @@ Visualization Manager:
           trunk:
             3dmgx325_trunk_imu:
               {}
-            lf_assembly:
-              lf_hip_assembly:
-                lf_upper_leg:
-                  lf_lower_leg:
-                    lf_foot:
-                      {}
-            lh_assembly:
-              lh_hip_assembly:
-                lh_upper_leg:
-                  lh_lower_leg:
-                    lh_foot:
-                      {}
+            lf_hipassembly:
+              lf_upperleg:
+                lf_lowerleg:
+                  lf_foot:
+                    {}
+            lh_hipassembly:
+              lh_upperleg:
+                lh_lowerleg:
+                  lh_foot:
+                    {}
             ptu_base_link:
               ptu_pan_link:
                 ptu_tilt_link:
@@ -352,25 +324,23 @@ Visualization Manager:
                       bumblebee_mount_link:
                         bumblebee_optical_frame:
                           {}
-                      head_mount_asus_xtion_link:
+                      head_mount_asus_xtion_mount_link:
                         head_mount_asus_xtion_depth_frame:
                           head_mount_asus_xtion_depth_optical_frame:
                             {}
                         head_mount_asus_xtion_rgb_frame:
                           head_mount_asus_xtion_rgb_optical_frame:
                             {}
-            rf_assembly:
-              rf_hip_assembly:
-                rf_upper_leg:
-                  rf_lower_leg:
-                    rf_foot:
-                      {}
-            rh_assembly:
-              rh_hip_assembly:
-                rh_upper_leg:
-                  rh_lower_leg:
-                    rh_foot:
-                      {}
+            rf_hipassembly:
+              rf_upperleg:
+                rf_lowerleg:
+                  rf_foot:
+                    {}
+            rh_hipassembly:
+              rh_upperleg:
+                rh_lowerleg:
+                  rh_foot:
+                    {}
             trunk_mount_velodyne_frame:
               trunk_mount_velodyne_optical_frame:
                 {}
@@ -400,16 +370,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.53991
+      Distance: 3.03951
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.0564777
-        Y: -0.579486
-        Z: -0.195385
+        X: -0.175598
+        Y: -0.41087
+        Z: -0.135186
       Name: Current View
       Near Clip Distance: 0.01
       Pitch: 0.265399
@@ -433,5 +403,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1680
-  X: -7
+  X: 58
   Y: 24

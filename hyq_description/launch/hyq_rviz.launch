@@ -1,13 +1,10 @@
 <launch>
 
-	<arg name="simulation" default="false"/>
 	<!-- send hyq urdf to param server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch">
-		<arg name="simulation" value="$(arg simulation)"/>
-	</include>
+	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
 
-	<arg name="gui" default="True"/>
-	<arg name="rviz_conf" default="$(find hyq_description)/rviz_confs/hyq_model_tf.rviz"/>
+	<arg name="gui" default="true"/>
+	<arg name="rviz_conf" default="$(find hyq_description)/rviz/hyq_model_tf.rviz"/>
 	
 
 	<!-- publish the joint and robot states -->
@@ -25,7 +22,7 @@
 	</node>
 
 	<!-- run rviz -->
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf) -f trunk" respawn="true"/>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf) -f trunk"/>
 
 </launch>
 

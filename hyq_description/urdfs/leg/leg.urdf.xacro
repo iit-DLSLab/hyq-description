@@ -11,119 +11,114 @@
 	<!-- ================================== Leg ================================== -->
 	<!-- The xacro macro xacro:hyq_leg contains: hip assembly, upper and lower leg -->
 	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front">
-
 		<!-- Joints -->
 		<!-- Hip assembly joint -->
-		<joint name="${name}_haa_assembly_joint" type="fixed">
+		<joint name="${name}_haa_joint" type="revolute">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
-			<child  link="${name}_assembly"/>
-		</joint>
-		<!-- Hip joint assembly -->
-		<joint name="${name}_haa_joint" type="revolute">
-			<origin xyz="0 0 0" rpy="0 0 ${haa_pos0}"/> 
-			<parent link="${name}_assembly"/>
-			<!--<insert_block name="origin"/>-->
-			<!--<parent link="${parent}"/>-->
-			<child  link="${name}_hip_assembly"/>
-			<limit effort="150.0" velocity="12.0" lower="${-PI/2-haa_pos0}" upper="${PI/6-haa_pos0}"/>
+			<child  link="${name}_hipassembly"/>
 			<axis xyz="0 0 1"/>
+			<limit effort="150.0" velocity="12.0" lower="${-7*PI/18}" upper="${PI/6}"/>
 			<dynamics damping="0.1" friction="0" />
-			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+			<safety_controller k_position="100" k_velocity="100"
+							   soft_lower_limit="-10" soft_upper_limit="12.45" />
 		</joint>
 		<!-- Upper leg joint -->
 		<joint name="${name}_hfe_joint" type="revolute">
-			<origin xyz="${d_tbb} 0.0 0.0" rpy="${reflect_upper*PI/2} ${-reflect_hip*hfe_pos0} 0.0"/>
-			<parent link="${name}_hip_assembly"/>
-			<child  link="${name}_upper_leg"/>
-			<limit effort="150.0" velocity="12.0" lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36-reflect_front*hfe_pos0}" upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36-reflect_front*hfe_pos0}"/>
+			<origin xyz="${d_tbb} 0 0" rpy="${reflect_upper*PI/2} 0 0"/>
+			<parent link="${name}_hipassembly"/>
+			<child  link="${name}_upperleg"/>
 			<axis xyz="0 0 1"/>
+			<limit effort="150.0" velocity="12.0"
+				   lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36}"
+				   upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36}"/>
 			<dynamics damping="0.1" friction="0" />
-			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+			<safety_controller k_position="100" k_velocity="100"
+							   soft_lower_limit="-10" soft_upper_limit="12.45" />
 		</joint>
 		<!-- Lower leg joint -->
 		<joint name="${name}_kfe_joint" type="revolute">
-			<origin xyz="${d_p1p2} 0 0" rpy="0 0 ${reflect_front*kfe_pos0}"/>
-			<parent link="${name}_upper_leg"/>
-			<child  link="${name}_lower_leg"/>
-			<limit effort="150.0" velocity="12.0" lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18-reflect_front*kfe_pos0}" upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18-reflect_front*kfe_pos0}"/>
+			<origin xyz="${d_p1p2} 0 0" rpy="0 0 0"/>
+			<parent link="${name}_upperleg"/>
+			<child  link="${name}_lowerleg"/>
 			<axis xyz="0 0 1"/>
+			<limit effort="150.0" velocity="12.0"
+				   lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18}"
+				   upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18}"/>
 			<dynamics damping="0.1" friction="0" />
-			<safety_controller k_position="100" k_velocity="100" soft_lower_limit="-10" soft_upper_limit="12.45" />
+			<safety_controller k_position="100" k_velocity="100"
+							   soft_lower_limit="-10" soft_upper_limit="12.45" />
 		<!-- Foot joint -->
 		</joint>
 		<joint name="${name}_foot_joint" type="fixed">
-			<origin xyz="0.34 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
-			<parent link="${name}_lower_leg"/>
+			<origin xyz="0.35 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
+			<parent link="${name}_lowerleg"/>
 			<child  link="${name}_foot"/>
 		</joint>
 
 
 		<!-- Links -->
 		<!-- Hip assembly link -->
-		<link name="${name}_assembly">
+		<link name="${name}_hipassembly">
 			<inertial>
-				<origin xyz="0 0 0"/>
-				<mass value="0.01"/>
-				<inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
-		</link>
-		<!-- Hip assembly link -->
-		<link name="${name}_hip_assembly">
-			<inertial>
-				<origin xyz="0.01310 ${reflect_hip*0.00010} ${reflect_hip*0.05730}"/>
-				<mass value="${m_hip}"/>
-				<inertia ixx="${ixx_hip}" iyy="${iyy_hip}" izz="${izz_hip}" ixy="${ixy_hip}" ixz="${-reflect_hip*ixz_hip}" iyz="${iyz_hip}"/>
+				<origin xyz="${xcom_hipassembly}
+							 ${reflect_hip*ycom_hipassembly}
+							 ${reflect_hip*zcom_hipassembly}"/>
+				<mass value="${m_hipassembly}"/>
+				<inertia ixx="${ixx_hipassembly}" iyy="${iyy_hipassembly}" izz="${izz_hipassembly}"
+						 ixy="${reflect_hip*reflect_front*ixy_hipassembly}" ixz="${reflect_hip*reflect_front*ixz_hipassembly}" iyz="${iyz_hipassembly}"/>
 			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/hip.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
 				</geometry>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/hip.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
 				</geometry>
 			</collision>
 		</link>
 		<!-- Upper leg link -->
-		<link name="${name}_upper_leg">
+		<link name="${name}_upperleg">
 			<inertial>
-				<origin xyz="0.14796 ${reflect_upper*0.02958} 0"/>
-				<mass value="${m_upper}"/>
-				<inertia ixx="${ixx_upper}" iyy="${iyy_upper}" izz="${izz_upper}" ixy="${ixy_upper}" ixz="${ixz_upper}" iyz="${iyz_upper}"/>
+				<origin xyz="${xcom_upperleg} ${reflect_upper*ycom_upperleg} ${zcom_upperleg}"/>
+				<mass value="${m_upperleg}"/>
+				<inertia ixx="${ixx_upperleg}" iyy="${iyy_upperleg}" izz="${izz_upperleg}"
+						 ixy="${reflect_front*ixy_upperleg}" ixz="${reflect_front*ixz_upperleg}" iyz="${iyz_upperleg}"/>
 			</inertial>
 			<visual> 
 				<origin xyz="0 0 0" rpy="${(1-reflect_front)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/upper.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
 				</geometry>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="${(1-reflect_front)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/upper.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
 				</geometry>
 			</collision>
 		</link>
 		<!-- Lower leg link -->
-		<link name="${name}_lower_leg">
+		<link name="${name}_lowerleg">
 			<inertial>
-				<origin xyz=" 0.17830  0.00030 -0.00010"/>
-				<mass value="${m_lower}"/>
-				<inertia ixx="${ixx_lower}" iyy="${iyy_lower}" izz="${izz_lower}" ixy="${ixy_lower}" ixz="${ixz_lower}" iyz="${iyz_lower}"/>
+				<origin xyz="${xcom_lowerleg} ${ycom_lowerleg} ${zcom_lowerleg}"/>
+				<mass value="${m_lowerleg}"/>
+				<inertia ixx="${ixx_lowerleg}" iyy="${iyy_lowerleg}" izz="${izz_lowerleg}"
+						 ixy="${ixy_lowerleg}" ixz="${ixz_lowerleg}" iyz="${iyz_lowerleg}"/>
 			</inertial>
 			<visual>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/lower.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
 				</geometry>
 				<material name="white"/>
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/lower.dae" scale="1 1 1"/>
+					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
 				</geometry>
 			</collision>
 		</link>
