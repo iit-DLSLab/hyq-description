@@ -99,7 +99,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:ptu_d46
 		name="ptu"
 		parent="trunk">
-		<origin xyz="0.657353 0.015447 0.119533" rpy="-0.013127 0.569257 -0.007748"/>
+		<origin xyz="0.677 0.004 0.111" rpy="0.011 0.485 0.015"/>
+<!--		<origin xyz="0.657353 0.015447 0.119533" rpy="-0.013127 0.569257 -0.007748"/>-->
 <!--		<origin xyz="0.667353 -0.010101 0.160544" rpy="0.043239 0.569257 0.041771"/>-->
 	</xacro:ptu_d46>
 
