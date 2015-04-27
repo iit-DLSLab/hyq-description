@@ -122,7 +122,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<!-- Bumblebee -->
 	<xacro:bumblebee_97
 		parent_link="ptu_mount_link"
-		xyz="0 0 0.018"
+		xyz="0 0 0"
 		rpy="0 0 0"
 		ns="bumblebee"
 		frame_prefix="bumblebee_"

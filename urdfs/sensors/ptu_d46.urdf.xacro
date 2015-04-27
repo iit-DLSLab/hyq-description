@@ -93,7 +93,7 @@
 
 		<!-- Fixed joint to provide a convenient attachment point for accessories. -->
 		<joint name="${name}_mount" type="fixed">
-			<origin xyz="0 0 -0.03912" rpy="${PI} 0 0"/>
+			<origin xyz="0 0 -0.039116" rpy="${PI} 0 0"/>
 			<parent link="${name}_tilted_link"/>
 			<child link="${name}_mount_link"/>
 		</joint>
