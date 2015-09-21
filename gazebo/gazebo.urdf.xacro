@@ -5,12 +5,12 @@
 	<gazebo>
 		<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hyq</robotNamespace>
-			<controlPeriod>0.005</controlPeriod>
+			<controlPeriod>0.001</controlPeriod>
 		</plugin>
 
 		<plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
 			<robotNamespace>/hyq</robotNamespace>
-		 	<bodyName>base_link</bodyName>
+		 	<bodyName>trunk</bodyName>
 			<topicName>ground_truth_odom</topicName>
 			<frameName>world</frameName>
 			<xyzOffsets>0 0 0</xyzOffsets>
