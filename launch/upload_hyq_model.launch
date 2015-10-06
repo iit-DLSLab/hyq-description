@@ -1,0 +1,6 @@
+<launch>
+
+	<!-- send HyQ model urdf to param server -->
+	<param name="hyq/constrained_operational_controller/robot_model" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
+
+</launch>
