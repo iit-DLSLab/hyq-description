@@ -12,16 +12,16 @@
 
 	<!-- Inertial values -->
 	<!-- Trunk with hydraulic system -->
-	<property name="xcom_trunk" value="0.027222"/>
-	<property name="ycom_trunk" value="-0.0000235"/>
-	<property name="zcom_trunk" value="0.042224"/>
-	<property name="m_trunk" value="64.862"/>
-	<property name="ixx_trunk" value="1.688238"/>
-	<property name="iyy_trunk" value="8.665299"/>
-	<property name="izz_trunk" value="9.243560"/>
-	<property name="ixy_trunk" value="-0.028789"/>
-	<property name="ixz_trunk" value="0.277694"/>
-	<property name="iyz_trunk" value="0.003820"/>
+	<property name="xcom_trunk" value="-0.02758"/>
+	<property name="ycom_trunk" value="-0.000023319"/>
+	<property name="zcom_trunk" value="0.03103"/>
+	<property name="m_trunk" value="50.24"/>
+	<property name="ixx_trunk" value="0.97322"/>
+	<property name="iyy_trunk" value="5.0487"/>
+	<property name="izz_trunk" value="5.283"/>
+	<property name="ixy_trunk" value="-0.0067362"/>
+	<property name="ixz_trunk" value="0.1681"/>
+	<property name="iyz_trunk" value="-0.0060307"/>
 	<!-- Hip assembly -->
 	<property name="xcom_hipassembly" value="0.04263"/>
 	<property name="ycom_hipassembly" value="0.0"/>
