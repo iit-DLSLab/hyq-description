@@ -85,7 +85,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		imu_topic="trunk_imu/data"
 		update_rate="100.0"
 		stdev="0.00017">
-		<origin xyz="0.3 0 0.095" rpy="0 ${-PI} 0"/>
+		<origin xyz="0.4825 0.006 0.0905" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
 
 	<!-- Velodyne -->
