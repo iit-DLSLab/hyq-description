@@ -8,21 +8,21 @@
 	<!-- The xacro macro xacro:velodyne contains: velodyne combo -->
 	<xacro:macro name="velodyne" params="name parent *origin">
 		<!-- Joints -->
-		<joint name="${name}_velodyne_joint" type="fixed">
+		<joint name="${name}_joint" type="fixed">
 			<insert_block name="origin"/>
 			<parent link="${parent}"/>
-			<child link="${name}_velodyne_frame"/>
+			<child link="${name}_mount_link"/>
 		</joint>
 		<!-- velodyne sensor optical frame -->
-		<joint name="${name}_velodyne_optical_frame_joint" type="fixed">
+		<joint name="${name}_optical_frame_joint" type="fixed">
 			<origin xyz="${velodyne_x} ${velodyne_y} ${velodyne_z}" rpy="0.0 0.0 0.0"/>
-			<parent link="${name}_velodyne_frame"/>
-			<child link="${name}_velodyne_optical_frame"/>
+			<parent link="${name}_mount_link"/>
+			<child link="${name}"/>
 		</joint>
 
 
 		<!-- Links -->
-		<link name="${name}_velodyne_frame">
+		<link name="${name}_mount_link">
 			<inertial>
 				<mass value="0.1"/>
 				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -45,7 +45,7 @@
 			</collision>
 		</link>
 		<!-- rgb optical sensor link -->
-		<link name="${name}_velodyne_optical_frame">
+		<link name="${name}">
 			<inertial>
 				<mass value="0.1"/>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
@@ -54,7 +54,7 @@
 		</link>
 
 		<!-- gazebo extensions -->
-		<xacro:velodyne_sensor link_name="${name}_velodyne_optical_frame" frame_name="${name}_velodyne_frame" lidar_name="${name}_velodyne" />
+		<xacro:velodyne_sensor link_name="${name}_optical_frame" frame_name="${name}_frame" lidar_name="${name}" />
 	</xacro:macro>
 
 </robot>
