@@ -12,12 +12,6 @@
 
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx325_imu.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -87,53 +81,5 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		stdev="0.00017">
 		<origin xyz="0.4825 0.006 0.0905" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx325_imu>
-
-	<!-- Velodyne -->
-	<xacro:velodyne
-		name="trunk_mount"
-		parent="trunk">
-		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
-	</xacro:velodyne>
-
-	<!-- PTU unit -->
-	<xacro:ptu_d46
-		name="ptu"
-		parent="trunk">
-		<origin xyz="0.657353 0.015447 0.119533" rpy="-0.013127 0.569257 -0.007748"/>
-<!--		<origin xyz="0.667353 -0.010101 0.160544" rpy="0.043239 0.569257 0.041771"/>-->
-	</xacro:ptu_d46>
-
-	<!-- Asus Xtion Pro -->
-	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
-	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
-	<xacro:asus_xtion_camera
-		name="head_mount"
-		parent="ptu_mount_link">
-		<origin xyz="0 0.005 0.036" rpy="0 0 0"/>
-	</xacro:asus_xtion_camera>
-
-	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
-	<!--xacro:kinect_camera
-		name="head_mount"
-		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:kinect_camera-->
-
-	<!-- Bumblebee -->
-	<xacro:bumblebee_97
-		parent_link="ptu_mount_link"
-		xyz="0 0 0.018"
-		rpy="0 0 0"
-		ns="bumblebee"
-		frame_prefix="bumblebee_"
-		high_res="false"/>
-
-<!--	<xacro:vislab_3dve_72
-		name="vislab_3dve"
-		parent="ptu_mount_link"
-		xyz="0 0 0.025"
-		rpy="0 0 0"
-		high_res="false"/>-->
-
 
 </robot>
