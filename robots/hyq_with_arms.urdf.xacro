@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- The following included files set up definitions of parts of the robot body -->
+	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
+	<xacro:include filename="$(find hya_description)/urdfs/common.xacro"/>
+
+	<!-- HyQ trunk -->
+	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
+
+	<!-- HyQ legs -->
+	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
+
+	<!-- HyA arm -->
+	<xacro:include filename="$(find hya_description)/urdfs/arm/arm.urdf.xacro"/>
+
+	<!-- HyQ sensors -->
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx325_imu.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
+
+	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
+	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
+
+	<!-- Now we can start using the macros included above to define the actual HyQ -->
+
+	<!-- The first use of a macro. This one was defined in trunk.urdf.xacro above.
+A macro like this will expand to a set of link and joint definitions, and to additional
+Gazebo-related extensions (sensor plugins, etc). The macro takes an argument, name,
+that equals "base", and uses it to generate names for its component links and joints
+(e.g., base_link). The included origin block is also an argument to the macro. By convention,
+the origin block defines where the component is w.r.t its parent (in this case the parent
+is the world frame). For more, see http://www.ros.org/wiki/xacro -->
+
+	<!-- body -->
+	<!-- trunk -->
+	<xacro:hyq_trunk name="base">
+		<origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/>
+	</xacro:hyq_trunk>
+
+	<!-- LF leg -->
+	<xacro:hyq_leg
+		name="lf"
+		parent="trunk"
+		reflect_hip="1"
+		reflect_upper="1"
+		reflect_front="1">
+		<origin xyz="${d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
+	</xacro:hyq_leg>
+
+	<!-- RF leg -->
+	<xacro:hyq_leg
+		name="rf"
+		parent="trunk"
+		reflect_hip="-1"
+		reflect_upper="-1"
+		reflect_front="1">
+		<origin xyz="${d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
+	</xacro:hyq_leg>
+
+	<!-- LH leg -->
+	<xacro:hyq_leg
+		name="lh"
+		parent="trunk"
+		reflect_hip="-1"
+		reflect_upper="1"
+		reflect_front="-1">
+		<origin xyz="${-d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
+	</xacro:hyq_leg>
+
+	<!-- RH leg -->
+	<xacro:hyq_leg
+		name="rh"
+		parent="trunk"
+		reflect_hip="1"
+		reflect_upper="-1"
+		reflect_front="-1">
+		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
+	</xacro:hyq_leg>
+
+	<!-- R Arm -->
+	<xacro:arm 
+		name="hya" 
+		parent="trunk">
+		<origin xyz="0.55 0 0.0" rpy="${-PI} 0 ${-PI/2}"/>
+	</xacro:arm>
+
+	<!-- IMU trunk -->
+	<xacro:microstrain_3dmgx325_imu
+		parent="trunk"
+		imu_name="3dmgx325_trunk_imu"
+		imu_topic="trunk_imu/data"
+		update_rate="1000"
+		rate_mean="0"
+		rate_stddev="2e-4"
+		rate_bias_mean="0.00087"
+		rate_bias_stddev="0.0000008"
+		accel_mean="0"
+		accel_stddev="1.7e-2"
+		accel_bias_mean="0.002"
+		accel_bias_stddev="0.001">
+		<origin xyz="0.4825 0.006 0.0905" rpy="0 ${-PI} 0"/>
+	</xacro:microstrain_3dmgx325_imu>
+
+	<!-- Velodyne -->
+	<xacro:velodyne
+		name="trunk_mount"
+		parent="trunk">
+		<origin xyz="0.39 0 0.269" rpy="0 0 0"/>
+	</xacro:velodyne>
+
+	<!-- PTU unit -->
+	<xacro:ptu_d46
+		name="ptu"
+		parent="trunk">
+		<origin xyz="0.657353 0.015447 0.119533" rpy="-0.013127 0.569257 -0.007748"/>
+<!--		<origin xyz="0.667353 -0.010101 0.160544" rpy="0.043239 0.569257 0.041771"/>-->
+	</xacro:ptu_d46>
+
+	<!-- Asus Xtion Pro -->
+	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
+	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
+	<xacro:asus_xtion_camera
+		name="head_mount"
+		parent="ptu_mount_link">
+		<origin xyz="0 0.005 0.036" rpy="0 0 0"/>
+	</xacro:asus_xtion_camera>
+
+	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
+	<!--xacro:kinect_camera
+		name="head_mount"
+		parent="trunk">
+		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
+	</xacro:kinect_camera-->
+
+	<!-- Bumblebee -->
+	<xacro:bumblebee_97
+		parent_link="ptu_mount_link"
+		xyz="0 0 0.018"
+		rpy="0 0 0"
+		ns="bumblebee"
+		frame_prefix="bumblebee_"
+		high_res="false"/>
+
+<!--	<xacro:vislab_3dve_72
+		name="vislab_3dve"
+		parent="ptu_mount_link"
+		xyz="0 0 0.025"
+		rpy="0 0 0"
+		high_res="false"/>-->
+
+
+</robot>

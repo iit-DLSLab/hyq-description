@@ -8,6 +8,8 @@
 	<arg name="debug" default="false"/>
 	<arg name="world_name" default="worlds/empty.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
 
+	<arg name="arm" default="false"/>
+
 	<!-- Set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
 		<param name="/use_sim_time" value="true" />
@@ -31,9 +33,14 @@
 	</group>
 
 	<!-- Send hyq urdf to parameter server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
-
+	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+		<arg name="arm" value="$(arg arm)" />
+	</include>
 	<!-- Spawn a robot into Gazebo -->
 	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.60"/>
+
+	<!-- Get robot to 0 position -->
+	<node name="goto0" pkg="hyq_description" type="go0"/>
+
 
 </launch>

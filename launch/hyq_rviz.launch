@@ -1,7 +1,11 @@
 <launch>
 
+	<arg name="arm" default="false"/>
+	
 	<!-- send hyq urdf to param server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
+	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+		<arg name="arm" value="$(arg arm)" />
+	</include>
 
 	<arg name="gui" default="true"/>
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz/hyq_model_tf.rviz"/>
