@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="centaur1arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
@@ -25,7 +25,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
-	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/gazebo/gazebo_centaur1arm.urdf.xacro"/>
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
