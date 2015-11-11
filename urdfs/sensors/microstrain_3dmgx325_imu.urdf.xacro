@@ -7,7 +7,8 @@
 
 	<!-- ============================ IMU microstrain ============================== -->
 	<!-- The xacro macro xacro:microstrain_3dmgx325_imu: imu frame -->
-	<xacro:macro name="microstrain_3dmgx325_imu" params="parent *origin imu_name imu_topic update_rate stdev">
+	<xacro:macro name="microstrain_3dmgx325_imu" params="parent *origin imu_name imu_topic update_rate
+		rate_mean rate_stddev rate_bias_mean rate_bias_stddev accel_mean accel_stddev accel_bias_mean accel_bias_stddev">
 
 		<!-- Joint -->
 		<joint name="${imu_name}_joint" type="fixed">
@@ -32,7 +33,11 @@
 		</link>
 
 		<!-- IMU definition -->
-		<xacro:microstrain_3dmgx325_imu_sensor imu_name="${imu_name}" imu_topic="${imu_topic}" update_rate="${update_rate}" stdev="${stdev}"/>
+		<xacro:microstrain_3dmgx325_imu_sensor imu_name="${imu_name}" imu_topic="${imu_topic}"
+		 	update_rate="${update_rate}" rate_mean="${rate_mean}" rate_stddev="${rate_stddev}"
+		 	rate_bias_mean="${rate_bias_mean}" rate_bias_stddev="${rate_bias_stddev}"
+		 	accel_mean="${accel_mean}" accel_stddev="${accel_stddev}" accel_bias_mean="${accel_bias_mean}"
+		 	accel_bias_stddev="${accel_bias_stddev}"/>
 
 	</xacro:macro>
 
