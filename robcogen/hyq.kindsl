@@ -1,14 +1,14 @@
 Robot HyQ {
 RobotBase trunk floating {
     inertia_params {
-        mass =  50.24
-        CoM = (-0.02758,  -0.00023319, 0.03103)
-        Ix  =  0.97322
-        Iy  =   5.0487
-        Iz  = 5.283
-        Ixy = -0.0067362
-        Ixz  = 0.1681
-        Iyz  = -0.0060307
+        mass = 64.862
+        CoM = (0.027222, -0.000235, 0.042224)
+        Ix  = 1.688238
+        Iy  = 8.665299
+        Iz  = 9.243560
+        Ixy = -0.028789
+        Ixz = 0.277694
+        Iyz = 0.003820
     }
     children {
         LF_hipassembly via LF_HAA
