@@ -46,7 +46,7 @@
 	<property name="iyz_upperleg" value="-0.000021"/>
 	<!-- Lower leg -->
 	<property name="xcom_lowerleg" value="0.1254"/>
-	<property name="ycom_lowerleg" value="0.00005"/>
+	<property name="ycom_lowerleg" value="0.00004"/>
 	<property name="zcom_lowerleg" value="-0.0001"/>
 	<property name="m_lowerleg" value="0.881"/>
 	<property name="ixx_lowerleg" value="0.000468"/>
