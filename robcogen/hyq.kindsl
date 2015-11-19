@@ -16,6 +16,12 @@ RobotBase trunk floating {
         LH_hipassembly via LH_HAA
         RH_hipassembly via RH_HAA
     }
+    frames {
+        IMU {
+            translation = (0.215, 0.0, 0.09)
+            rotation = (0.0, 0.0, 0.0)
+        }
+    }
 }
 
 // Left Front leg
@@ -35,6 +41,12 @@ link LF_hipassembly {
     children {
         LF_upperleg via LF_HFE
     }
+    frames {
+        LF_hipassemblyCOM {
+            translation = (0.04263, 0.0, 0.16931)
+            rotation = (0.0, 0.0, 0.0)
+        }
+    }
 }
 
 link LF_upperleg {
@@ -51,6 +63,12 @@ link LF_upperleg {
     }
     children {
         LF_lowerleg via LF_KFE
+    }
+    frames {
+        LF_upperlegCOM {
+            translation = (0.15074, -0.02625, -0.0)
+            rotation = (0.0, 0.0, 0.0)
+        }
     }
 }
 
@@ -76,7 +94,12 @@ link LF_lowerleg {
             translation = (0.33, 0.0, 0.0)
             rotation = (0.0, PI/2.0, -PI/2.0)
         }
+        LF_lowerlegCOM {
+            translation = (0.1254, 0.000, -0.000)
+            rotation = (0.0, 0.0, 0.0)
+        }
     }
+
 }
 
 
@@ -97,6 +120,12 @@ link RF_hipassembly {
     children {
         RF_upperleg via RF_HFE
     }
+    frames {
+        RF_hipassemblyCOM {
+            translation = (0.04263, -0.0, -0.16931)
+            rotation = (0.0, 0.0, 0.0)
+        }
+    }
 }
 
 link RF_upperleg {
@@ -112,6 +141,12 @@ link RF_upperleg {
         Iyz  = -0.000021    }
     children {
         RF_lowerleg via RF_KFE
+    }
+    frames {
+        RF_upperlegCOM {
+            translation = (0.15074, -0.02625, -0.0)
+            rotation = (0.0, 0.0, 0.0)
+        }
     }
 }
 
@@ -137,6 +172,10 @@ link RF_lowerleg {
             translation = (0.33, 0.0, 0.0)
             rotation = (0.0, PI/2.0, -PI/2.0)
         }
+        RF_lowerlegCOM {
+            translation = (0.1254, 0.000, -0.000)
+            rotation = (0.0, 0.0, 0.0)
+        }
     }
 }
 
@@ -156,6 +195,12 @@ link LH_hipassembly {
     children {
         LH_upperleg via LH_HFE
     }
+    frames {
+        LH_hipassemblyCOM {
+            translation = (0.04263, -0.0, -0.16931)
+            rotation = (0.0, 0.0, 0.0)
+        }
+    }
 }
 
 link LH_upperleg {
@@ -172,6 +217,12 @@ link LH_upperleg {
     }
     children {
         LH_lowerleg via LH_KFE
+    }
+    frames {
+        LH_upperlegCOM {
+            translation = (0.15074,  0.02625, 0.0)
+            rotation = (0.0, 0.0, 0.0)
+        }
     }
 }
 
@@ -197,6 +248,10 @@ link LH_lowerleg {
             translation = (0.33, 0.0, 0.0)
             rotation = (0.0, PI/2.0, -PI/2.0)
         }
+        LH_lowerlegCOM {
+            translation = (0.1254, -0.000, 0.000)
+            rotation = (0.0, 0.0, 0.0)
+        }    
     }
 
 }
@@ -218,6 +273,12 @@ link RH_hipassembly {
     children {
         RH_upperleg via RH_HFE
     }
+    frames {
+        RH_hipassemblyCOM {
+            translation = (0.04263, 0.0, 0.16931)
+            rotation = (0.0, 0.0, 0.0)
+        }
+    }
 }
 
 link RH_upperleg {
@@ -234,6 +295,12 @@ link RH_upperleg {
     }
     children {
         RH_lowerleg via RH_KFE
+    }
+    frames {
+        RH_upperlegCOM {
+            translation = (0.15074,  0.02625, 0.0)
+            rotation = (0.0, 0.0, 0.0)
+        }
     }
 }
 
@@ -258,6 +325,10 @@ link RH_lowerleg {
         RH_ffs {
             translation = (0.33, 0.0, 0.0)
             rotation = (0.0, PI/2.0, -PI/2.0)
+        }
+        RH_lowerlegCOM {
+            translation = (0.1254, -0.000, 0.000)
+            rotation = (0.0, 0.0, 0.0)
         }
     }
 }
