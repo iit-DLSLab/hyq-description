@@ -68,7 +68,7 @@
 							 ${reflect_hip*zcom_hipassembly}"/>
 				<mass value="${m_hipassembly}"/>
 				<inertia ixx="${ixx_hipassembly}" iyy="${iyy_hipassembly}" izz="${izz_hipassembly}"
-						 ixy="${reflect_hip*reflect_front*ixy_hipassembly}" ixz="${reflect_hip*reflect_front*ixz_hipassembly}" iyz="${iyz_hipassembly}"/>
+						 ixy="${reflect_hip*ixy_hipassembly}" ixz="${reflect_hip*ixz_hipassembly}" iyz="${iyz_hipassembly}"/>
 			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
@@ -110,7 +110,7 @@
 				<origin xyz="${xcom_lowerleg} ${reflect_front*ycom_lowerleg} ${reflect_front*zcom_lowerleg}"/>
 				<mass value="${m_lowerleg}"/>
 				<inertia ixx="${ixx_lowerleg}" iyy="${iyy_lowerleg}" izz="${izz_lowerleg}"
-						 ixy="${ixy_lowerleg}" ixz="${ixz_lowerleg}" iyz="${iyz_lowerleg}"/>
+						 ixy="${reflect_front*ixy_lowerleg}" ixz="${reflect_front*ixz_lowerleg}" iyz="${iyz_lowerleg}"/>
 			</inertial>
 			<visual>
 				<geometry>

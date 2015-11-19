@@ -27,34 +27,34 @@
 	<property name="ycom_hipassembly" value="0.0"/>
 	<property name="zcom_hipassembly" value="0.16931"/>
 	<property name="m_hipassembly" value="2.93"/>
-	<property name="ixx_hipassembly" value="0.134705"/>
-	<property name="iyy_hipassembly" value="0.144171"/>
-	<property name="izz_hipassembly" value="0.011033"/>
-	<property name="ixy_hipassembly" value="0.000036"/>
-	<property name="ixz_hipassembly" value="0.022734"/>
-	<property name="iyz_hipassembly" value="0.000051"/>
+	<property name="ixx_hipassembly" value="0.05071"/>
+	<property name="iyy_hipassembly" value="0.05486"/>
+	<property name="izz_hipassembly" value="0.00571"/>
+	<property name="ixy_hipassembly" value="-0.00004"/>
+	<property name="ixz_hipassembly" value="-0.00159"/>
+	<property name="iyz_hipassembly" value="-0.00005"/>
 	<!-- Upper leg -->
 	<property name="xcom_upperleg" value="0.15074"/>
 	<property name="ycom_upperleg" value="0.02625"/>
 	<property name="zcom_upperleg" value="0.0"/>
 	<property name="m_upperleg" value="2.638"/>
-	<property name="ixx_upperleg" value="0.005495"/>
-	<property name="iyy_upperleg" value="0.087136"/>
-	<property name="izz_upperleg" value="0.089871"/>
-	<property name="ixy_upperleg" value="-0.007418"/>
-	<property name="ixz_upperleg" value="-0.000102"/>
-	<property name="iyz_upperleg" value="-0.000021"/>
+	<property name="ixx_upperleg" value="0.00368"/>
+	<property name="iyy_upperleg" value="0.02719"/>
+	<property name="izz_upperleg" value="0.02811"/>
+	<property name="ixy_upperleg" value="-0.00302"/>
+	<property name="ixz_upperleg" value="0.0001"/>
+	<property name="iyz_upperleg" value="0.00002"/>
 	<!-- Lower leg -->
 	<property name="xcom_lowerleg" value="0.1254"/>
 	<property name="ycom_lowerleg" value="0.00004"/>
 	<property name="zcom_lowerleg" value="-0.0001"/>
 	<property name="m_lowerleg" value="0.881"/>
-	<property name="ixx_lowerleg" value="0.000468"/>
-	<property name="iyy_lowerleg" value="0.026409"/>
-	<property name="izz_lowerleg" value="0.026181"/>
-	<property name="ixy_lowerleg" value="0.0"/>
-	<property name="ixz_lowerleg" value="0.0"/>
-	<property name="iyz_lowerleg" value="0.0"/>
+	<property name="ixx_lowerleg" value="0.00047"/>
+	<property name="iyy_lowerleg" value="0.01256"/>
+	<property name="izz_lowerleg" value="0.01233"/>
+	<property name="ixy_lowerleg" value="0.00006"/>
+	<property name="ixz_lowerleg" value="-0.00001"/>
+	<property name="iyz_lowerleg" value="-0.0"/>
 
 	<!-- PTU unit -->
 	<property name="pan_velocity" value="1.0" />
