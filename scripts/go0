@@ -57,11 +57,7 @@ if __name__ == "__main__":
 
 	gazebo_namespace = '/gazebo'
 	rospy.wait_for_service('%s/set_model_configuration'%(gazebo_namespace))
-<<<<<<< HEAD
 	rospy.sleep(sleep_time)
-=======
-	rospy.sleep(15.)
->>>>>>> origin/master
 	try:
 		success = gazebo_interface.set_model_configuration_client(model_name, param_name, 
                                                                   joint_names, joint_positions, gazebo_namespace)
