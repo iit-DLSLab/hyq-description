@@ -38,7 +38,6 @@
 		 	rate_bias_mean="${rate_bias_mean}" rate_bias_stddev="${rate_bias_stddev}"
 		 	accel_mean="${accel_mean}" accel_stddev="${accel_stddev}" accel_bias_mean="${accel_bias_mean}"
 		 	accel_bias_stddev="${accel_bias_stddev}"/>
-
 	</xacro:macro>
 
 </robot>
