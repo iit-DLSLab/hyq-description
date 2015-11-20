@@ -16,20 +16,19 @@
 		<joint name="${frame_prefix}optical_joint" type="fixed">
 			<parent link="${frame_prefix}mount_link"/>
 			<child link="${frame_prefix}optical_frame"/>
-			<!--<origin xyz="0 0 0" rpy="0 0 0"/>-->
-			<origin xyz="0 -0.06 0" rpy="-${PI/2} 0 -${PI/2}"/>
+			<origin xyz="0 -0.06 0.018" rpy="-${PI/2} 0 -${PI/2}"/>
 		</joint>
 
 
 		<link name="${frame_prefix}mount_link">
 			<visual>
-				<origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>  
+				<origin xyz="0 0 0.018" rpy="${PI/2} 0 ${PI/2}"/>  
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/sensors/bumblebee.dae"/>
 				</geometry>
 			</visual>
 			<collision>
-				<origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}"/>
+				<origin xyz="0 0 0.018" rpy="${PI/2} 0 ${PI/2}"/>
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/sensors/bumblebee.dae"/>
 				</geometry>
@@ -39,7 +38,7 @@
 				<inertia ixx="${1/12*b2mass*(b2ly*b2ly + b2lz*b2lz)}" ixy="0" ixz="0" 
 						 iyy="${1/12*b2mass*(b2lx*b2lx + b2lz*b2lz)}" iyz="0" 
 						 izz="${1/12*b2mass*(b2lx*b2lx + b2ly*b2ly)}" />
-				</inertial>
+			</inertial>
 		</link>
 
 		<link name="${frame_prefix}optical_frame">
