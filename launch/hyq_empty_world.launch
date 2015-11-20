@@ -1,5 +1,7 @@
 <launch>
 
+	<arg name="arm" default="false"/>
+
 	<!-- These are the arguments you can pass this launch file, for example paused:=true -->
 	<arg name="paused" default="true"/>
 	<arg name="use_sim_time" default="true"/>
@@ -36,6 +38,7 @@
 	<include file="$(find hyq_description)/launch/upload_hyq.launch">
 		<arg name="arm" value="$(arg arm)" />
 	</include>
+
 	<!-- Spawn a robot into Gazebo -->
 	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.60"/>
 
