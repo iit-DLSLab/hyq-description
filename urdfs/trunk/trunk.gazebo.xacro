@@ -4,8 +4,8 @@
 
 	<xacro:macro name="trunk_gazebo" params="name">
 		<gazebo reference="${name}">
-			<mu1>0.9</mu1>
-			<mu2>0.9</mu2>
+			<mu1>1.5</mu1>
+			<mu2>1.5</mu2>
 		</gazebo>
 	</xacro:macro>
 
