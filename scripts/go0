@@ -8,7 +8,6 @@ from gazebo_ros import gazebo_interface
 
 
 if __name__ == "__main__":
-
 	if len(sys.argv) < 2:
 		sleep_time = 0.0
 	else:
