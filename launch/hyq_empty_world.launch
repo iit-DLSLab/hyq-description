@@ -40,7 +40,7 @@
 	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.60"/>
 
 	<!-- Get robot to 0 position -->
-	<node name="goto0" pkg="hyq_description" type="go0"/>
+	<node name="goto0" pkg="hyq_description" type="go0" args="10.0"  />
 
 
 </launch>

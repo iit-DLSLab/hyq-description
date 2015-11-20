@@ -8,6 +8,13 @@ from gazebo_ros import gazebo_interface
 
 
 if __name__ == "__main__":
+
+	if len(sys.argv) < 2:
+		sleep_time = 0.0
+	else:
+		print sys.argv[1]
+		sleep_time = float(sys.argv[1])
+
 	# Defined the variables
 	param_name              = ""
 	model_name              = ""
@@ -50,7 +57,7 @@ if __name__ == "__main__":
 
 	gazebo_namespace = '/gazebo'
 	rospy.wait_for_service('%s/set_model_configuration'%(gazebo_namespace))
-	rospy.sleep(15.)
+	rospy.sleep(sleep_time)
 	try:
 		success = gazebo_interface.set_model_configuration_client(model_name, param_name, 
                                                                   joint_names, joint_positions, gazebo_namespace)
