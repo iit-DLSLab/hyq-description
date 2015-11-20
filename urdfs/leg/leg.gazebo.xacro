@@ -3,6 +3,15 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	<xacro:macro name="leg_gazebo" params="name">
+		<gazebo reference="${name}_upperleg">
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<mu1>1.5</mu1>
+			<mu2>1.5</mu2>
+			<fdir1>1 0 0</fdir1>
+			<maxVel>1.0</maxVel>
+			<minDepth>0.00</minDepth>
+		</gazebo>
 		<gazebo reference="${name}_lowerleg">
 			<kp>1000000.0</kp>
 			<kd>100.0</kd>
@@ -11,6 +20,17 @@
 			<fdir1>1 0 0</fdir1>
 			<maxVel>1.0</maxVel>
 			<minDepth>0.00</minDepth>
+		</gazebo>
+		<gazebo reference="${name}_foot">
+			<!-- contact sensor -->
+			<sensor type="contact" name="${name}_foot_contact_sensor">
+				<update_rate>1000.0</update_rate>
+				<always_on>1</always_on>
+				<contact>
+					<collision>${name}_foot_collision</collision>
+					<topic>/${name}_foot_contact</topic>
+				</contact>
+			</sensor>
 		</gazebo>
 	</xacro:macro>
 
