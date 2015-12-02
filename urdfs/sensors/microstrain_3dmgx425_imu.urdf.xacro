@@ -27,8 +27,11 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<box size="0.02 0.02 0.02" />
+					<box size="0.0329 0.0244 0.0111" />
 				</geometry>
+				<material name="black">
+					<color rgba="0 0 0 0.9"/>
+				</material>
 			</visual>
 		</link>
 		
