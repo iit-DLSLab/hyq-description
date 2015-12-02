@@ -70,11 +70,11 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:hyq_leg>
 
 	<!-- IMU trunk -->
-	<xacro:microstrain_3dmgx325_imu
+	<xacro:microstrain_3dmgx425_imu
 		parent="trunk"
 		imu_name="imu"
 		imu_topic="trunk_imu/data"
-		update_rate="1000"
+		update_rate="250"
 		rate_mean="0"
 		rate_stddev="2e-4"
 		rate_bias_mean="0.00087"
@@ -83,7 +83,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		accel_stddev="1.7e-2"
 		accel_bias_mean="0.002"
 		accel_bias_stddev="0.001">
-		<origin xyz="0.4825 0.006 0.0905" rpy="0 ${-PI} 0"/>
-	</xacro:microstrain_3dmgx325_imu>
+		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
+	</xacro:microstrain_3dmgx425_imu>
 
 </robot>
