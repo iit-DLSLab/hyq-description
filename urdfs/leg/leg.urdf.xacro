@@ -53,7 +53,7 @@
 		<!-- Foot joint -->
 		</joint>
 		<joint name="${name}_foot_joint" type="fixed">
-			<origin xyz="0.35 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
+			<origin xyz="${d_p2p3} 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
 			<parent link="${name}_lowerleg"/>
 			<child  link="${name}_foot"/>
 		</joint>
