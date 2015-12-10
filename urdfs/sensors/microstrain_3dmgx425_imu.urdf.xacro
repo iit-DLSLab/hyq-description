@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-	<xacro:include filename="$(find hyq2max_description)/urdfs/sensors/microstrain_3dmgx425_imu.gazebo.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx425_imu.gazebo.xacro"/>
 
 
 	<!-- ============================ IMU microstrain ============================== -->
