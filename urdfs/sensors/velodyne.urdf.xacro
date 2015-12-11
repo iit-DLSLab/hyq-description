@@ -40,7 +40,7 @@
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<box size="0.1 0.18 0.1" />
+					<mesh filename="package://hyq_description/meshes/sensors/velodyne_hdl32e.dae" scale="1 1 1" />
 				</geometry>
 			</collision>
 		</link>
