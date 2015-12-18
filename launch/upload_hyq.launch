@@ -1,13 +1,14 @@
 <launch>
 
-	<arg name="arm" default="false"/>
+	<arg name="sensors" default="true"/>
 
 	<!-- send HyQ urdf to param server -->
-	<group if="$(arg arm)">
-		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_with_arms.urdf.xacro'"/>
-	</group>
-	<group unless="$(arg arm)">
+	<group if="$(arg sensors)">
 		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro'"/>
+		<param name="hyq/robot_model" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
+	</group>
+	<group unless="$(arg sensors)">
+		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_no_sensors.urdf.xacro'"/>
 		<param name="hyq/robot_model" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
 	</group>
 
