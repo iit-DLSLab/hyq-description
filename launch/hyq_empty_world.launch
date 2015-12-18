@@ -1,6 +1,6 @@
 <launch>
 
-	<arg name="arm" default="false"/>
+	<arg name="sensors" default="true"/>
 
 	<!-- These are the arguments you can pass this launch file, for example paused:=true -->
 	<arg name="paused" default="true"/>
@@ -36,7 +36,9 @@
 	</group>
 
 	<!-- Send hyq urdf to parameter server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
+	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+		<arg name="sensors" value="$(arg sensors)" />
+	</include>
 
 	<!-- Spawn a robot into Gazebo -->
 	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.65"/>
