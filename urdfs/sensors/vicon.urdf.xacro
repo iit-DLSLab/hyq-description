@@ -1,20 +1,15 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:macro name="vicon" params="subject segment parent *origin">
+	<xacro:macro name="vicon" params="subject segment target_frame *origin">
 		<joint name="${subject}_joint" type="fixed">
 			<axis xyz="0 0 0" />
 			<insert_block name="origin" />
-			<parent link="${parent}"/>
-			<child link="vicon/${subject}/${segment}"/>
+			<parent link="vicon/${subject}/${segment}"/>
+			<child link="${target_frame}"/>
 		</joint>
 
 		<link name="vicon/${subject}/${segment}">
-			<inertial>
-				<mass value="0.001" />
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.0001" />
-			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>

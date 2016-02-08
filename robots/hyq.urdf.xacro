@@ -98,8 +98,10 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:microstrain_3dmgx425_imu>
 
         <!-- See vicon_bridge and Vicon doc to know what subject and segment mean -->
-        <xacro:vicon subject="hyq_green" segment="body" parent="trunk">                    
-               <origin xyz="0.455864 -0.231012 0.104193" rpy="-1.70031 0.0 -3.00989"/>
+        <xacro:vicon subject="hyq_green" segment="body" target_frame="base_link">                    
+               <!--origin xyz="0.455864 -0.231012 0.104193" rpy="-1.70031 0.0 -3.00989"/-->
+               <!--origin xyz="0.455864 -0.231012 0.104193" rpy="${PI/2} ${-PI/2} 0.0"/-->
+<origin xyz="-0.104392 0.454994 -0.23086" rpy="-1.57252 -0.00346852 -1.57112"/>
         </xacro:vicon> 
 
 	<!-- Velodyne -->
