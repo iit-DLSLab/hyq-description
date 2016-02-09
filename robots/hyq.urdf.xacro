@@ -13,7 +13,8 @@
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
+	<!-- Velodyne disabled because it takes too long to load-up -->
+	<!-- <xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/> -->
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
