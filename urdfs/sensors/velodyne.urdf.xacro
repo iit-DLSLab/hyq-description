@@ -54,7 +54,7 @@
 		</link>
 
 		<!-- gazebo extensions -->
-		<xacro:velodyne_sensor link_name="${name}_optical_frame" frame_name="${name}_frame" lidar_name="${name}" />
+		<xacro:velodyne_sensor link_name="${name}" frame_name="${name}_mount_link" lidar_name="${name}" />
 	</xacro:macro>
 
 </robot>

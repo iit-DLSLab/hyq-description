@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
 <root xmlns:xacro="http://ros.org/wiki/xacro">
 
-	<xacro:macro name="velodyne_sensor" params="link_name frame_name lidar_name">
+	<xacro:macro name="hokuyo_laser_gazebo" params="link_name frame_name ros_topic update_rate min_angle max_angle range">
 
 		<gazebo reference="${link_name}">
-			<sensor name="${link_name}_velodyne_sensor" type="ray">
+			<sensor name="${link_name}_laser_sensor" type="ray">
 				<always_on>true</always_on>
-				<update_rate>1.0</update_rate>
+				<update_rate>${update_rate}</update_rate>
 				<pose>0 0 0 0 0 0</pose>
 				<ray>
 					<scan>
 						<horizontal>
-							<samples>300</samples>
+							<samples>2</samples>
 							<resolution>1</resolution>
-							<min_angle>${-PI}</min_angle>
-							<max_angle>${PI}</max_angle>
+							<min_angle>${-1 * PI / 180}</min_angle>
+							<max_angle>${1 * PI / 180}</max_angle>
 						</horizontal>
 						<vertical>
-							<samples>32</samples>
+							<samples>2</samples>
 							<resolution>1</resolution>
-							<min_angle>${-30.67*PI/180}</min_angle>
-							<max_angle>${10.67*PI/180}</max_angle>
+							<min_angle>${-1*PI/180}</min_angle>
+							<max_angle>${1*PI/180}</max_angle>
 						</vertical>
 					</scan>
 					<range>
-						<min>1.0</min>
-						<max>20.0</max>
+						<min>0.2</min>
+						<max>${range}</max>
 						<resolution>0.02</resolution>
 					</range>
 				</ray>
@@ -33,8 +33,8 @@
 				<plugin name="${link_name}_controller" filename="libgazebo_ros_block_laser.so">
 					<gaussianNoise>0.005</gaussianNoise>
 					<alwaysOn>true</alwaysOn>
-					<updateRate>10</updateRate>
-					<topicName>/${lidar_name}/velodyne_pointcloud</topicName>
+					<updateRate>${update_rate}</updateRate>
+					<topicName>/${ros_topic}</topicName>
 					<frameName>${frame_name}</frameName>
 					<hokuyoMinIntensity>101</hokuyoMinIntensity>
 				</plugin>
