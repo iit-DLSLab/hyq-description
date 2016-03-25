@@ -8,10 +8,10 @@
 	<arg name="gui" default="true"/>
 	<arg name="headless" default="false"/>
 	<arg name="debug" default="false"/>
-	<arg name="fast_simulation" default="false"/>
+	<arg name="dls_empty_world" default="true"/>
 
-	<arg if="$(arg fast_simulation)" name="world_name" default="$(find hyq_description)/gazebo/empty.world"/>
-	<arg unless="$(arg fast_simulation)" name="world_name" default="worlds/empty.world"/>
+	<arg if="$(arg dls_empty_world)" name="world_name" default="$(find dls_gazebo)/worlds/empty.world"/>
+	<arg unless="$(arg dls_empty_world)" name="world_name" default="worlds/empty.world"/>
 
 	<!-- Set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
