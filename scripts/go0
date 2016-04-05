@@ -5,7 +5,21 @@ import string
 import warnings
 
 from gazebo_ros import gazebo_interface
+from std_srvs.srv import Empty
 
+def unpause(gazebo_namespace):
+    rospy.loginfo("Waiting for service %s/unpause_physics"%gazebo_namespace)
+    rospy.wait_for_service(gazebo_namespace+'/unpause_physics')
+    rospy.loginfo("temporary hack to **fix** the -J joint position option (issue #93), sleeping for 1 second to avoid race condition.");
+    time.sleep(1)
+    try:
+      unpause_physics = rospy.ServiceProxy(gazebo_namespace+'/unpause_physics', Empty)
+      rospy.loginfo("Calling service %s/unpause_physics"%gazebo_namespace)
+      resp = unpause_physics()
+
+      return
+    except rospy.ServiceException, e:
+      print "Service call failed: %s"%e
 
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
@@ -63,3 +77,8 @@ if __name__ == "__main__":
 	except rospy.ServiceException, e:
 		print "set model configuration service call failed: %s"%e
 
+	rospy.wait_for_service('%s/unpause_physics'%(gazebo_namespace))
+	try:
+		success = unpause(gazebo_namespace)
+	except rospy.ServiceException, e:
+		print "unpause physics service call failed: %s"%e
