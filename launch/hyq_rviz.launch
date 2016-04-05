@@ -1,11 +1,13 @@
 <launch>
 
-	<!-- send hyq urdf to param server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch"/>
-
+	<arg name="sensors" default="true"/>
 	<arg name="gui" default="true"/>
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz/hyq_model_tf.rviz"/>
-	
+
+	<!-- send hyq urdf to param server and spawn it -->
+	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+		<arg name="sensors" value="$(arg sensors)" />
+	</include>
 
 	<!-- publish the joint and robot states -->
 	<group if="$(arg gui)">
