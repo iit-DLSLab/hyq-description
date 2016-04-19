@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <launch>
 
 	<arg name="sensors" default="true"/>
@@ -5,7 +6,7 @@
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz/hyq_model_tf.rviz"/>
 
 	<!-- send hyq urdf to param server and spawn it -->
-	<include file="$(find hyq_description)/launch/upload_hyq.launch">
+	<include file="$(find hyq_description)/launch/upload.launch">
 		<arg name="sensors" value="$(arg sensors)" />
 	</include>
 
