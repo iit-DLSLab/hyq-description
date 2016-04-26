@@ -5,8 +5,8 @@
 	<gazebo>
 		<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hyq</robotNamespace>
-			<robotSimType>hyq2max_gazebo/HyQ2MaxHWSim</robotSimType>
-			<controlPeriod>0.005</controlPeriod>
+			<robotSimType>dls_gazebo_interface/DLSHWSim</robotSimType>
+			<controlPeriod>0.004</controlPeriod>
 		</plugin>
 
 		<plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">

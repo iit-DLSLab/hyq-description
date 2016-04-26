@@ -13,7 +13,8 @@
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
+	<!-- Velodyne disabled because it takes too long to load-up -->
+	<!-- <xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/> -->
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
@@ -130,7 +131,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
     <xacro:teraranger_range
 		name="ranger"
 		parent="rf_lowerleg"
-		ros_topic="terarange"
+		ros_topic="terarangerone_rf"
 		update_rate="250"
 		range="4.0">
 		<origin xyz="0.12 0.0 0.0" rpy = "${PI/2} 0.0 0.0"/>
