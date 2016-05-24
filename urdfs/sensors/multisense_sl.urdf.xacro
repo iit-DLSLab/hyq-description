@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:macro name="multisense_sl" params="parent *origin" >
+<xacro:macro name="multisense_sl" params="parent *origin prefix" >
 
   <joint name="${parent}_head_root_joint" type="fixed">
     <insert_block name="origin"/>
@@ -39,25 +39,25 @@
 
 
   <joint name="left_camera_optical_joint" type="continuous">
-    <parent link="left_camera_optical_frame" />
-    <child link="motor" />
+    <parent link="${prefix}/left_camera_optical_frame" />
+    <child link="${prefix}/motor" />
   </joint>
 
-  <link name="motor"/>
-  <link name="spindle"/>
+  <link name="${prefix}/motor"/>
+  <link name="${prefix}/spindle"/>
 
   <joint name="motor_joint" type="continuous">
-    <parent link="motor" />
-    <child link="spindle" />
+    <parent link="${prefix}/motor" />
+    <child link="${prefix}/spindle" />
     <axis xyz="0 0 1" />
   </joint>
 
   <joint name="spindle_joint" type="continuous">
-    <parent link="spindle" />
-    <child link="hokuyo_link" />
+    <parent link="${prefix}/spindle" />
+    <child link="${prefix}/hokuyo_link" />
   </joint>
 
-  <link name="hokuyo_link">
+  <link name="${prefix}/hokuyo_link">
     <inertial>
       <origin xyz="0.012428 0.0004084 -0.0041835" rpy="0 0 0" />
       <mass value="0.057664" />
@@ -80,7 +80,7 @@
   </collision>
   </link>
 
-  <link name="head_hokuyo_frame"/>
+  <link name="${prefix}/head_hokuyo_frame"/>
   <joint name="head_hokuyo_frame_joint" type="fixed"> 
     <!--
      This transform accounts for the fact ROS expects laser data in the x forward,
@@ -89,8 +89,8 @@
      Roll and pitch are both with respect to the origional x left, y up, z forward frame
      -->
     <origin xyz="0 0 0" rpy="-1.57079632679 -1.57079632679 0.0" />
-    <parent link="hokuyo_link" />
-    <child link="head_hokuyo_frame"/>
+    <parent link="${prefix}/hokuyo_link" />
+    <child link="${prefix}/head_hokuyo_frame"/>
   </joint>
 
   <!-- Stereo Camera -->
@@ -110,9 +110,9 @@
   <joint name="left_camera_optical_frame_joint" type="fixed">
     <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679" />
     <parent link="left_camera_frame" />
-    <child link="left_camera_optical_frame"/>
+    <child link="${prefix}/left_camera_optical_frame"/>
   </joint>
-  <link name="left_camera_optical_frame"/>
+  <link name="${prefix}/left_camera_optical_frame"/>
 
 
   <joint name="right_camera_frame_joint" type="fixed">

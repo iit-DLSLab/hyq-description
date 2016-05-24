@@ -113,7 +113,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<origin xyz="0.475 0.0 -0.08823" rpy="3.14 0.0 0"/>
 	</xacro:hokuyo_laser>
 
-        <xacro:multisense_sl parent="trunk">
+        <xacro:multisense_sl parent="trunk" prefix="hyq">
                 <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/>
         </xacro:multisense_sl>
 
