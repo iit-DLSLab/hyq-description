@@ -22,6 +22,7 @@
 		type="state_publisher" respawn="true">
 		<param name="publish_frequency" value="200" />
 		<param name="rate" value="200" />
+                <remap from="joint_states" to="hyq/joint_states" />
 	</node>
 
 	<!-- run rviz -->
