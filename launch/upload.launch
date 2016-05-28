@@ -3,6 +3,9 @@
 
 	<arg name="sensors" default="true"/>
 
+	<!-- send the robot description file -->
+	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq.yarf"/>
+
 	<!-- send HyQ urdf to param server -->
 	<group if="$(arg sensors)">
 		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro'"/>
