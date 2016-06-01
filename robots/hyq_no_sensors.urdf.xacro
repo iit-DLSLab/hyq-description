@@ -4,6 +4,8 @@
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/common.xacro"/>
+	
 	<!-- HyQ trunk -->
 	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
 
@@ -11,7 +13,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
 
 	<!-- HyQ sensors -->
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
