@@ -118,7 +118,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		name="laser"
 		parent="rf_lowerleg"
 		ros_topic="scan"
-		update_rate="100"
+		update_rate="200"
 		min_angle="-5"
 		max_angle="5"
 		range="4.0">
@@ -129,14 +129,14 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
 	<!-- teraranger -->
     <xacro:teraranger_range
-		name="ranger"
+		name="rf_ranger"
 		parent="rf_lowerleg"
 		ros_topic="terarangerone_rf"
-		update_rate="250"
+		update_rate="200"
 		range="4.0">
 		<origin xyz="0.12 0.0 0.0" rpy = "${PI/2} 0.0 0.0"/>
 	</xacro:teraranger_range>
-
+	
 		<!-- Hokuyo -->
 	<!--xacro:hokuyo_utm30lx
 		name="laser"
