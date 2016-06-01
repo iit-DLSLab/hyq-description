@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+<xacro:include filename="$(find hyq_description)/urdfs/sensors/multisense_sl.gazebo.xacro"/>
+
 <xacro:macro name="multisense_sl" params="parent *origin prefix" >
 
   <joint name="${parent}_head_root_joint" type="fixed">
@@ -38,26 +40,32 @@
   </link>
 
 
-  <joint name="left_camera_optical_joint" type="continuous">
-    <parent link="${prefix}/left_camera_optical_frame" />
-    <child link="${prefix}/motor" />
+  <joint name="hokuyo_joint" type="continuous">
+    <origin xyz="-0.0446 0 0.0880" rpy="0 0 0" />
+    <parent link="head" />
+    <child link="hokuyo_link" />
+    <axis xyz="1 0 0" />
+    <dynamics damping="0.01" friction="0"/>
   </joint>
 
-  <link name="${prefix}/motor"/>
-  <link name="${prefix}/spindle"/>
 
-  <joint name="motor_joint" type="continuous">
-    <parent link="${prefix}/motor" />
-    <child link="${prefix}/spindle" />
-    <axis xyz="0 0 1" />
+  <!-- Hokuyo Laser -->
+  <joint name="head_hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.03 0 0.015" rpy="0 0 0"/>
+    <parent link="hokuyo_link"/>
+    <child link="head_hokuyo_frame"/>
   </joint>
+  <link name="head_hokuyo_frame">
+    <inertial>
+      <mass value="1e-5" />
+      <!-- collocate with parent link and remove mass from it -->
+      <origin xyz="0.042428 0.0004084 0.0108165" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
 
-  <joint name="spindle_joint" type="continuous">
-    <parent link="${prefix}/spindle" />
-    <child link="${prefix}/hokuyo_link" />
-  </joint>
-
-  <link name="${prefix}/hokuyo_link">
+  <link name="hokuyo_link">
     <inertial>
       <origin xyz="0.012428 0.0004084 -0.0041835" rpy="0 0 0" />
       <mass value="0.057664" />
@@ -80,19 +88,6 @@
   </collision>
   </link>
 
-  <link name="${prefix}/head_hokuyo_frame"/>
-  <joint name="head_hokuyo_frame_joint" type="fixed"> 
-    <!--
-     This transform accounts for the fact ROS expects laser data in the x forward,
-     y left, z up frame and the calibraton has the data in x left, y up, z forward.
-     Thus a roll of -90 * a pitch of -90 will make the appropriate transform. Note
-     Roll and pitch are both with respect to the origional x left, y up, z forward frame
-     -->
-    <origin xyz="0 0 0" rpy="-1.57079632679 -1.57079632679 0.0" />
-    <parent link="${prefix}/hokuyo_link" />
-    <child link="${prefix}/head_hokuyo_frame"/>
-  </joint>
-
   <!-- Stereo Camera -->
   <joint name="left_camera_frame_joint" type="fixed">
     <!-- optical frame collocated with tilting DOF -->
@@ -110,9 +105,9 @@
   <joint name="left_camera_optical_frame_joint" type="fixed">
     <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679" />
     <parent link="left_camera_frame" />
-    <child link="${prefix}/left_camera_optical_frame"/>
+    <child link="left_camera_optical_frame"/>
   </joint>
-  <link name="${prefix}/left_camera_optical_frame"/>
+  <link name="left_camera_optical_frame"/>
 
 
   <joint name="right_camera_frame_joint" type="fixed">
@@ -185,6 +180,31 @@
 
   <!-- IMU Frames, Mag/Accel and Gyro -->
   <!-- Include transfrom to the left_camera_frame (shift in -.035mm in X and -.002mm in Z) -->
+
+  <!-- imu link -->
+  <link name="head_imu_link">
+    <inertial>
+      <mass value="1e-5" />
+      <!-- collocate with parent link and remove mass from it -->
+      <origin xyz="-0.122993 0.035033383 0.02774" rpy="0 0 0" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="head_imu_joint" type="fixed">
+    <parent link="head"/>
+    <child link="head_imu_link"/>
+    <!-- putting it at the same z-level as the stereo -->
+    <origin xyz="-0.0475 0.035 0.0" rpy="0 0 0"/>
+  </joint>
+  <xacro:multisense_sl_sensor prefix="hyq"/>
+
+      <!-- IMU definition -->
 
   <link name="accel"/>
   <joint name="accel_joint" type="fixed">

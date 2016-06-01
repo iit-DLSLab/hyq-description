@@ -20,7 +20,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/>
-        <xacro:include filename="$(find hyq_description)/urdfs/sensors/multisense_sl.urdf.xacro" />
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/multisense_sl.urdf.xacro" />
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -113,11 +113,12 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<origin xyz="0.475 0.0 -0.08823" rpy="3.14 0.0 0"/>
 	</xacro:hokuyo_laser>
 
-        <xacro:multisense_sl parent="trunk" prefix="hyq">
-                <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/>
-        </xacro:multisense_sl>
+    <xacro:multisense_sl parent="trunk" prefix="hyq">
+            <!-- <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/> -->
+            <origin xyz="0.741737 0.0 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/>
+    </xacro:multisense_sl>
 
-	
+
 	
 	<!-- Asus Xtion Pro -->
 	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
