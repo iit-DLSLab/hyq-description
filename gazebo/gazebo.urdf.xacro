@@ -5,20 +5,20 @@
 	<gazebo>
 		<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hyq</robotNamespace>
-			<robotSimType>hyq2max_gazebo/HyQ2MaxHWSim</robotSimType>
-			<controlPeriod>0.005</controlPeriod>
+			<robotSimType>dls_gazebo_interface/DLSHWSim</robotSimType>
+			<controlPeriod>0.004</controlPeriod>
 		</plugin>
 
 		<plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
 			<robotNamespace>/hyq</robotNamespace>
 		 	<bodyName>trunk</bodyName>
-			<topicName>odom</topicName>
+			<topicName>ground_truth</topicName>
 			<frameName>world</frameName>
 			<xyzOffsets>0 0 0</xyzOffsets>
 			<rpyOffsets>0 0 0</rpyOffsets>
 			<gaussianNoise>0</gaussianNoise>
 			<alwaysOn>true</alwaysOn>
-			<updateRate>200.0</updateRate>
+			<updateRate>250.0</updateRate>
 		</plugin>
 	</gazebo>
 

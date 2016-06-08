@@ -4,6 +4,8 @@
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/common.xacro"/>
+	
 	<!-- HyQ trunk -->
 	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
 
@@ -11,15 +13,17 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
 
 	<!-- HyQ sensors -->
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/velodyne.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/kinect.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/>
-        <xacro:include filename="$(find hyq_description)/urdfs/sensors/vicon.urdf.xacro" />
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
+	<!-- Velodyne disabled because it takes too long to load-up -->
+	<!-- <xacro:include filename="$(find sensors_description)/urdfs/sensors/velodyne.urdf.xacro"/> -->
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/kinect.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/ptu_d46.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/bumblebee.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/>
+	<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -105,13 +109,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
         </xacro:vicon> 
 
 	<!-- Velodyne -->
-	<xacro:velodyne
-		name="velodyne"
-		parent="trunk">
-		<!--origin xyz="0.39 0 0.269" rpy="0 0 3.14"/-->
-		<!--origin xyz="0.39 0.0 0.269" rpy="0 0.0 3.10"/-->
-		<origin xyz="0.39 0.0 0.271" rpy="0.0084 -0.0169 3.14371"/>
-	</xacro:velodyne>
+
 	
 	<!-- Hokuyo -->
 	<xacro:hokuyo_laser
@@ -123,64 +121,23 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		max_angle="5"
 		range="4.0">
 	<origin xyz="0.475 0.0 -0.08823" rpy="3.14 0.0 0"/>
-    <!--origin xyz="0 -${0.5*INCH_TO_M} ${7*INCH_TO_M}" rpy="${M_PI/2} ${M_PI/2} 0" /-->
 	</xacro:hokuyo_laser>
-	
-		<!-- Hokuyo -->
-	<!--xacro:hokuyo_utm30lx
-		name="laser"
-		parent="trunk"
-		ros_topic="scan" 
-		update_rate="10"
-		ray_count="1"
-		min_angle="-5"
-		max_angle="5">
-		<origin xyz="0.475 0.0 -0.133" rpy="3.14 0.0 0"/>
-	</xacro:hokuyo_utm30lx-->
-	
-	<!--xacro:hokuyo_mount name="nav_hokuyo" parent="front_left_vertical_beam" length="${SENSOR_BEAM_LENGTH*INCH_TO_M}" ros_topic="scan" update_rate="10" min_angle="${-(5 * M_PI)/12}" max_angle="${(5 * M_PI)/12}" range="4.0">
-    <origin xyz="0 -${0.5*INCH_TO_M} ${7*INCH_TO_M}" rpy="${M_PI/2} ${M_PI/2} 0" />
-  </xacro:hokuyo_mount-->
 
-	<!-- PTU unit -->
-	<xacro:ptu_d46
-		name="ptu"
-		parent="trunk">
-		<origin xyz="0.677 0.004 0.111"
-				rpy="-0.013127 0.569257 -0.007748"/>
-	</xacro:ptu_d46>
+    <xacro:multisense_sl parent="trunk" prefix="hyq">
+            <!-- <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/> -->
+            <origin xyz="0.741737 0.0 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/>
+    </xacro:multisense_sl>
 
+
+	
 	<!-- Asus Xtion Pro -->
 	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
 	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
-	<xacro:asus_xtion_camera
-		name="asus"
-		parent="ptu_mount_link">
-		<origin xyz="0 0.005 0.036" rpy="0 0 0"/>
-	</xacro:asus_xtion_camera>
+<xacro:asus_xtion_camera name="asus" parent="trunk">
+	<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 0.479116 0.0244919"/>
+</xacro:asus_xtion_camera>
 
-	<!-- Kinect --> <!-- is no more used, but we keep it for compatibilty -->
-	<!--xacro:kinect_camera
-		name="head_mount"
-		parent="trunk">
-		<origin xyz="0.63 0 0.095" rpy="0 0 0"/>
-	</xacro:kinect_camera-->
 
-	<!-- Bumblebee -->
-	<xacro:bumblebee_97
-		parent_link="ptu_mount_link"
-                xyz= "0 0 0" 
-		rpy="0 0 0"
-		ns="bumblebee"
-		frame_prefix="bumblebee_"
-		high_res="false"/>
-
-<!--	<xacro:vislab_3dve_72
-		name="vislab_3dve"
-		parent="ptu_mount_link"
-		xyz="0 0 0.025"
-		rpy="0 0 0"
-		high_res="false"/>-->
 
 
 </robot>
