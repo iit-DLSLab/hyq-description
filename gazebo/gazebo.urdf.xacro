@@ -12,13 +12,13 @@
 		<plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
 			<robotNamespace>/hyq</robotNamespace>
 		 	<bodyName>trunk</bodyName>
-			<topicName>odom</topicName>
+			<topicName>ground_truth</topicName>
 			<frameName>world</frameName>
 			<xyzOffsets>0 0 0</xyzOffsets>
 			<rpyOffsets>0 0 0</rpyOffsets>
 			<gaussianNoise>0</gaussianNoise>
 			<alwaysOn>true</alwaysOn>
-			<updateRate>200.0</updateRate>
+			<updateRate>250.0</updateRate>
 		</plugin>
 	</gazebo>
 
