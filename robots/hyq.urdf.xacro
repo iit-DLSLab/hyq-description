@@ -24,7 +24,6 @@
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/>
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
 
-
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
 
@@ -100,13 +99,6 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		accel_bias_stddev="0.001">
 		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx425_imu>
-
-        <!-- See vicon_bridge and Vicon doc to know what subject and segment mean -->
-        <xacro:vicon subject="hyq_green" segment="body" target_frame="base_link">                    
-               <!--origin xyz="0.455864 -0.231012 0.104193" rpy="-1.70031 0.0 -3.00989"/-->
-               <!--origin xyz="0.455864 -0.231012 0.104193" rpy="${PI/2} ${-PI/2} 0.0"/-->
-<origin xyz="-0.104392 0.454994 -0.23086" rpy="-1.57252 -0.00346852 -1.57112"/>
-        </xacro:vicon> 
 
 	<!-- Velodyne -->
 
