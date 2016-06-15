@@ -20,6 +20,83 @@
 			<alwaysOn>true</alwaysOn>
 			<updateRate>250.0</updateRate>
 		</plugin>
+
+		<plugin name="lf_haa_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>lf_haa_joint_force</topicName>
+			<jointName>lf_haa_joint</jointName>
+		</plugin>
+		<plugin name="lf_kfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>lf_kfe_joint_force</topicName>
+			<jointName>lf_kfe_joint</jointName>
+		</plugin>
+		<plugin name="lf_hfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>lf_hfe_joint_force</topicName>
+			<jointName>lf_hfe_joint</jointName>
+		</plugin>
+
+		<plugin name="rf_haa_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>rf_haa_joint_force</topicName>
+			<jointName>rf_haa_joint</jointName>
+		</plugin>
+		<plugin name="rf_kfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>rf_kfe_joint_force</topicName>
+			<jointName>rf_kfe_joint</jointName>
+		</plugin>
+		<plugin name="rf_hfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>rf_hfe_joint_force</topicName>
+			<jointName>rf_hfe_joint</jointName>
+		</plugin>
+
+		<plugin name="lh_haa_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>lh_haa_joint_force</topicName>
+			<jointName>lh_haa_joint</jointName>
+		</plugin>
+		<plugin name="lh_kfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>lh_kfe_joint_force</topicName>
+			<jointName>lh_kfe_joint</jointName>
+		</plugin>
+		<plugin name="lh_hfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>lh_hfe_joint_force</topicName>
+			<jointName>lh_hfe_joint</jointName>
+		</plugin>
+
+		<plugin name="rh_haa_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>rh_haa_joint_force</topicName>
+			<jointName>rh_haa_joint</jointName>
+		</plugin>
+		<plugin name="rh_kfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>rh_kfe_joint_force</topicName>
+			<jointName>rh_kfe_joint</jointName>
+		</plugin>
+		<plugin name="rh_hfe_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<robotNamespace>/hyq</robotNamespace>
+			<updateRate>100.0</updateRate>
+			<topicName>rh_hfe_joint_force</topicName>
+			<jointName>rh_hfe_joint</jointName>
+		</plugin>
+
 	</gazebo>
 
 </robot>

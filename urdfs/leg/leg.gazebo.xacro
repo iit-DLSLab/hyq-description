@@ -3,6 +3,19 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	<xacro:macro name="leg_gazebo" params="name">
+
+		<gazebo reference="${name}_haa_joint">
+		<provideFeedback>true</provideFeedback>
+		</gazebo>
+
+		<gazebo reference="${name}_kfe_joint">
+		<provideFeedback>true</provideFeedback>
+		</gazebo>
+
+		<gazebo reference="${name}_hfe_joint">
+		<provideFeedback>true</provideFeedback>
+		</gazebo>
+
 		<gazebo reference="${name}_upperleg">
 			<kp>1000000.0</kp>
 			<kd>100.0</kd>
