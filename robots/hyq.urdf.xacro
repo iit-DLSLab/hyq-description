@@ -121,7 +121,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
 	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
-		<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 0.479116 0.0244919"/>
+		<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 1.2 0.0244919"/>
+<!--		<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 0.479116 0.0244919"/>-->
 	</xacro:asus_xtion_camera>
 
 </robot>
