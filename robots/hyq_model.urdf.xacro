@@ -93,8 +93,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
     <xacro:teraranger_range
 		name="rf_ranger"
 		parent="rf_lowerleg"
-		ros_topic="rf_terarangerone"
-		update_rate="400"
+		ros_topic="rf_terarangerone_kinematics"
+		update_rate="0"
 		range="4.0">
 		<origin xyz="0.12 0.0 0.0" rpy = "${PI/2} 0.0 0.0"/>
 	</xacro:teraranger_range>
