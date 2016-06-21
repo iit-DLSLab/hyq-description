@@ -29,7 +29,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/sensors/hokuyo.dae" scale="0.0254 0.0254 0.0254" />
+					<mesh filename="package://sensors_description/meshes/sensors/hokuyo.dae" scale="0.0254 0.0254 0.0254" />
 				</geometry>
 			</visual>
 			<!-- ignore the collision element -->
