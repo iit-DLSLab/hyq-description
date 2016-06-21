@@ -92,14 +92,4 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx425_imu>
 
-		<!-- teraranger -->
-    <xacro:teraranger_range
-		name="rf_ranger"
-		parent="rf_lowerleg"
-		ros_topic="rf_terarangerone"
-		update_rate="400"
-		range="4.0">
-		<origin xyz="0.12 0.0 0.0" rpy = "${PI/2} 0.0 0.0"/>
-	</xacro:teraranger_range>
-
 </robot>
