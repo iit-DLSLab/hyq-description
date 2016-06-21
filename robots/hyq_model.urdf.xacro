@@ -14,7 +14,6 @@
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
-	<xacro:include filename="$(find hyq_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
 	<xacro:include filename="$(find hyq_description)/urdfs/sensors/teraranger_range.urdf.xacro"/>
 
 	<!-- The first use of a macro. This one was defined in trunk.urdf.xacro above.
@@ -70,8 +69,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		reflect_front="-1">
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
-
-	<!-- IMU trunk -->
+	
 	<xacro:microstrain_3dmgx425_imu
 		parent="trunk"
 		imu_name="imu"
@@ -86,8 +84,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		accel_bias_mean="0.002"
 		accel_bias_stddev="0.001">
 		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
-	</xacro:microstrain_3dmgx425_imu>
-
+</xacro:microstrain_3dmgx425_imu>
 
 		<!-- teraranger -->
     <xacro:teraranger_range
