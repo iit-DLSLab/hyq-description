@@ -23,6 +23,7 @@
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/vislab_3dve.urdf.xacro"/>
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/>
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/sensors/teraranger_range.urdf.xacro"/>
 
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
@@ -107,7 +108,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		name="laser"
 		parent="rf_lowerleg"
 		ros_topic="scan"
-		update_rate="0"
+		update_rate="200"
 		min_angle="-5"
 		max_angle="5"
 		range="4.0">
