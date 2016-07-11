@@ -13,9 +13,9 @@
 			<child link="${name}_mount_link"/>
 		</joint>
 
-		<!-- go from the base of the laser to the actual sensor location -->
+		<!-- go from the base of the laser to the actual sensor location -0.15 -->
 		<joint name="${name}_laser_joint" type="fixed">
-			<origin xyz="0 0 0.058" rpy="0 0.25 0"/>
+			<origin xyz="0 0 0.058" rpy="0 -0.15 0"/>
 			<parent link="${name}_mount_link"/>
 			<child link="${name}"/>
 		</joint>
