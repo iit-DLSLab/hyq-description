@@ -4,7 +4,7 @@
 	<arg name="sensors" default="true"/>
 
 	<!-- Load the sensors that measured the internal wrench in the joints -->
-	<arg name="internal_wrench" default="true"/>
+	<arg name="internal_wrench" default="false"/>
 
 	<!-- send the robot description file -->
 	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq.yarf"/>
