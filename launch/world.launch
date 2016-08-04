@@ -3,6 +3,9 @@
 
 	<arg name="sensors" default="true"/>
 
+	<!-- Load the sensors that measured the internal wrench in the joints -->
+	<arg name="internal_wrench" default="false"/>
+
 	<!-- These are the arguments you can pass this launch file, for example paused:=true -->
 	<arg name="paused" default="true"/>
 	<arg name="use_sim_time" default="true"/>
@@ -40,6 +43,7 @@
 	<!-- Send hyq urdf to parameter server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload.launch">
 		<arg name="sensors" value="$(arg sensors)" />
+		<arg name="internal_wrench" value="$(arg internal_wrench)" />
 	</include>
 
 	<!-- Spawn a robot into Gazebo -->
