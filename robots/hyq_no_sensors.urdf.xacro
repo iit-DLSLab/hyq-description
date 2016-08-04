@@ -2,6 +2,9 @@
 
 <robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+	<!-- This argument allows us to load joint sensors that measure the internal wrenches -->
+	<xacro:arg name="load_force_sensors" default="false"/>
+
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
 	<xacro:include filename="$(find sensors_description)/urdfs/common.xacro"/>
@@ -40,7 +43,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
-		reflect_front="1">
+		reflect_front="1"
+		load_force_sensors="$(arg load_force_sensors)">
 		<origin xyz="${d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
@@ -50,7 +54,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
-		reflect_front="1">
+		reflect_front="1"
+		load_force_sensors="$(arg load_force_sensors)">
 		<origin xyz="${d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
@@ -60,7 +65,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
-		reflect_front="-1">
+		reflect_front="-1"
+		load_force_sensors="$(arg load_force_sensors)">
 		<origin xyz="${-d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
@@ -70,7 +76,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"
-		reflect_front="-1">
+		reflect_front="-1"
+		load_force_sensors="$(arg load_force_sensors)">
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
