@@ -100,9 +100,6 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx425_imu>
 
-	<!-- Velodyne -->
-
-	
 	<!-- Hokuyo -->
 	<xacro:hokuyo_laser
 		name="laser"
@@ -120,16 +117,11 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
             <origin xyz="0.741737 0.0 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/>
     </xacro:multisense_sl>
 
-
-	
 	<!-- Asus Xtion Pro -->
 	<!--<origin xyz="0 0.005 0.036" rpy="0 0 0"/> with Bumblebee setup -->
 	<!--<origin xyz="0 0 0.04397" rpy="0 0 0"/> with Vislab setup -->
-<xacro:asus_xtion_camera name="asus" parent="trunk">
-	<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 0.479116 0.0244919"/>
-</xacro:asus_xtion_camera>
-
-
-
+	<xacro:asus_xtion_camera name="asus" parent="trunk">
+		<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 0.479116 0.0244919"/>
+	</xacro:asus_xtion_camera>
 
 </robot>
