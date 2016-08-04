@@ -10,7 +10,7 @@
 
 	<!-- ================================== Leg ================================== -->
 	<!-- The xacro macro xacro:hyq_leg contains: hip assembly, upper and lower leg -->
-	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front">
+	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front load_force_sensors">
 		<!-- Joints -->
 		<!-- Hip assembly joint -->
 		<joint name="${name}_haa_joint" type="revolute">
@@ -141,7 +141,7 @@
 		
 		<!-- Extensions -->
 		<xacro:leg_transmission name="${name}"/>
-		<xacro:leg_gazebo name="${name}"/>
+		<xacro:leg_gazebo name="${name}" load_force_sensors="${load_force_sensors}"/>
 	</xacro:macro>
 
 </robot>
