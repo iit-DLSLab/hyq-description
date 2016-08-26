@@ -13,10 +13,10 @@
 
 	<!-- Inertial values -->
 	<!-- Trunk with hydraulic system -->
-	<property name="xcom_trunk" value="0.02255"/>
-	<property name="ycom_trunk" value="-0.0035"/>
-	<property name="zcom_trunk" value="0.018"/>
-	<property name="m_trunk" value="63.8"/>
+	<property name="xcom_trunk" value="-0.0004"/>
+	<property name="ycom_trunk" value="-0.0000536"/>
+	<property name="zcom_trunk" value="0.003553"/>
+	<property name="m_trunk" value="59.1"/>
 	<property name="ixx_trunk" value="1.5725937"/>
 	<property name="iyy_trunk" value="8.5015928"/>
 	<property name="izz_trunk" value="9.1954911"/>
