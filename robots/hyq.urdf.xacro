@@ -95,16 +95,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<xacro:microstrain_3dmgx425_imu
 		parent="trunk"
 		imu_name="imu"
-		imu_topic="trunk_imu/data"
-		update_rate="250"
-		rate_mean="0"
-		rate_stddev="2e-4"
-		rate_bias_mean="0.00087"
-		rate_bias_stddev="0.0000008"
-		accel_mean="0"
-		accel_stddev="1.7e-2"
-		accel_bias_mean="0.002"
-		accel_bias_stddev="0.001">
+		imu_topic="trunk_imu_1/data"
+		update_rate="250">
 		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx425_imu>
 
@@ -112,18 +104,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
     <xacro:kvh_1775_imu
         parent="trunk"
         imu_name="kvh_imu"
-        imu_topic="trunk_imu/data"
-        update_rate="250"
-        rate_mean="0"
-        rate_stddev="2e-4"
-        rate_bias_mean="0.00087"
-        rate_bias_stddev="0.0000008"
-        accel_mean="0"
-        accel_stddev="1.7e-2"
-        accel_bias_mean="0.002"
-        accel_bias_stddev="0.001">
-        <!--origin xyz="0.331545 0.000 0.0887678" rpy="0 0 0"/-->
-        <!--origin xyz="0.310245 0.0029 0.1271678" rpy="0 ${-PI} 0"/-->
+        imu_topic="trunk_imu_2/data"
+        update_rate="250">
         <origin xyz="0.352845 0.0029 0.0503678" rpy="0 ${-PI} 0"/>
     </xacro:kvh_1775_imu>
 
