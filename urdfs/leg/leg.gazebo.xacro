@@ -64,15 +64,18 @@
 			<maxVel>1.0</maxVel>
 			<minDepth>0.00</minDepth>
 		</gazebo>
+
 		<gazebo reference="${name}_foot">
-			<!-- contact sensor -->
-			<sensor type="contact" name="${name}_foot_contact_sensor">
+			<sensor name="${name}_foot_contact_sensor" type="contact">
+				<always_on>true</always_on>
 				<update_rate>1000.0</update_rate>
-				<always_on>1</always_on>
 				<contact>
 					<collision>${name}_foot_collision</collision>
-					<topic>/${name}_foot_contact</topic>
 				</contact>
+				<plugin name="${name}_foot_bumper" filename="libgazebo_ros_bumper.so">
+					<bumperTopicName>/${name}_grf</bumperTopicName>
+					<frameName>base_link</frameName>
+				</plugin>
 			</sensor>
 		</gazebo>
 	</xacro:macro>
