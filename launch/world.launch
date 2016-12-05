@@ -47,7 +47,7 @@
 	</include>
 
 	<!-- Spawn a robot into Gazebo -->
-	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.65"/>
+	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.75"/>
 
 	<!-- Get robot to 0 position -->
 	<node name="goto0" pkg="hyq_description" type="go0" args="10.0"  />
