@@ -17,6 +17,7 @@
 
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
+    <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
 	<!-- Velodyne disabled because it takes too long to load-up -->
 	<!-- <xacro:include filename="$(find sensors_description)/urdfs/sensors/velodyne.urdf.xacro"/> -->
@@ -93,19 +94,23 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	<!-- IMU trunk -->
 	<xacro:microstrain_3dmgx425_imu
 		parent="trunk"
-		imu_name="imu"
-		imu_topic="trunk_imu/data"
-		update_rate="250"
-		rate_mean="0"
-		rate_stddev="2e-4"
-		rate_bias_mean="0.00087"
-		rate_bias_stddev="0.0000008"
-		accel_mean="0"
-		accel_stddev="1.7e-2"
-		accel_bias_mean="0.002"
-		accel_bias_stddev="0.001">
+		imu_name="trunk_imu"
+		imu_topic="trunk_imu_1/data"
+		update_rate="250">
 		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
 	</xacro:microstrain_3dmgx425_imu>
+
+    <!-- IMU trunk -->
+<!-- TODO We have to substitute the microstrain IMU with this one. Note that the imu_name has to be
+trunk_imu because the DLS HW interfaces hardcoded that name 
+    	<xacro:kvh_1775_imu
+        parent="trunk"
+        imu_name="trunk_imu"
+        imu_topic="trunk_imu_2/data"
+        update_rate="250">
+        <origin xyz="0.352845 0.0029 0.0503678" rpy="0 ${-PI} 0"/>
+    </xacro:kvh_1775_imu>
+-->
 
 	<!-- Hokuyo -->
 	<xacro:hokuyo_laser
@@ -116,7 +121,7 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		min_angle="-5"
 		max_angle="5"
 		range="4.0">
-	<origin xyz="0.475 0.0 -0.08823" rpy="3.14 0.0 0"/>
+    <origin xyz="0.475 0.0 -0.08823" rpy="${PI} 0.0 0"/>
 	</xacro:hokuyo_laser>
 
     <xacro:multisense_sl parent="trunk" prefix="hyq">
@@ -132,3 +137,4 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 	</xacro:asus_xtion_camera>
 
 </robot>
+
