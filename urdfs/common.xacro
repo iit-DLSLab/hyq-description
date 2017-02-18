@@ -9,7 +9,7 @@
 	<property name="d_fh" value="0.747"/>
 	<property name="d_p0p1" value="0.08"/>
 	<property name="d_p1p2" value="0.35"/>
-	<property name="d_p2p3" value="0.341"/>
+	<property name="d_p2p3" value="0.346"/>
 
 	<!-- Inertial values -->
 	<!-- Trunk with hydraulic system -->
