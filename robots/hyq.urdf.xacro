@@ -126,13 +126,14 @@ trunk_imu because the DLS HW interfaces hardcoded that name
 
     <xacro:multisense_sl parent="trunk" prefix="multisense">
 		<!-- <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/> -->
-		<origin xyz="0.741737 0.0 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/>
+		<origin xyz="0.761 0.005 0.127" rpy="-0.028 0.515 -0.013"/>
     </xacro:multisense_sl>
 
 	<!-- Asus Xtion Pro -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
-		<origin xyz="0.66489 0.0016545 0.0380496" rpy="0.00740313 0.516618 0.0244919"/>
+		<origin xyz="0.624 -0.013 0.061" rpy="0.018 0.535 0.057"/>
 	</xacro:asus_xtion_camera>
 
 </robot>
+
 
