@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="hyq" xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<!-- This argument allows us to load joint sensors that measure the internal wrenches -->
 	<xacro:arg name="load_force_sensors" default="false"/>
@@ -39,12 +39,12 @@ Gazebo-related extensions (sensor plugins, etc). The macro takes an argument, na
 that equals "base", and uses it to generate names for its component links and joints
 (e.g., base_link). The included origin block is also an argument to the macro. By convention,
 the origin block defines where the component is w.r.t its parent (in this case the parent
-is the world frame). For more, see http://www.ros.org/wiki/xacro -->
+is the world frame). For more, see http://ros.org/wiki/xacro -->
 
 	<!-- body -->
 	<!-- trunk -->
 	<xacro:hyq_trunk name="base">
-		<origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/>
+		<!--origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/-->
 	</xacro:hyq_trunk>
 
 	<!-- LF leg -->
