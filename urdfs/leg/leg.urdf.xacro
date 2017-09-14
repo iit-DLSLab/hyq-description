@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 
 	<!-- Things that are needed only for Gazebo (not the physical robot). These include sensor and controller plugin specifications -->
@@ -14,7 +14,7 @@
 		<!-- Joints -->
 		<!-- Hip assembly joint -->
 		<joint name="${name}_haa_joint" type="revolute">
-			<insert_block name="origin"/>
+			<xacro:insert_block name="origin"/>
 			<parent link="${parent}"/>
 			<child  link="${name}_hipassembly"/>
 			<axis xyz="0 0 1"/>

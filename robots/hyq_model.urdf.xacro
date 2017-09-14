@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="hyq" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="hyq" xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
@@ -12,6 +12,7 @@
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
+        <xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
@@ -21,12 +22,12 @@ Gazebo-related extensions (sensor plugins, etc). The macro takes an argument, na
 that equals "base", and uses it to generate names for its component links and joints
 (e.g., base_link). The included origin block is also an argument to the macro. By convention,
 the origin block defines where the component is w.r.t its parent (in this case the parent
-is the world frame). For more, see http://www.ros.org/wiki/xacro -->
+is the world frame). For more, see http://ros.org/wiki/xacro -->
 
 	<!-- body -->
 	<!-- trunk -->
 	<xacro:hyq_trunk name="base">
-		<origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/>
+		<!--origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/-->
 	</xacro:hyq_trunk>
 
 	<!-- LF leg -->
