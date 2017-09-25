@@ -66,6 +66,8 @@
 		</gazebo>
 
 		<gazebo reference="${name}_foot">
+                        <mu1>2</mu1>
+                        <mu2>2</mu2>
 			<sensor name="${name}_foot_contact_sensor" type="contact">
 				<always_on>true</always_on>
 				<update_rate>1000.0</update_rate>
