@@ -63,6 +63,16 @@
 			<fdir1>1 0 0</fdir1>
 			<maxVel>1.0</maxVel>
 			<minDepth>0.00</minDepth>
+			<sensor name="${name}_shin_contact_sensor" type="contact">
+                <always_on>true</always_on>
+                <update_rate>250.0</update_rate>
+                <contact>
+                  <collision>${name}_lowerleg_collision</collision>
+                </contact>
+                <plugin name="${name}_shin_bumper" filename="libgazebo_ros_bumper.so">
+                  <bumperTopicName>/${name}_shin_sensor</bumperTopicName>
+                </plugin>
+            </sensor>   
 		</gazebo>
 
 		<gazebo reference="${name}_foot">
