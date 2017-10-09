@@ -11,8 +11,8 @@
 
 	<!-- send HyQ urdf to param server -->
 	<group if="$(arg sensors)">
-		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
-		<param name="hyq/robot_model" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
+		<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
+		<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
 
 		<!-- Stereo image processing -->
 		<node ns="multisense/camera" name="stereo_proc" pkg="stereo_image_proc" type="stereo_image_proc" respawn="false" output="log">

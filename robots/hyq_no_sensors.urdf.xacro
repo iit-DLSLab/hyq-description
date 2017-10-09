@@ -34,7 +34,7 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	<!-- body -->
 	<!-- trunk -->
 	<xacro:hyq_trunk name="base">
-		<origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/>
+		<!--origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/-->
 	</xacro:hyq_trunk>
 
 	<!-- LF leg -->
