@@ -127,11 +127,6 @@
 		</link>
 		<!-- Foot link -->
 		<link name="${name}_foot">
-			<inertial>
-				<origin xyz="0 0 0"/>
-				<mass value="0.07"/>
-				<inertia ixx="0.0000112" iyy="0.0000112" izz="0.0000112" ixy="0.0" ixz="0.0" iyz="0.0"/>
-			</inertial>
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
@@ -145,15 +140,6 @@
 				<material name="black" />
 			</visual>
 		</link>
-		<gazebo reference="${name}_foot">
-                	<mu1>1</mu1>
-			<mu2>1</mu2>
-			<fdir1>1 0 0</fdir1>
-			<maxContacts>1</maxContacts>
-                        <minDepth>0.002</minDepth>
-                        <gravity>true</gravity>
-            	<material>Gazebo/Black</material>
-        	</gazebo>
 		
 		<!-- Extensions -->
 		<xacro:leg_transmission name="${name}"/>
