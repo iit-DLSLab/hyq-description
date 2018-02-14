@@ -69,7 +69,7 @@
                   <collision>${name}_lowerleg_collision</collision>
                 </contact>
                 <plugin name="${name}_shin_bumper" filename="libgazebo_ros_bumper.so">
-                  <bumperTopicName>/${name}_shin_sensor</bumperTopicName>
+                  <bumperTopicName>/hyq/${name}_shin_bumper</bumperTopicName>
                   <frameName>base_link</frameName>
                 </plugin>
             </sensor>   
@@ -89,8 +89,9 @@
 					<collision>${name}_lowerleg_fixed_joint_lump__${name}_foot_collision_1</collision>
 				</contact>
 				<plugin name="${name}_foot_bumper" filename="libgazebo_ros_bumper.so">
-					<bumperTopicName>/${name}_grf</bumperTopicName>
+					<bumperTopicName>/hyq/${name}_foot_bumper</bumperTopicName>
 					<frameName>base_link</frameName>
+					<robotNamespace>hyq</robotNamespace>
 				</plugin>
 			</sensor>
 			<material>Gazebo/Black</material>
