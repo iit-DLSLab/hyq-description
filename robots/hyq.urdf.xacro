@@ -124,12 +124,13 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 
         <xacro:multisense_sl parent="trunk" prefix="multisense">
 	    <!-- <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/> -->
-            <origin xyz="0.761 0.005 0.127" rpy="-0.028 0.515 -0.013"/>
+            <origin xyz="0.661 0.00 0.112" rpy="0 0.515 0"/>
         </xacro:multisense_sl>
 
 	<!-- Asus Xtion Pro -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
-	    <origin xyz="0.624 -0.013 0.061" rpy="0.018 0.535 0.057"/>
+	    <!--<origin xyz="0.722 -0.013 0.039" rpy="0.014 1.0 0.053"/>-->
+	       <origin xyz="0.62 0.0 0.024" rpy="0.0 1.0 0.0"/>
 	</xacro:asus_xtion_camera>
 </robot>
 
