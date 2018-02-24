@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <launch>
-
 	<arg name="sensors" default="true"/>
 
 	<!-- Load the sensors that measured the internal wrench in the joints -->
@@ -13,17 +12,10 @@
 	<group if="$(arg sensors)">
 		<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
 		<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
-
-		<!-- Stereo image processing -->
-		<node ns="multisense/camera" name="stereo_proc" pkg="stereo_image_proc" type="stereo_image_proc" respawn="false" output="log">
-			<param name="disparity_range" type="int" value="128"/>
-			<param name="approximate_sync" type="bool" value="false"/>
-		</node>
-
 	</group>
 	<group unless="$(arg sensors)">
 		<param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find hyq_description)/robots/hyq_no_sensors.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
 		<param name="hyq/robot_model" command="$(find xacro)/xacro.py --inorder '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
 	</group>
-
 </launch>
+
