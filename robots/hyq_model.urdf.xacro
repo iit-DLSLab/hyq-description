@@ -36,7 +36,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		reflect_hip="1"
 		reflect_upper="1"
 		reflect_front="1"
-		load_force_sensors="false">
+		load_force_sensors="false"
+		stl="false">
 		<origin xyz="${d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
@@ -47,7 +48,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		reflect_hip="-1"
 		reflect_upper="-1"
 		reflect_front="1"
-		load_force_sensors="false">
+		load_force_sensors="false"
+		stl="false">
 		<origin xyz="${d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
@@ -58,7 +60,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		reflect_hip="-1"
 		reflect_upper="1"
 		reflect_front="-1"
-		load_force_sensors="false">
+		load_force_sensors="false"
+		stl="false">
 		<origin xyz="${-d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
@@ -69,7 +72,8 @@ is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 		reflect_hip="1"
 		reflect_upper="-1"
 		reflect_front="-1"
-		load_force_sensors="false">
+		load_force_sensors="false"
+		stl="false">
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 

@@ -10,7 +10,7 @@
 
 	<!-- ================================== Leg ================================== -->
 	<!-- The xacro macro xacro:hyq_leg contains: hip assembly, upper and lower leg -->
-	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front load_force_sensors">
+	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front load_force_sensors stl">
 		<!-- Joints -->
 		<!-- Hip assembly joint -->
 		<joint name="${name}_haa_joint" type="revolute">
@@ -73,14 +73,24 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/hipassembly.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 				<material name="grey"/>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/hipassembly.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 			</collision>
 		</link>
@@ -95,14 +105,24 @@
 			<visual> 
 				<origin xyz="0 0 0" rpy="${(1-reflect_front)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/upperleg.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 				<material name="grey"/>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="${(1-reflect_front)*PI/2} 0 0"/>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/upperleg.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 			</collision>
 		</link>
@@ -116,13 +136,23 @@
 			</inertial>
 			<visual>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/lowerleg.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 				<material name="grey"/>
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/lowerleg.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 			</collision>
 		</link>

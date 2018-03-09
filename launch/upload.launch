@@ -6,16 +6,19 @@
 	<!-- Load the sensors that measured the internal wrench in the joints -->
 	<arg name="internal_wrench" default="false"/>
 
+	<!-- Load the STL mesh files instead of DAE ones -->
+	<arg name="stl" default="false"/>
+
 	<!-- send the robot description file -->
 	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq.yarf"/>
 
 	<!-- send HyQ urdf to param server -->
 	<group if="$(arg sensors)">
-		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
+		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench) stl:=$(arg stl)"/>
 		<param name="hyq/robot_model" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
 	</group>
 	<group unless="$(arg sensors)">
-		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_no_sensors.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
+		<param name="robot_description" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_no_sensors.urdf.xacro' load_force_sensors:=$(arg internal_wrench) stl:=$(arg stl)"/>
 		<param name="hyq/robot_model" command="$(find xacro)/xacro.py '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
 	</group>
 

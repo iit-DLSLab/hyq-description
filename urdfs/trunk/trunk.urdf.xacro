@@ -8,7 +8,7 @@
 
 	<!-- ================================ Trunk ================================ -->
 	<!-- The xacro macro xacro:hyq_base contains: base and trunk -->
-	<xacro:macro name="hyq_trunk" params="name">
+	<xacro:macro name="hyq_trunk" params="name stl">
 		<!-- Floating-base Joint -->
 		<joint name="floating_base" type="fixed">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
@@ -35,13 +35,23 @@
 			</inertial>
 			<visual>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/trunk/trunk.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 				<material name="green"/>
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
+					<xacro:if value="${stl}">
+						<mesh filename="package://hyq_description/meshes/trunk/trunk.stl" scale="1 1 1"/>
+					</xacro:if>
+					<xacro:unless value="${stl}">
+						<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
+					</xacro:unless>
 				</geometry>
 			</collision>
 		</link>
