@@ -75,6 +75,7 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
 				</geometry>
+				<material name="grey"/>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="${(1-reflect_hip)*PI/2} 0 0"/>
@@ -96,6 +97,7 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
 				</geometry>
+				<material name="grey"/>
 			</visual>
 			<collision>
 				<origin xyz="0 0 0" rpy="${(1-reflect_front)*PI/2} 0 0"/>
@@ -116,7 +118,7 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
 				</geometry>
-				<material name="white"/>
+				<material name="grey"/>
 			</visual>
 			<collision>
 				<geometry>

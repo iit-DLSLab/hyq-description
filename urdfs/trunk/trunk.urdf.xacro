@@ -37,6 +37,7 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
 				</geometry>
+				<material name="green"/>
 			</visual>
 			<collision>
 				<geometry>

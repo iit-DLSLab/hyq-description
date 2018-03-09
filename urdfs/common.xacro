@@ -58,4 +58,16 @@
 	<property name="ixz_lowerleg" value="-0.00001"/>
 	<property name="iyz_lowerleg" value="-0.0"/>
 
+
+    <!-- Materials -->
+    <material name="black">
+      <color rgba="0 0 0 1"/>
+    </material>
+    <material name="grey">
+      <color rgba="0.45 0.45 0.45 1"/>
+    </material>
+    <material name="green">
+      <color rgba="0 0.75 0 1"/>
+    </material>
+
 </robot>
