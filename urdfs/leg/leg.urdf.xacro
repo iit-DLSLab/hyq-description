@@ -10,7 +10,7 @@
 
 	<!-- ================================== Leg ================================== -->
 	<!-- The xacro macro xacro:hyq_leg contains: hip assembly, upper and lower leg -->
-	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front load_force_sensors">
+	<xacro:macro name="hyq_leg" params="name parent *origin reflect_hip reflect_upper reflect_front knee_bent_backward load_force_sensors">
 		<!-- Joints -->
 		<!-- Hip assembly joint -->
 		<joint name="${name}_haa_joint" type="revolute">
@@ -18,42 +18,42 @@
 			<parent link="${parent}"/>
 			<child  link="${name}_hipassembly"/>
 			<axis xyz="0 0 1"/>
-			<limit effort="150.0" velocity="12.0" lower="${-7*PI/18}" upper="${5*PI/36}"/>
+			<limit effort="${haa_limit}" velocity="12.0" lower="${haa_min*PI/180}" upper="${haa_max*PI/180}" />
 			<dynamics damping="0.1" friction="0" />
-			<safety_controller k_position="100" k_velocity="100"
-							   soft_lower_limit="${-7*PI/18}" soft_upper_limit="${5*PI/36}" />
+			<safety_controller k_position="50" k_velocity="10"
+							   soft_lower_limit="${haa_min*PI/180}" soft_upper_limit="${haa_max*PI/180}" />
 		</joint>
 		<!-- Upper leg joint -->
 		<joint name="${name}_hfe_joint" type="revolute">
-			<origin xyz="${d_p0p1} 0 0" rpy="${reflect_upper*PI/2} 0 0"/>
+			<origin xyz="${hipassembly_length} 0 0" rpy="${reflect_upper*PI/2} 0 0"/>
 			<parent link="${name}_hipassembly"/>
 			<child  link="${name}_upperleg"/>
 			<axis xyz="0 0 1"/>
-			<limit effort="150.0" velocity="12.0"
-				   lower="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36}"
-				   upper="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36}"/>
+			<limit effort="${hfe_limit}" velocity="12.0"
+                  lower="${(1-knee_bent_backward)*(hfe_min)*PI/180 + (knee_bent_backward)*(-hfe_max)*PI/180}"
+                  upper="${(1-knee_bent_backward)*(hfe_max)*PI/180 + (knee_bent_backward)*(-hfe_min)*PI/180}"/>
 			<dynamics damping="0.1" friction="0" />
-			<safety_controller k_position="100" k_velocity="100"
-							   soft_lower_limit="${-(1+reflect_front)*5*PI/36-(1-reflect_front)*7*PI/36}"
-							   soft_upper_limit="${(1-reflect_front)*5*PI/36+(1+reflect_front)*7*PI/36}" />
+			<safety_controller k_position="50" k_velocity="10"
+                  soft_lower_limit="${(1-knee_bent_backward)*(hfe_min)*PI/180 + (knee_bent_backward)*(-hfe_max)*PI/180}"
+                  soft_upper_limit="${(1-knee_bent_backward)*(hfe_max)*PI/180 + (knee_bent_backward)*(-hfe_min)*PI/180}"/>
 		</joint>
 		<!-- Lower leg joint -->
 		<joint name="${name}_kfe_joint" type="revolute">
-			<origin xyz="${d_p1p2} 0 0" rpy="0 0 0"/>
+			<origin xyz="${upperleg_length} 0 0" rpy="0 0 0"/>
 			<parent link="${name}_upperleg"/>
 			<child  link="${name}_lowerleg"/>
 			<axis xyz="0 0 1"/>
-			<limit effort="150.0" velocity="12.0"
-				   lower="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18}"
-				   upper="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18}"/>
+			<limit effort="${kfe_limit}" velocity="12.0"
+                  lower="${(1-knee_bent_backward)*(kfe_min)*PI/180 + (knee_bent_backward)*(-kfe_max)*PI/180}"
+                  upper="${(1-knee_bent_backward)*(kfe_max)*PI/180 + (knee_bent_backward)*(-kfe_min)*PI/180}"/>
 			<dynamics damping="0.1" friction="0" />
-			<safety_controller k_position="100" k_velocity="100"
-							   soft_lower_limit="${-(1+reflect_front)*7*PI/18+(1-reflect_front)*PI/18}"
-							   soft_upper_limit="${(1-reflect_front)*7*PI/18-(1+reflect_front)*PI/18}" />
+			<safety_controller k_position="50" k_velocity="10"
+                  soft_lower_limit="${(1-knee_bent_backward)*(kfe_min)*PI/180 + (knee_bent_backward)*(-kfe_max)*PI/180}"
+                  soft_upper_limit="${(1-knee_bent_backward)*(kfe_max)*PI/180 + (knee_bent_backward)*(-kfe_min)*PI/180}"/>
 		<!-- Foot joint -->
 		</joint>
 		<joint name="${name}_foot_joint" type="fixed">
-			<origin xyz="${d_p2p3} 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
+			<origin xyz="${lowerleg_length} 0 0" rpy="${PI/2} 0 ${-PI/2}"/>
 			<parent link="${name}_lowerleg"/>
 			<child  link="${name}_foot"/>
 		</joint>
@@ -119,8 +119,9 @@
 				<material name="white"/>
 			</visual>
 			<collision>
-				<geometry>
-					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+			    <origin xyz="${lowerleg_length/2.0} 0 0" rpy="0 ${-PI/2}  0"/>
+				<geometry>				    
+					<cylinder length="${lowerleg_length}"  radius="0.02"/>
 				</geometry>
 			</collision>
 		</link>

@@ -4,6 +4,19 @@
 
 	<xacro:property name="PI" value="3.1415926535897931"/>
 
+    <!-- kin limits (sign ref is RH leg)-->
+    <xacro:property name="haa_max" value="25"/> 
+    <xacro:property name="haa_min" value="-70"/>
+    <xacro:property name="hfe_max" value="50"/> 
+    <xacro:property name="hfe_min" value="-70"/>
+    <xacro:property name="kfe_max" value="140"/>
+    <xacro:property name="kfe_min" value="20"/> 
+
+    <!-- torque limits 120-->
+    <xacro:property name="haa_limit" value="150"/>   
+    <xacro:property name="hfe_limit" value="150"/>   
+    <xacro:property name="kfe_limit" value="150"/> 
+
 	<!-- standard distances -->
 	<xacro:property name="d_lr" value="0.414"/>
 	<xacro:property name="d_fh" value="0.747"/>
