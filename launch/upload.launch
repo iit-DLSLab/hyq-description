@@ -6,11 +6,8 @@
 	<arg name="internal_wrench" default="false"/>
 
 	<!-- send the robot description file -->
-	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq.yarf"/>
-
-	<!-- this is to force the robcogen ordering convention -->
-	<param name="/hyq/robot_config_ordered" value="$(find hyq_description)/yarf/hyq_ordered.yarf"/>
-
+	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
+	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq_ordered.yarf"/>
 
 	<!-- send HyQ urdf to param server -->
 	<group if="$(arg sensors)">
@@ -19,9 +16,8 @@
 	<group unless="$(arg sensors)">
 		<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_no_sensors.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
 	</group>
-	<!-- this is to force the robcogen ordering convention -->
-	<param name="hyq/robot_model_ordered" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model_ordered.urdf.xacro'"/>
-	<!-- this is loaded by the joint state publisher controller (a fake controller which publishes joint data -->
-	<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model.urdf.xacro'"/>
+	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
+	<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model_ordered.urdf.xacro'"/>
+
 </launch>
 
