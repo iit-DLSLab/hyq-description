@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="calibration_plate_xacro" params="*origin">
+
+	<joint name="lf_foot_calibration_plate_joint" type="fixed">
+		<xacro:insert_block name="origin"/>
+		<parent link="lf_foot"/>
+		<child link="calibration_plate_head"/>
+	</joint>
+
+	<link name="calibration_plate_head">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.01" />
+			<inertia iyy="0.0" ixy="0.0" iyz="0.0" ixx="0.0" ixz="0.0" izz="0.0" />
+		</inertial>
+		<visual>
+			<origin xyz="0.02 0.0 -0.135" rpy="1.57 -1.57 0" />
+			<geometry>
+				<mesh filename="package://hyq_description/meshes/calibration_plate.dae" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="">
+				<color rgba="0.9098 0.44314 0.031373 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="1.57 -1.57 0" />
+			<geometry>
+				<mesh filename="package://hyq_description/meshes/calibration_plate.dae" />
+			</geometry>
+		</collision>
+	</link>
+	</xacro:macro>
+
+</robot>
