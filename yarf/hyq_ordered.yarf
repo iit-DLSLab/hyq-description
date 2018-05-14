@@ -1,0 +1,20 @@
+robot:
+  # Names of the feet
+  feet: [01_lf_foot, 02_rf_foot, 03_lh_foot, 04_rh_foot]
+  default_pose:
+    # LF foot
+    01_lf_haa_joint: -0.2
+    01_lf_hfe_joint: 0.75
+    01_lf_kfe_joint: -1.5
+    # RF foot
+    02_rf_haa_joint: -0.2
+    02_rf_hfe_joint: 0.75
+    02_rf_kfe_joint: -1.5
+    # LH foot
+    03_lh_haa_joint: -0.2
+    03_lh_hfe_joint: -0.75
+    03_lh_kfe_joint: 1.5
+    # RH foot
+    04_rh_haa_joint: -0.2
+    04_rh_hfe_joint: -0.75
+    04_rh_kfe_joint: 1.5
