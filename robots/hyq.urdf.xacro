@@ -21,7 +21,7 @@
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
 
 	<!-- HyQ leg mount (for camera calibration) -->
-	<xacro:include filename="$(find hyq_description)/urdfs/calibration_plate.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/leg/calibration_plate.urdf.xacro"/>
 
         <!-- we may mount the hokuyo again in the future -->
 	<!--xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/-->
@@ -126,9 +126,6 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
             <origin xyz="0.475 0.0 -0.08823" rpy="${PI} 0.0 0"/>
 	</xacro:hokuyo_laser-->
 
-    	<xacro:calibration_plate_xacro>              
-            <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-        </xacro:calibration_plate_xacro>
 
         <xacro:multisense_sl parent="trunk" prefix="multisense">
 	    <!-- <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/> -->
@@ -141,6 +138,9 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	       <origin xyz="0.62 0.0 0.024" rpy="0.0 1.0 0.0"/>
 	</xacro:asus_xtion_camera>
 
+    	<xacro:calibration_plate_xacro parent="lf_lowerleg">              
+            <origin xyz="0.393 -0.023 -0.1" rpy="${PI/2} 0 0"/>
+        </xacro:calibration_plate_xacro>
 
        
 </robot>
