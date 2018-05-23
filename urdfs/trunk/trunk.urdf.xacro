@@ -34,11 +34,15 @@
 						 ixy="${ixy_trunk}" ixz="${ixz_trunk}" iyz="${iyz_trunk}"/>
 			</inertial>
 			<visual>
+				<!-- value manually found with RVIZ to correctly align the trunk to the hip assemblies -->
+				<origin  xyz="0 0 -0.0082" />
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
 				</geometry>
 			</visual>
 			<collision>
+				<!-- value manually found with RVIZ to correctly align the trunk to the hip assemblies -->
+				<origin  xyz="0 0 -0.0082" />
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/trunk/trunk.dae" scale="1 1 1"/>
 				</geometry>
