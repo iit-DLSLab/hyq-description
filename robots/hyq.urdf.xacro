@@ -45,9 +45,9 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		<!--origin xyz="-0.443 -0.191 -0.276" rpy="0 0 0"/-->
 	</xacro:hyq_trunk>
 
-    <!-- <xacro:cart   parent="trunk">
+        <xacro:cart   parent="trunk">
         <origin xyz="-0.6 0 0" rpy="0 0 0"/>
-    </xacro:cart>-->
+        </xacro:cart>
 
 	<!-- LF leg -->
 	<xacro:hyq_leg
