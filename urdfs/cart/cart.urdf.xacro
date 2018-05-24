@@ -2,9 +2,11 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-
+<xacro:include filename="$(find hyq_description)/urdfs/cart/cart.transmission.xacro"/>
 
 <xacro:macro name="cart" params="parent *origin">
+
+
 
 <material name="blue">
    <color rgba="0 0 0.8 1"/>
@@ -164,6 +166,7 @@
         </gazebo>     
 
 
+<xacro:cart_transmission name="cart"/>
 
 
 </xacro:macro>

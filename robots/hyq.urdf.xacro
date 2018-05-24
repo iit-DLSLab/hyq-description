@@ -16,7 +16,7 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
 	
 	<!-- cart -->
-    <xacro:include filename="$(find hyq_description)/urdfs/cart/cart.urdf.xacro"/>
+        <xacro:include filename="$(find hyq_description)/urdfs/cart/cart.urdf.xacro"/>
 
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
