@@ -98,13 +98,19 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	</xacro:hyq_leg>
 
 	<!-- IMU trunk -->
-	<xacro:microstrain_3dmgx425_imu
+        <xacro:microstrain_3dmgx425_imu
 		parent="trunk"
 		imu_name="trunk_imu"
 		imu_topic="trunk_imu_1/data"
 		update_rate="250">
-		<origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/>
-	</xacro:microstrain_3dmgx425_imu>
+		<!-- old URDF -->
+		<!--origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/ -->	
+		<!-- new URDF with ideal values from CAD -->
+                <!--origin xyz="0.28525 0.000 0.0967678" rpy="0 0 0"/-->
+
+		<!-- new URDF, REAL values manually measured from the edge of the robot -->
+                <origin xyz="0.27025 0.000 0.0967678" rpy="0 0 0"/>
+        </xacro:microstrain_3dmgx425_imu>
 
         <!-- IMU trunk -->
         <!-- TODO We have to substitute the microstrain IMU with this one. Note that the imu_name has to be
@@ -114,7 +120,16 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
                 imu_name="kvh_imu"
                 imu_topic="kvh_imu/data"
                 update_rate="250">
-            <origin xyz="0.352845 0.0029 0.0503678" rpy="0 ${-PI} 0"/>
+	    <!-- OLD URDF with manually created cylinder -->	
+            <!--origin xyz="0.352845 0.0029 0.0503678" rpy="0 ${-PI} 0"/-->
+
+            <!-- NEW URDF with mesh, ideal values from CAD -->
+            <!--origin xyz="0.36347 0.00 0.0887678" rpy="0 ${PI} ${PI/4}"/-->
+
+	    	<!-- NEW URDF with mesh, REAL values measured from the edge of the robot -->
+		<!-- x = (500 - 153 - 61.77/2) / 1000	-->
+		<!-- y = from CAD -->
+		<origin xyz="0.316115 0.00 0.0887678" rpy="0 ${PI} ${PI/4}"/>
         </xacro:kvh_1775_imu>
 
 	<!-- Hokuyo -->
@@ -130,14 +145,14 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	</xacro:hokuyo_laser-->
 
         <xacro:multisense_sl parent="trunk" prefix="multisense">
-	    <!-- <origin xyz="0.741737 0.0191395 0.143229" rpy="-0.0241345 0.446222 -0.0347202"/> -->
-            <origin xyz="0.661 0.00 0.112" rpy="0 0.515 0"/>
+		<!-- taken from head calibration (with vicon) -->
+		<!--origin xyz="0.761 -0.013 0.127" rpy="-0.002799508 0.514994302 -0.013000958" /-->
+		<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
         </xacro:multisense_sl>
 
 	<!-- Asus Xtion Pro -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
-	    <!--<origin xyz="0.722 -0.013 0.039" rpy="0.014 1.0 0.053"/>-->
-	       <origin xyz="0.62 0.0 0.024" rpy="0.0 1.0 0.0"/>
+		<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
 	</xacro:asus_xtion_camera>
 </robot>
 
