@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="cart_transmission" params="name">
+    <xacro:macro name="car_transmission" params="name">
 
 
                 <transmission name="yaw_robot_trans">
@@ -39,6 +39,27 @@
 
 
 
+                <transmission name="pitch_cart_trans">
+                        <type>transmission_interface/SimpleTransmission</type>
+                        <joint name="pitch_cart_joint">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                        </joint>
+                        <actuator name="pitch_cart_motor">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                                <mechanicalReduction>1</mechanicalReduction>
+                        </actuator>
+                </transmission>
+
+                <transmission name="yaw_cart_trans">
+                        <type>transmission_interface/SimpleTransmission</type>
+                        <joint name="yaw_cart_joint">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                        </joint>
+                        <actuator name="yaw_cart_motor">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                                <mechanicalReduction>1</mechanicalReduction>
+                        </actuator>
+                </transmission>
 
                 <transmission name="right_wheel_trans">
                         <type>transmission_interface/SimpleTransmission</type>
@@ -61,5 +82,28 @@
                                 <mechanicalReduction>1</mechanicalReduction>
                         </actuator>
                 </transmission>
+
+                <transmission name="right_bwheel_trans">
+                        <type>transmission_interface/SimpleTransmission</type>
+                        <joint name="right_bwheel_joint">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                        </joint>
+                        <actuator name="right_bwheel_motor">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                                <mechanicalReduction>1</mechanicalReduction>
+                        </actuator>
+                </transmission>
+
+                <transmission name="left_bwheel_trans">
+                        <type>transmission_interface/SimpleTransmission</type>
+                        <joint name="left_bwheel_joint">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                        </joint>
+                        <actuator name="left_bwheel_motor">
+                                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                                <mechanicalReduction>1</mechanicalReduction>
+                        </actuator>
+                </transmission>
+
 	</xacro:macro>
 </robot>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
+<xacro:include filename="$(find hyq_description)/urdfs/cart/car.transmission.xacro"/>
 
-<xacro:macro name="car" params="parent *origin">
+
+<xacro:macro name="ext_car" params="parent *origin">
 
 <material name="blue">
    <color rgba="0 0 0.8 1"/>
@@ -139,7 +141,7 @@
       
             <inertial>
            <origin xyz="-0.5 0 0.0"/>
-            <mass value="200"/>
+            <mass value="400"/>
             <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
           </inertial>       
        <visual>
@@ -289,8 +291,8 @@
 
 
 <joint name="right_bwheel_joint" type="continuous">
-    <parent link="cart"/>
-    <child link="right_bwheel"/>
+    <parent link="ext_cart"/>
+    <child link="ext_right_bwheel"/>
     <origin rpy="-1.57 0 0" xyz=" -1 -0.5 -0.25"/>
      <axis xyz="0 0 1 "/>
   </joint>
@@ -328,6 +330,7 @@
             <minDepth>0.00</minDepth>
        </gazebo>     
 
+<xacro:car_transmission name="ext_car"/>
 
 </xacro:macro>
 
