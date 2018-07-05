@@ -19,13 +19,13 @@
       <joint name="yaw_robot_joint" type="revolute">
             <insert_block name="origin"/>
             <parent link="${parent}"/>
-            <child link="fake_link1"/>
+            <child link="ext_fake_link1"/>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <axis xyz="0 0 1 "/>
             <limit effort="150" velocity="12.0" lower="${-70*PI/180}" upper="${70*PI/180}"/>
       </joint>
       
-  	     <link name="fake_link1">
+             <link name="ext_fake_link1">
             <inertial>
             <mass value="1"/>
             <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4"/>
@@ -33,15 +33,15 @@
         </link>  
          
       <joint name="pitch_robot_joint" type="revolute">
-            <parent link="fake_link1"/>
-            <child link="fake_link2"/>
+            <parent link="ext_fake_link1"/>
+            <child link="ext_fake_link2"/>
             <axis xyz="0 0 1 "/>
             <origin xyz="0 0 0" rpy="-1.57 0 0"/>
              <limit effort="150" velocity="12.0" lower="${-70*PI/180}" upper="${70*PI/180}" />
       </joint>                 
       
       
-        <link name="fake_link2">
+        <link name="ext_fake_link2">
             <inertial>
             <mass value="1"/>
             <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4"/>
@@ -50,14 +50,14 @@
 
 
    		<joint name="roll_robot_joint" type="revolute">
-            <parent link="fake_link2"/>
-            <child link="link1"/>
+            <parent link="ext_fake_link2"/>
+            <child link="ext_link1"/>
             <axis xyz="0 0 1 "/>
             <origin xyz="0 0 0" rpy=" 0 -1.57 0"/>
              <limit effort="150" velocity="12.0" lower="${-70*PI/180}" upper="${70*PI/180}" />
       </joint>     
 
-       <link name="link1">
+       <link name="ext_link1">
             <inertial>
             <mass value="1"/>
             <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4"/>
@@ -75,14 +75,14 @@
       
                
       <joint name="pitch_cart_joint" type="revolute">
-            <parent link="link1"/>
-            <child link="fake_link3"/>
+            <parent link="ext_link1"/>
+            <child link="ext_fake_link3"/>
             <axis xyz="0 0 1 "/>
             <origin xyz="0 0 1.0" rpy="0 1.57 0"/>
              <limit effort="150" velocity="12.0" lower="${-70*PI/180}" upper="${70*PI/180}"/>
       </joint>   
 
-            <link name="fake_link3">
+            <link name="ext_fake_link3">
             <inertial>
             <mass value="1"/>
             <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4"/>
@@ -96,14 +96,14 @@
   
   
         <joint name="yaw_cart_joint" type="revolute">
-            <parent link="fake_link3"/>
-            <child link="fake_link4"/>
+            <parent link="ext_fake_link3"/>
+            <child link="ext_fake_link4"/>
             <axis xyz="0 0 1 "/>
             <origin xyz="0 0 0.0" rpy="1.57 0  0"/>
              <limit effort="150" velocity="12.0" lower="${-70*PI/180}" upper="${70*PI/180}"/>
        </joint>   
   
-          <link name="fake_link4">
+          <link name="ext_fake_link4">
             <inertial>
             <mass value="1"/>
             <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4"/>
@@ -128,14 +128,14 @@
         
        
                  <joint name="cart_attach" type="fixed">
-            <parent link="fake_link4"/>
-            <child link="cart"/>
+            <parent link="ext_fake_link4"/>
+            <child link="ext_cart"/>
             <origin rpy="0.0 0 0 " xyz="0 0 0.0 "/>        
       </joint>          
          
 
      
-       <link name="cart">
+       <link name="ext_cart">
       
             <inertial>
            <origin xyz="-0.5 0 0.0"/>
@@ -153,7 +153,7 @@
      
      </link>
      
-        <gazebo reference="cart">
+        <gazebo reference="ext_cart">
             <material>Gazebo/Black</material>
         </gazebo>  
      
@@ -165,13 +165,13 @@
 
 
      <joint name="right_wheel_joint" type="continuous">
-        <parent link="cart"/>
-        <child link="right_wheel"/>
+        <parent link="ext_cart"/>
+        <child link="ext_right_wheel"/>
         <origin rpy="1.57 0 0" xyz=" 0 -0.5 -0.25"/>
          <axis xyz="0 0 1 "/>
       </joint>
      
-     <link name="right_wheel">
+     <link name="ext_right_wheel">
                 <inertial>
             <mass value="2"/>
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
@@ -192,7 +192,7 @@
     </collision>
   </link>
   
-          <gazebo reference="right_wheel">
+          <gazebo reference="ext_right_wheel">
             <material>Gazebo/Blue</material>
             <!-- kp and kd for rubber -->        
             <kp>1000000.0</kp>        
@@ -205,14 +205,14 @@
         </gazebo>  
   
   <joint name="left_wheel_joint" type="continuous">
-    <parent link="cart"/>
-    <child link="left_wheel"/>
+    <parent link="ext_cart"/>
+    <child link="ext_left_wheel"/>
     <origin rpy="-1.57 0 0" xyz=" 0 0.5 -0.25"/>
      <axis xyz="0 0 1 "/>
   </joint>
      
 
-  <link name="left_wheel">
+  <link name="ext_left_wheel">
              <inertial>
             <mass value="2"/>
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
@@ -232,7 +232,7 @@
     </collision>
   </link>
         
-        <gazebo reference="left_wheel">
+        <gazebo reference="ext_left_wheel">
             <material>Gazebo/Blue</material>
             <!-- kp and kd for rubber -->        
             <kp>1000000.0</kp>        
@@ -247,14 +247,14 @@
 
 
 <joint name="left_bwheel_joint" type="continuous">
-    <parent link="cart"/>
-    <child link="left_bwheel"/>
+    <parent link="ext_cart"/>
+    <child link="ext_left_bwheel"/>
     <origin rpy="-1.57 0 0" xyz=" -1 0.5 -0.25"/>
      <axis xyz="0 0 1 "/>
   </joint>
      
 
-  <link name="left_bwheel">
+  <link name="ext_left_bwheel">
              <inertial>
             <mass value="2"/>
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
@@ -274,7 +274,7 @@
     </collision>
   </link>
         
-        <gazebo reference="left_bwheel">
+        <gazebo reference="ext_left_bwheel">
             <material>Gazebo/Red</material>
             <!-- kp and kd for rubber -->        
             <kp>1000000.0</kp>        
@@ -296,7 +296,7 @@
   </joint>
      
 
-  <link name="right_bwheel">
+  <link name="ext_right_bwheel">
              <inertial>
             <mass value="2"/>
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
@@ -316,7 +316,7 @@
     </collision>
   </link>
         
-        <gazebo reference="right_bwheel">
+        <gazebo reference="ext_right_bwheel">
             <material>Gazebo/Red</material>
             <!-- kp and kd for rubber -->        
             <kp>1000000.0</kp>        
