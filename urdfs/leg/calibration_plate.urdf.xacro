@@ -6,10 +6,10 @@
 	<joint name="lf_foot_calibration_plate_joint" type="fixed">
 		<xacro:insert_block name="origin"/>
 		<parent link="${parent}"/>
-		<child link="calibration_plate_head"/>
+		<child link="ext_calibration_plate_head"/>
 	</joint>
 
-	<link name="calibration_plate_head">
+	<link name="ext_calibration_plate_head">
 		<inertial>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<mass value="0.01" />
