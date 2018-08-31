@@ -22,7 +22,7 @@
 	<xacro:property name="d_fh" value="0.747"/>
 	<xacro:property name="hipassembly_length" value="0.08"/>
 	<xacro:property name="upperleg_length" value="0.35"/>
-	<xacro:property name="lowerleg_length" value="0.346"/>
+        <xacro:property name="lowerleg_length" value="0.341"/>
 
 	<!-- Inertial values -->
 	<!-- Trunk with hydraulic system -->
