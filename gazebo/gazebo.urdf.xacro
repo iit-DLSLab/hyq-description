@@ -5,7 +5,7 @@
 	<gazebo>
 		<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hyq</robotNamespace>
-			<robotSimType>dls_gazebo_interface/DLSHWSim</robotSimType>
+			<robotSimType>dls_gazebo_interface/DlsRobotHwSim</robotSimType>
 			<controlPeriod>0.004</controlPeriod>
 		</plugin>
 
