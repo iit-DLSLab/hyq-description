@@ -170,7 +170,9 @@
         <parent link="ext_cart"/>
         <child link="ext_right_wheel"/>
         <origin rpy="1.57 0 0" xyz=" 0 -0.5 -0.25"/>
-         <axis xyz="0 0 1 "/>
+
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.1" friction="0.0"/>
       </joint>
      
      <link name="ext_right_wheel">
@@ -210,7 +212,8 @@
     <parent link="ext_cart"/>
     <child link="ext_left_wheel"/>
     <origin rpy="-1.57 0 0" xyz=" 0 0.5 -0.25"/>
-     <axis xyz="0 0 1 "/>
+    <axis xyz="0 0 1"/>
+    <dynamics damping="0.1" friction="0.0"/>
   </joint>
      
 
@@ -252,7 +255,10 @@
     <parent link="ext_cart"/>
     <child link="ext_left_bwheel"/>
     <origin rpy="-1.57 0 0" xyz=" -1 0.5 -0.25"/>
-     <axis xyz="0 0 1 "/>
+    <axis xyz="0 0 1"/>
+    <dynamics damping="0.1" friction="0.0"/>
+
+
   </joint>
      
 
@@ -294,8 +300,10 @@
     <parent link="ext_cart"/>
     <child link="ext_right_bwheel"/>
     <origin rpy="-1.57 0 0" xyz=" -1 -0.5 -0.25"/>
-     <axis xyz="0 0 1 "/>
-  </joint>
+    <axis xyz="0 0 1"/>
+    <dynamics damping="1" friction="0.0"/>
+
+</joint>
      
 
   <link name="ext_right_bwheel">
