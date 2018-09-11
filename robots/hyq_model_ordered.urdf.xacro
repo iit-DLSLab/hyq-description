@@ -1,25 +1,21 @@
 <?xml version="1.0"?>
 
+<!-- IMPORTANT: this file is not the official URDF. It is required to inizialize DWL data structures 
+ It differs from the official URDF because it has a floating base, it has no sensors and it has  
+ leg names with forced names to have our conventional ordering: LF RF LH RH -->
 <robot name="hyq" xmlns:xacro="http://ros.org/wiki/xacro">
-
-	<!-- This argument allows us to load joint sensors that measure the internal wrenches -->
-	<xacro:arg name="load_force_sensors" default="false"/>
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
-	<xacro:include filename="$(find sensors_description)/urdfs/common.xacro"/>
-	
 	<!-- HyQ trunk -->
-	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
+	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk_model.urdf.xacro"/>
 
 	<!-- HyQ legs -->
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
 
-	<!-- HyQ sensors -->
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
-
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
+        <xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
@@ -38,50 +34,59 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	</xacro:hyq_trunk>
 
 	<!-- LF leg -->
+<!-- Forcing the ordering LF RF LH RH. The trick works even for the joint states, by chance, 
+because HAA HFE and KFE are already in alphabetical order -->
 	<xacro:hyq_leg
-		name="lf"
+		name="01_lf"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="1"
 		reflect_front="1"
 		knee_bent_backward="1"
-		load_force_sensors="$(arg load_force_sensors)">
+		load_force_sensors="false">
 		<origin xyz="${d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
 	<!-- RF leg -->
+<!-- Forcing the ordering LF RF LH RH. The trick works even for the joint states, by chance, 
+because HAA HFE and KFE are already in alphabetical order -->
+
 	<xacro:hyq_leg
-		name="rf"
+		name="02_rf"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="-1"
 		reflect_front="1"
-		knee_bent_backward ="1"
-		load_force_sensors="$(arg load_force_sensors)">
+		knee_bent_backward="1"
+		load_force_sensors="false">
 		<origin xyz="${d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
 	<!-- LH leg -->
+<!-- Forcing the ordering LF RF LH RH. The trick works even for the joint states, by chance, 
+because HAA HFE and KFE are already in alphabetical order -->
 	<xacro:hyq_leg
-		name="lh"
+		name="03_lh"
 		parent="trunk"
 		reflect_hip="-1"
 		reflect_upper="1"
 		reflect_front="-1"
 		knee_bent_backward="0"
-		load_force_sensors="$(arg load_force_sensors)">
+		load_force_sensors="false">
 		<origin xyz="${-d_fh/2} ${d_lr/2} 0" rpy="0 ${PI/2} ${PI}"/>
 	</xacro:hyq_leg>
 
 	<!-- RH leg -->
+<!-- Forcing the ordering LF RF LH RH. The trick works even for the joint states, by chance, 
+because HAA HFE and KFE are already in alphabetical order -->
 	<xacro:hyq_leg
-		name="rh"
+		name="04_rh"
 		parent="trunk"
 		reflect_hip="1"
 		reflect_upper="-1"
 		reflect_front="-1"
 		knee_bent_backward="0"
-		load_force_sensors="$(arg load_force_sensors)">
+		load_force_sensors="false">
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
