@@ -22,6 +22,7 @@
         <!-- we may mount the hokuyo again in the future -->
 	<!-- xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/> -->
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+	
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/realsense.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
@@ -144,8 +145,12 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
         </xacro:multisense_sl>
 
-        <xacro:sensor_r430 parent="trunk" prefix="realsense">
-		<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
+        <xacro:sensor_r430 parent="trunk" prefix="front">
+		<origin xyz="0.775883 0.000304069 0.147268" rpy="0 0.5 0"/> 
+        </xacro:sensor_r430>
+
+        <xacro:sensor_r430 parent="trunk" prefix="back">
+		<origin xyz="-0.775883 0.000304069 0.147268" rpy="0 0.5 3.14159"/> 
         </xacro:sensor_r430>
 
 
