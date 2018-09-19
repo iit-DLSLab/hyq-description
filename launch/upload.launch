@@ -1,16 +1,19 @@
 <?xml version="1.0" ?>
 <launch>
-	<arg name="sensors" default="true"/>
 
 	<!-- Load the sensors that measured the internal wrench in the joints -->
 	<arg name="internal_wrench" default="false"/>
+        <arg name="asus" default="false" />
+        <arg name="multisense" default="false" />
+        <arg name="realsense" default="false" />
+        <arg name="multirealsense" default="false" />
 
 	<!-- send the robot description file -->
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
 	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq_ordered.yarf"/>
 
 	<!-- send HyQ urdf to param server -->
-	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench) multisense:=$(arg multisense) asus:=$(arg asus) realsense:=$(arg realsense) multirealsense:=$(arg multirealsense)"/>
 
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
 	<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model_ordered.urdf.xacro'"/>

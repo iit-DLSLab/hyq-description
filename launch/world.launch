@@ -2,7 +2,9 @@
 <launch>
 
 	<arg name="sensors" default="true"/>
-
+	<arg name="multisense" default="false" />
+	<arg name="realsense" default="false" />
+	<arg name="multirealsense" default="false" />
 	<!-- Load the sensors that measured the internal wrench in the joints -->
 	<arg name="internal_wrench" default="false"/>
 
@@ -42,7 +44,6 @@
 
 	<!-- Send hyq urdf to parameter server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload.launch">
-		<arg name="sensors" value="$(arg sensors)" />
 		<arg name="internal_wrench" value="$(arg internal_wrench)" />
 	</include>
 
@@ -53,17 +54,17 @@
 	<node name="goto0" pkg="hyq_description" type="go0" args="10.0"  />
 
 	<!-- Start the stereo processing for the simulated multisense -->
-	<group if="$(arg sensors)">
-
+	<group if="$(arg multisense)">
 		<node ns="multisense/camera" name="stereo_proc" pkg="stereo_image_proc" type="stereo_image_proc" respawn="false" output="log">
 			<param name="disparity_range" type="int" value="128"/>
 			<param name="approximate_sync" type="bool" value="false"/>
 		</node>
+	</group>
 
-	<include file="$(find hyq_description)/launch/realsense.launch" />
-
-
-		
+	<group if="$(arg realsense)">
+		<include file="$(find hyq_description)/launch/realsense.launch">
+			<arg name="multirealsense" value="$(arg multirealsense)"/>
+		</include>
 	</group>
 
 

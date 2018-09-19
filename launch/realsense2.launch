@@ -19,7 +19,7 @@
     <remap from="image" to="$(arg depReg_imgrect)"/>
   </node>
 
-  <!-- Construct point cloud of the rgb and depth topics -->
+  <!-- Construct point cloud of the depth topic -->
   <node pkg="nodelet" type="nodelet" name="points_xyz" args="load depth_image_proc/point_cloud_xyz standalone_nodelet2 --no-bond">
     <remap from="camera_info" to="$(arg cam_info)"/>
     <remap from="image_rect" to="$(arg depReg_imgrect)"/>

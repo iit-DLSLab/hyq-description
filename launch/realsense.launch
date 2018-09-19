@@ -3,6 +3,8 @@
 
   <param name="use_sim_time" value="true" />
 
+  <arg name="multirealsense" default="false" />
+
   <arg name="cam_info1"		value="/realsense/front/camera/depth/camera_info"	/>
   <arg name="depReg_imgraw1"	value="/realsense/front/camera/depth/image_raw"		/>  <!--Raw depth image-->
   <arg name="depReg_imgrect1"	value="/realsense/front/camera/depth/image_rect"	/>  <!--Raw depth image-->
@@ -13,37 +15,32 @@
   <arg name="depReg_imgrect2"	value="/realsense/back/camera/depth/image_rect"		/>  <!--Raw depth image-->
   <arg name="out_cloud2"	value="/realsense/back/camera/depth/points"		/>
 
-  
   <node pkg="nodelet" type="nodelet" name="standalone_nodelet1" args="manager" output="screen"/>
-  <node pkg="nodelet" type="nodelet" name="standalone_nodelet2" args="manager" output="screen"/>
-
-  <!-- Convert depth from mm (in uint16) to meters -->
   <node pkg="nodelet" type="nodelet" name="convert_metric1" args="load depth_image_proc/convert_metric standalone_nodelet1">
     <remap from="image_raw" to="$(arg depReg_imgraw1)"/>
     <remap from="image" to="$(arg depReg_imgrect1)"/>
   </node>
-
-  <node pkg="nodelet" type="nodelet" name="convert_metric2" args="load depth_image_proc/convert_metric standalone_nodelet2">
-    <remap from="image_raw" to="$(arg depReg_imgraw2)"/>
-    <remap from="image" to="$(arg depReg_imgrect2)"/>
-  </node>
-
-  <!-- Construct point cloud of the rgb and depth topics -->
   <node pkg="nodelet" type="nodelet" name="points_xyz1" args="load depth_image_proc/point_cloud_xyz standalone_nodelet1 --no-bond">
     <remap from="camera_info" to="$(arg cam_info1)"/>
     <remap from="image_rect" to="$(arg depReg_imgrect1)"/>
     <remap from="points" to="$(arg out_cloud1)"/>
   </node>
-
-  <node pkg="nodelet" type="nodelet" name="points_xyz2" args="load depth_image_proc/point_cloud_xyz standalone_nodelet2 --no-bond">
-    <remap from="camera_info" to="$(arg cam_info2)"/>
-    <remap from="image_rect" to="$(arg depReg_imgrect2)"/>
-    <remap from="points" to="$(arg out_cloud2)"/>
-  </node>
-
   <node pkg="tf" type="static_transform_publisher" name="fake_tf1" args="0 0 0 0 0 -0.15 front/camera_depth_optical_frame /realsense/front/camera_depth_optical_frame 10"/>
-  <node pkg="tf" type="static_transform_publisher" name="fake_tf2" args="0 0 0 0 0 -0.15 back/camera_depth_optical_frame /realsense/back/camera_depth_optical_frame 10"/>
 
+
+  <group if="$(arg multirealsense)"> 
+	  <node pkg="nodelet" type="nodelet" name="standalone_nodelet2" args="manager" output="screen"/>
+	  <node pkg="nodelet" type="nodelet" name="convert_metric2" args="load depth_image_proc/convert_metric standalone_nodelet2">
+	    <remap from="image_raw" to="$(arg depReg_imgraw2)"/>
+	    <remap from="image" to="$(arg depReg_imgrect2)"/>
+	  </node>
+	  <node pkg="nodelet" type="nodelet" name="points_xyz2" args="load depth_image_proc/point_cloud_xyz standalone_nodelet2 --no-bond">
+	    <remap from="camera_info" to="$(arg cam_info2)"/>
+	    <remap from="image_rect" to="$(arg depReg_imgrect2)"/>
+	    <remap from="points" to="$(arg out_cloud2)"/>
+	  </node>
+	<node pkg="tf" type="static_transform_publisher" name="fake_tf2" args="0 0 0 0 0 -0.15 back/camera_depth_optical_frame /realsense/back/camera_depth_optical_frame 10"/>
+  </group>
 
 
 

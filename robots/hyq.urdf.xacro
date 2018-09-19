@@ -4,6 +4,12 @@
 
 	<!-- This argument allows us to load joint sensors that measure the internal wrenches -->
 	<xacro:arg name="load_force_sensors" default="false"/>
+	<xacro:arg name="multisense" default="false"/>
+	<xacro:arg name="realsense" default="false"/>
+	<xacro:arg name="asus" default="false"/>
+	<xacro:arg name="multirealsense" default="false"/>
+	<xacro:arg name="hokuyo" default="false"/>
+
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
@@ -18,12 +24,22 @@
 	<!-- HyQ sensors -->
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
         <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
-        <!-- we may mount the hokuyo again in the future -->
-	<!-- xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/> -->
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+
+	<xacro:if value="false"> <!-- "$(arg asus)" -->
+		<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
+	</xacro:if>
+
+	<xacro:if value="false"> <!-- "$(arg hokuyo)" -->
+		<xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/>
+	</xacro:if> -->
+
+	<xacro:if value="false">  <!-- "$(arg multisense)" -->
+		<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+	</xacro:if> 
 	
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/realsense.urdf.xacro"/>
+	<xacro:if value="true">  <!-- "$(arg realsense)" -->
+		<xacro:include filename="$(find sensors_description)/urdfs/sensors/realsense.urdf.xacro"/>
+	</xacro:if>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -127,36 +143,38 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		<origin xyz="0.316115 0.00 0.0887678" rpy="0 ${PI} ${PI/4}"/>
         </xacro:kvh_1775_imu>
 
-	<!-- Hokuyo -->
-	<!--xacro:hokuyo_laser
-		name="laser"
-		parent="trunk"
-		ros_topic="scan" 
-		update_rate="10" 
-		min_angle="-5"
-		max_angle="5"
-		range="4.0">
-            <origin xyz="0.475 0.0 -0.08823" rpy="${PI} 0.0 0"/>
-	</xacro:hokuyo_laser-->
 
-        <xacro:multisense_sl parent="trunk" prefix="multisense">
-		<!-- taken from head calibration (with vicon) -->
-		<!--origin xyz="0.761 -0.013 0.127" rpy="-0.002799508 0.514994302 -0.013000958" /-->
-		<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
-        </xacro:multisense_sl>
+	<xacro:if value="false"> <!-- "$(arg hokuyo)" -->
+		<xacro:hokuyo_laser name="laser" parent="trunk" ros_topic="scan" update_rate="10" min_angle="-5" max_angle="5" range="4.0">
+		    <origin xyz="0.475 0.0 -0.08823" rpy="${PI} 0.0 0"/>
+		</xacro:hokuyo_laser>
+	</xacro:if>
 
-        <xacro:sensor_r430 parent="trunk" prefix="front">
-		<origin xyz="0.775883 0.000304069 0.147268" rpy="0 0.5 0"/> 
-        </xacro:sensor_r430>
+	<xacro:if value="false"> <!-- "$(arg multisense)" -->
+		<xacro:multisense_sl parent="trunk" prefix="multisense">
+			<!-- taken from head calibration (with vicon) -->
+			<!--origin xyz="0.761 -0.013 0.127" rpy="-0.002799508 0.514994302 -0.013000958" /-->
+			<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
+		</xacro:multisense_sl>
+	</xacro:if>
 
-        <xacro:sensor_r430 parent="trunk" prefix="back">
-		<origin xyz="-0.775883 0.000304069 0.147268" rpy="0 0.5 3.14159"/> 
-        </xacro:sensor_r430>
+	<xacro:if value="true"> <!-- "$(arg realsense)" -->
+		<xacro:sensor_r430 parent="trunk" prefix="front">
+			<origin xyz="0.775883 0.000304069 0.147268" rpy="0 0.5 0"/> 
+		</xacro:sensor_r430>
+
+		<xacro:if value="true"> <!-- "$(arg multirealsense)" -->
+			<xacro:sensor_r430 parent="trunk" prefix="back">
+				<origin xyz="-0.775883 0.000304069 0.147268" rpy="0 0.5 3.14159"/> 
+			</xacro:sensor_r430>
+		</xacro:if>
+	</xacro:if>  
 
 
-	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera name="asus" parent="trunk">
-		<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
-	</xacro:asus_xtion_camera>
+	<xacro:if value="false"> <!-- "$(arg asus)" -->
+		<xacro:asus_xtion_camera name="asus" parent="trunk">
+			<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
+		</xacro:asus_xtion_camera>
+	</xacro:if>
 </robot>
 
