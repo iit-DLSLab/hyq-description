@@ -25,7 +25,7 @@
 	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
         <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
 
-	<xacro:if value="false"> <!-- "$(arg asus)" -->
+	<xacro:if value="true"> <!-- "$(arg asus)" -->
 		<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
 	</xacro:if>
 
@@ -171,7 +171,7 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	</xacro:if>  
 
 
-	<xacro:if value="false"> <!-- "$(arg asus)" -->
+	<xacro:if value="true"> <!-- "$(arg asus)" -->
 		<xacro:asus_xtion_camera name="asus" parent="trunk">
 			<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
 		</xacro:asus_xtion_camera>
