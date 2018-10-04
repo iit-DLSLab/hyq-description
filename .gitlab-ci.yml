@@ -3,7 +3,6 @@
 # Within the repository
 #include: "/templates/.amazing-script.yml"
 
-
 stages:
    - preamble
    - build
