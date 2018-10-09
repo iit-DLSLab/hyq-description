@@ -1,18 +1,3 @@
-/*
- * Default parameter values:
- *
- *       mass =  50.24
- *       CoM = (-0.02758,  -0.00023319, 0.03103)
- *       Ix  =  0.97322
- *       Iy  =   5.0487
- *       Iz  = 5.283
- *       Ixy = -0.0067362
- *       Ixz  = 0.1681
- *       Iyz  = -0.0060307
- *
- */
-
-
 Robot HyQ {
 RobotBase trunk floating {
     inertia_params {
