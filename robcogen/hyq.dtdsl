@@ -1,0 +1,155 @@
+Robot HyQ
+
+Frames {
+    fr_trunk
+    , fr_LF_hip
+    , fr_RF_hip
+    , fr_LH_hip
+    , fr_RH_hip
+    , fr_LF_leg
+    , fr_LF_lowerleg
+    , LF_foot
+    , fr_RF_leg
+    , fr_RF_lowerleg
+    , RF_foot
+    , fr_LH_leg
+    , fr_LH_lowerleg
+    , LH_foot
+    , fr_RH_leg
+    , fr_RH_lowerleg
+    , RH_foot
+    , fr_LF_HAA
+    , fr_LF_HFE
+    , fr_LF_KFE
+    , fr_RF_HAA
+    , fr_RF_HFE
+    , fr_RF_KFE
+    , fr_LH_HAA
+    , fr_LH_HFE
+    , fr_LH_KFE
+    , fr_RH_HAA
+    , fr_RH_HFE
+    , fr_RH_KFE
+    , IMU
+    , LF_hipassemblyCOM
+    , RF_hipassemblyCOM
+    , LH_hipassemblyCOM
+    , RH_hipassemblyCOM
+    , LF_upperlegCOM
+    , RF_upperlegCOM
+    , LH_upperlegCOM
+    , RH_upperlegCOM
+    , LF_lowerlegCOM
+    , RF_lowerlegCOM
+    , LH_lowerlegCOM
+    , RH_lowerlegCOM
+    , fr_LF_hipassembly 
+    , fr_RF_hipassembly 
+    , fr_LH_hipassembly 
+    , fr_RH_hipassembly 
+    , fr_LF_upperleg    
+    , fr_RF_upperleg    
+    , fr_LH_upperleg    
+    , fr_RH_upperleg    
+    , fr_LF_lowerleg    
+    , fr_RF_lowerleg    
+    , fr_LH_lowerleg    
+    , fr_RH_lowerleg    
+    , LF_shin
+	, RF_shin
+	, LH_shin	
+	, RH_shin
+
+}
+
+Transforms {
+
+//secondo quel malato di mente di MarcoF target è il frame do origine e base il frame di destinazione della trasformata...
+
+    //for com jacobian computation
+    base=fr_trunk, target=LF_hipassemblyCOM
+    base=fr_trunk, target=RF_hipassemblyCOM
+    base=fr_trunk, target=LH_hipassemblyCOM
+    base=fr_trunk, target=RH_hipassemblyCOM  
+    base=fr_trunk, target=LF_upperlegCOM
+    base=fr_trunk, target=RF_upperlegCOM
+    base=fr_trunk, target=LH_upperlegCOM
+    base=fr_trunk, target=RH_upperlegCOM 
+    base=fr_trunk, target=LF_lowerlegCOM
+    base=fr_trunk, target=RF_lowerlegCOM
+    base=fr_trunk, target=LH_lowerlegCOM
+    base=fr_trunk, target=RH_lowerlegCOM
+
+    //this is for matlab
+    //base=LF_hipassemblyCOM  , target=fr_LF_hipassembly                 
+    //base=RF_hipassemblyCOM  , target=fr_RF_hipassembly                 
+    //base=LH_hipassemblyCOM  , target=fr_LH_hipassembly                
+    //base=RH_hipassemblyCOM  , target=fr_RH_hipassembly                   
+    //base=LF_upperlegCOM     , target=fr_LF_upperleg                
+    //base=RF_upperlegCOM     , target=fr_RF_upperleg                 
+    //base=LH_upperlegCOM     , target=fr_LH_upperleg                 
+    //base=RH_upperlegCOM     , target=fr_RH_upperleg                 
+    //base=LF_lowerlegCOM     , target=fr_LF_lowerleg                
+    //base=RF_lowerlegCOM     , target=fr_RF_lowerleg                  
+    //base=LH_lowerlegCOM     , target=fr_LH_lowerleg                  
+    //base=RH_lowerlegCOM     , target=fr_RH_lowerleg
+
+    // for computeJcdQd             
+    base=LF_foot     , target=fr_LF_lowerleg  
+    base=RF_foot     , target=fr_RF_lowerleg
+    base=LH_foot     , target=fr_LH_lowerleg
+    base=RH_foot     , target=fr_RH_lowerleg           
+    base=fr_trunk, target=LF_foot
+    base=fr_trunk, target=RF_foot
+    base=fr_trunk, target=LH_foot
+    base=fr_trunk, target=RH_foot
+
+    base=fr_LF_lowerleg       , target=LF_foot
+    base=fr_RF_lowerleg     , target=RF_foot
+    base=fr_LH_lowerleg     , target=LH_foot
+    base=fr_RH_lowerleg       , target=RH_foot
+
+    //for external forces in inv dyn
+    base=fr_LF_lowerleg,  target=fr_trunk
+    base=fr_RF_lowerleg,  target=fr_trunk
+    base=fr_LH_lowerleg,  target=fr_trunk
+    base=fr_RH_lowerleg,  target=fr_trunk
+
+    //to map grfforces into foot sensors frames
+    base=LF_foot, target=fr_trunk
+    base=RF_foot, target=fr_trunk
+    base=LH_foot, target=fr_trunk
+    base=RH_foot, target=fr_trunk
+
+    base=fr_trunk, target=LF_shin
+    base=fr_trunk, target=RF_shin
+    base=fr_trunk, target=LH_shin
+    base=fr_trunk, target=RH_shin
+}
+
+Jacobians {
+//for matlab
+  //  base=fr_trunk, target=LF_hipassemblyCOM
+  //  base=fr_trunk, target=RF_hipassemblyCOM
+  //  base=fr_trunk, target=LH_hipassemblyCOM
+  //  base=fr_trunk, target=RH_hipassemblyCOM  
+  //  base=fr_trunk, target=LF_upperlegCOM
+  //  base=fr_trunk, target=RF_upperlegCOM
+  //  base=fr_trunk, target=LH_upperlegCOM
+  //  base=fr_trunk, target=RH_upperlegCOM 
+  //  base=fr_trunk, target=LF_lowerlegCOM
+  //  base=fr_trunk, target=RF_lowerlegCOM
+  //  base=fr_trunk, target=LH_lowerlegCOM
+  //  base=fr_trunk, target=RH_lowerlegCOM
+
+    base=fr_trunk, target=LF_foot
+    base=fr_trunk, target=RF_foot
+    base=fr_trunk, target=LH_foot
+    base=fr_trunk, target=RH_foot
+
+    base=fr_trunk, target=LF_shin
+    base=fr_trunk, target=RF_shin
+    base=fr_trunk, target=LH_shin
+    base=fr_trunk, target=RH_shin
+
+}
