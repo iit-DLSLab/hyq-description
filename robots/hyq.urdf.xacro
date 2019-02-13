@@ -95,7 +95,9 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		parent="trunk"
 		imu_name="trunk_imu"
 		imu_topic="trunk_imu_1/data"
-		update_rate="250">
+                update_rate="250"
+                frame_name="trunk_imu"
+                >
 		<!-- old URDF -->
 		<!--origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/ -->	
 		<!-- new URDF with ideal values from CAD -->
@@ -110,9 +112,12 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
                   trunk_imu because the DLS HW interfaces hardcoded that name -->
     	<xacro:kvh_1775_imu
                 parent="trunk"
-                imu_name="kvh_imu"
-                imu_topic="kvh_imu/data"
-                update_rate="250">
+                imu_name="trunk_imu2"
+                imu_topic="trunk_imu_2/data"
+                update_rate="250"
+                frame_name="trunk_imu2"
+                >
+
 	    <!-- OLD URDF with manually created cylinder -->	
             <!--origin xyz="0.352845 0.0029 0.0503678" rpy="0 ${-PI} 0"/-->
 
@@ -137,11 +142,11 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
             <origin xyz="0.475 0.0 -0.08823" rpy="${PI} 0.0 0"/>
 	</xacro:hokuyo_laser-->
 
-        <xacro:multisense_sl parent="trunk" prefix="multisense">
+        <!-- <xacro:multisense_sl parent="trunk" prefix="multisense"> -->
 		<!-- taken from head calibration (with vicon) -->
 		<!--origin xyz="0.761 -0.013 0.127" rpy="-0.002799508 0.514994302 -0.013000958" /-->
-		<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
-        </xacro:multisense_sl>
+                <!-- <origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/>  -->
+        <!-- </xacro:multisense_sl> -->
 
 	<!-- Asus Xtion Pro -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
