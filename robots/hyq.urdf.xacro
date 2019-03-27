@@ -16,12 +16,14 @@
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
 
 	<!-- HyQ sensors -->
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
-        <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
-        <!-- we may mount the hokuyo again in the future -->
-	<!--xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/-->
-	<xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+        <xacro:if value="$(arg sensors)">
+            <xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
+            <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
+            <xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
+            <!-- we may mount the hokuyo again in the future -->
+            <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/-->
+            <xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+        </xacro:if>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
@@ -90,6 +92,7 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
 
+<xacro:if value="$(arg sensors)">
 	<!-- IMU trunk -->
         <xacro:microstrain_3dmgx425_imu
 		parent="trunk"
@@ -108,6 +111,9 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
         <!-- IMU trunk -->
         <!-- TODO We have to substitute the microstrain IMU with this one. Note that the imu_name has to be
                   trunk_imu because the DLS HW interfaces hardcoded that name -->
+
+
+
     	<xacro:kvh_1775_imu
                 parent="trunk"
                 imu_name="kvh_imu"
@@ -147,5 +153,8 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
 		<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
 	</xacro:asus_xtion_camera>
+
+    </xacro:if>
+
 </robot>
 

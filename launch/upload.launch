@@ -10,7 +10,7 @@
 	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq_ordered.yarf"/>
 
 	<!-- send HyQ urdf to param server -->
-	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro' load_force_sensors:=$(arg internal_wrench)"/>
+        <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro' sensors:=$(arg sensors) load_force_sensors:=$(arg internal_wrench)"/>
 
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
 	<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model_ordered.urdf.xacro'"/>
