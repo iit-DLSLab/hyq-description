@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 
 <robot name="hyq" xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:arg name="task_period" default="0.004"/>
-<xacro:arg name="sensors" default="true"/>
 
+	<xacro:arg name="task_period" default="0.004"/>
+	<xacro:arg name="sensors" default="true"/>
+	<xacro:arg name="arm" default="false"/>
 	<!-- This argument allows us to load joint sensors that measure the internal wrenches -->
 	<xacro:arg name="load_force_sensors" default="false"/>
 
@@ -95,6 +96,24 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		load_force_sensors="$(arg load_force_sensors)">
 		<origin xyz="${-d_fh/2} ${-d_lr/2} 0" rpy="0 ${PI/2} 0"/>
 	</xacro:hyq_leg>
+
+<xacro:if value="$(arg arm)">
+	<joint name="joint_base_robots" type="fixed">
+	    	<parent link="base_link"/>
+	    	<child link="teleop_link0"/>
+   	 	<origin xyz="0.59 0 0" rpy="0 0 0"/>
+    	</joint>
+	<!-- SELECTION OF KINEMATICS CHAINS IS HANDLED INSIDE THE FILES -->
+	<xacro:include filename="$(find teleop_urdf)/urdf/teleop.urdf.xacro" />
+        <xacro:include filename="$(find hyq_description)/urdfs/arm/arm.transmission.xacro"/>
+
+        <xacro:arm_transmission name="joint1"/>
+        <xacro:arm_transmission name="joint2"/>
+        <xacro:arm_transmission name="joint3"/>
+        <xacro:arm_transmission name="joint4"/>
+        <xacro:arm_transmission name="joint5"/>
+
+</xacro:if>
 
 <xacro:if value="$(arg sensors)">
 	<!-- IMU trunk -->
