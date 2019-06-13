@@ -11,8 +11,6 @@
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
 	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq_ordered.yarf"/>
 
-        <!-- send hyq semantic description srdf to param server -->
-        <param name="robot_semantic_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.srdf.xacro'" />
 
         <!-- send hyq urdf to param server -->
         <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro'
@@ -21,7 +19,9 @@
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
 	<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model_ordered.urdf.xacro'"/>
 
+        <!-- send hyq semantic description srdf to param server -->
         <param name="robot_semantic_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.srdf.xacro' arm:=$(arg arm)" />
-	
+
+
 </launch>
 

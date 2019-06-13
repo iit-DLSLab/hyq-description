@@ -71,4 +71,9 @@
 	<xacro:property name="ixz_lowerleg" value="-0.00001"/>
 	<xacro:property name="iyz_lowerleg" value="-0.0"/>
 
+        <!-- arm position-->
+        <xacro:property name="x_arm" value="0.66"/>
+        <xacro:property name="z_arm" value="0.1"/>
+        <xacro:property name="pitch_arm" value="0.17"/>
+
 </robot>

@@ -98,11 +98,11 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 	</xacro:hyq_leg>
 
 <xacro:if value="$(arg arm)">
-	<joint name="joint_base_robots" type="fixed">
-	    	<parent link="base_link"/>
-	    	<child link="teleop_link0"/>
-   	 	<origin xyz="0.59 0 0" rpy="0 0 0"/>
-    	</joint>
+        <joint name="joint_base_robots" type="fixed">
+                <parent link="base_link"/>
+                <child link="teleop_link0"/>
+                <origin xyz="${x_arm} 0 ${z_arm}" rpy="0 ${pitch_arm} 0"/>
+        </joint>
 	<!-- SELECTION OF KINEMATICS CHAINS IS HANDLED INSIDE THE FILES -->
 	<xacro:include filename="$(find teleop_urdf)/urdf/teleop.urdf.xacro" />
         <xacro:include filename="$(find hyq_description)/urdfs/arm/arm.transmission.xacro"/>
