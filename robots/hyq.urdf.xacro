@@ -166,11 +166,7 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
             <origin xyz="0.475 0.0 -0.08823" rpy="${PI} 0.0 0"/>
 	</xacro:hokuyo_laser-->
 
-        <xacro:multisense_sl parent="trunk" prefix="multisense">
-		<!-- taken from head calibration (with vicon) -->
-		<!--origin xyz="0.761 -0.013 0.127" rpy="-0.002799508 0.514994302 -0.013000958" /-->
-		<origin xyz="0.775883 0.000304069 0.147268" rpy="-0.0145379 0.52898 0.0107014"/> 
-        </xacro:multisense_sl>
+
 
 	<!-- Asus Xtion Pro -->
 	<xacro:asus_xtion_camera name="asus" parent="trunk">
