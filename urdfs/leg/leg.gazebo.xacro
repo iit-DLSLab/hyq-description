@@ -68,9 +68,10 @@
                 <contact>
                   <collision>${name}_lowerleg_collision</collision>
                 </contact>
-                <plugin name="${name}_shin_bumper" filename="libgazebo_ros_bumper.so">
-                  <bumperTopicName>/hyq/${name}_shin_bumper</bumperTopicName>
-                  <frameName>base_link</frameName>
+                <!-- the sensor readings in terms of force torques are expressed in the lowerleg frame
+                because gazebo lumps the fake footframe with the real parent link, the normals are in the world frame-->
+                 <plugin name="${name}_shin_bumper" filename="libgazebo_ros_bumper.so">
+                  <bumperTopicName>/hyq/${name}_shin_bumper</bumperTopicName>                  
                 </plugin>
             </sensor>   
 		</gazebo>
@@ -88,10 +89,11 @@
 				<contact>
 					<collision>${name}_lowerleg_fixed_joint_lump__${name}_foot_collision_1</collision>
 				</contact>
+                                <!-- the sensor readings in terms of force torques are expressed in the lowerleg frame
+                                because gazebo lumps the fake footframe with the real parent link, the normals are in the world frame-->
 				<plugin name="${name}_foot_bumper" filename="libgazebo_ros_bumper.so">
-					<bumperTopicName>/hyq/${name}_foot_bumper</bumperTopicName>
-					<frameName>base_link</frameName>
-					<robotNamespace>hyq</robotNamespace>
+					<bumperTopicName>/hyq/${name}_foot_bumper</bumperTopicName>			
+                                        <robotNamespace>hyq</robotNamespace>
 				</plugin>
 			</sensor>
 			<material>Gazebo/Black</material>
