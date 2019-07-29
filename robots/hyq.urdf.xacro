@@ -136,6 +136,9 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
         <!-- IMU trunk -->
         <!-- TODO We have to substitute the microstrain IMU with this one. Note that the imu_name has to be
                   trunk_imu because the DLS HW interfaces hardcoded that name -->
+
+
+
     	<xacro:kvh_1775_imu
                 parent="trunk"
                 imu_name="trunk_imu2"
