@@ -88,7 +88,5 @@ if __name__ == "__main__":
 	except rospy.ServiceException, e:
 		print "unpause physics service call failed: %s"%e
 
-	pub = rospy.Publisher('multisense/set_spindle_speed', Float64, queue_size=10)
 	rospy.init_node('go0', anonymous=True)
 	rospy.sleep(1)
-	pub.publish(2.0)
