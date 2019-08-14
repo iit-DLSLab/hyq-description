@@ -25,10 +25,11 @@
             <xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
             <!-- we may mount the hokuyo again in the future -->
             <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/-->
-            <xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+            <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/-->
+            <xacro:include filename="$(find sensors_description)/urdfs/sensors/d435_camera.urdf.xacro"/>
         </xacro:if>
 	
-	<xacro:include filename="$(find hyq_description)/urdfs/leg/calibration_plate.urdf.xacro"/>
+        <xacro:include filename="$(find hyq_description)/urdfs/leg/new_calibration_plate.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
         <xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro">
@@ -176,15 +177,31 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 
 
 	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera name="asus" parent="trunk">
+        <!--xacro:asus_xtion_camera name="asus" parent="trunk">
 		<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
-	</xacro:asus_xtion_camera>
+        </xacro:asus_xtion_camera-->
+
+        <xacro:d435_camera parent="trunk" prefix="realsense/front">
+            <origin xyz="0.5 0.0 -0.10" rpy="0 ${PI/4} 0"/>
+            <!--origin xyz="0.542717 0.034674  -0.0778795" rpy=" rpy="-0.0594806 0.772105 0.0110605"/-->
+            <!--origin xyz="0.542967 0.0367956 -0.0775982" rpy=" rpy="-0.0738274 0.768856 0.0313372"/-->
+            <!--origin xyz="0.538659 0.0289166 -0.0814392" rpy=" rpy="-0.0497367 0.776145 0.0275152"/-->
+        </xacro:d435_camera>
+
+        <xacro:d435_camera parent="trunk" prefix="realsense/back">
+            <origin xyz="-0.5 -0.0 -0.10" rpy="0 ${PI/4} 3.14159"/>
+        </xacro:d435_camera>
 
     </xacro:if>
-    
-    <!--xacro:calibration_plate_xacro parent="lf_lowerleg">              
-	<origin xyz="0.393 -0.023 -0.1" rpy="${PI/2} 0 0"/>
-    </xacro:calibration_plate_xacro-->
+
+<!--xacro:new_calibration_plate_xacro parent="rh_lowerleg">
+    <origin xyz="0.39 -0.01 0.1" rpy="${-PI/2} 0 0"/>
+</xacro:new_calibration_plate_xacro-->
+
+
+    <!--xacro:new_calibration_plate_xacro parent="lf_lowerleg">
+        <origin xyz="0.39 0.01 -0.1" rpy="${PI/2} 0 0"/>
+    </xacro:new_calibration_plate_xacro-->
 
 </robot>
 
