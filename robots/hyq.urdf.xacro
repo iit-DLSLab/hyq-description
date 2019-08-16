@@ -182,26 +182,37 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
         </xacro:asus_xtion_camera-->
 
         <xacro:d435_camera parent="trunk" prefix="realsense/front">
-            <origin xyz="0.5 0.0 -0.10" rpy="0 ${PI/4} 0"/>
-            <!--origin xyz="0.542717 0.034674  -0.0778795" rpy=" rpy="-0.0594806 0.772105 0.0110605"/-->
-            <!--origin xyz="0.542967 0.0367956 -0.0775982" rpy=" rpy="-0.0738274 0.768856 0.0313372"/-->
-            <!--origin xyz="0.538659 0.0289166 -0.0814392" rpy=" rpy="-0.0497367 0.776145 0.0275152"/-->
+            <!-- "Guess" of camera location -->
+            <!-- origin xyz="0.5 0.0 -0.10" rpy="0 ${PI/4} 0"/ -->
+
+            <!-- LF calibration trials using ipopt -->
+            <!-- origin xyz="0.556849 0.0275077 -0.0799648" rpy=" rpy="-0.0872665 0.791739 0.0872665"/>
+            <origin xyz="0.557156 0.0299427 -0.0775026" rpy=" rpy="-0.0327945 0.799206 -0.0252025"/>
+            <origin xyz="0.541865 0.0322597 -0.0730521" rpy=" rpy="-0.0447015 0.755414 -0.00943697"/>
+            <origin xyz="0.552173 0.0360462 -0.0749277" rpy=" rpy="-0.0640513 0.774692 0.0103402"/>
+            <origin xyz="0.55039 0.0327616 -0.0749135" rpy=" rpy="-0.0513261 0.773668 0.00448148"/ -->
+
+            <!-- Average of trials -->
+            <origin xyz="0.552 0.032 -0.076" rpy="-0.056 0.766 -0.007"/>
         </xacro:d435_camera>
 
         <xacro:d435_camera parent="trunk" prefix="realsense/back">
-            <origin xyz="-0.5 -0.0 -0.10" rpy="0 ${PI/4} 3.14159"/>
+            <!-- origin xyz="-0.5 -0.0 -0.10" rpy="0 ${PI/4} ${PI}"/ -->
+            <!-- Rear calibration failed, using approximate values from front camera -->
+            <origin xyz="-0.552 0.0 -0.076" rpy="0 ${PI/4} ${PI}"/>
         </xacro:d435_camera>
 
     </xacro:if>
 
-<!--xacro:new_calibration_plate_xacro parent="rh_lowerleg">
-    <origin xyz="0.39 -0.01 0.1" rpy="${-PI/2} 0 0"/>
-</xacro:new_calibration_plate_xacro-->
-
-
-    <!--xacro:new_calibration_plate_xacro parent="lf_lowerleg">
-        <origin xyz="0.39 0.01 -0.1" rpy="${PI/2} 0 0"/>
+    <!--xacro:new_calibration_plate_xacro parent="rh_lowerleg">
+        <origin xyz="0.39 -0.01 0.1" rpy="${-PI/2} 0 0"/>
     </xacro:new_calibration_plate_xacro-->
+
+
+    <!-- Numbers from Chundri Aug. 2019 -->
+    <!-- xacro:new_calibration_plate_xacro parent="lf_lowerleg">
+        <origin xyz="0.39415 0.00775 -0.1" rpy="${PI/2} 0 0"/>
+    </xacro:new_calibration_plate_xacro -->
 
 </robot>
 
