@@ -22,7 +22,7 @@
         <xacro:if value="$(arg sensors)">
             <xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
             <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
-            <xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
+            <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/-->
             <!-- we may mount the hokuyo again in the future -->
             <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/-->
             <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/-->
@@ -201,7 +201,7 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
             <!-- Rear calibration failed, using approximate values from front camera -->
             <origin xyz="-0.552 0.0 -0.076" rpy="0 ${PI/4} ${PI}"/>
         </xacro:d435_camera>
-
+	
     </xacro:if>
 
     <!--xacro:new_calibration_plate_xacro parent="rh_lowerleg">
