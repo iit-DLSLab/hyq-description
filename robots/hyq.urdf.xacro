@@ -22,11 +22,14 @@
         <xacro:if value="$(arg sensors)">
             <xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
             <xacro:include filename="$(find sensors_description)/urdfs/sensors/kvh_1775_imu.urdf.xacro"/>
-            <xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/>
+            <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/asus_xtion.urdf.xacro"/-->
             <!-- we may mount the hokuyo again in the future -->
             <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/hokuyo_laser.urdf.xacro"/-->
-            <xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/>
+            <!--xacro:include filename="$(find sensors_description)/urdfs/sensors/multisense_sl.urdf.xacro"/-->
+            <xacro:include filename="$(find sensors_description)/urdfs/sensors/d435_camera.urdf.xacro"/>
         </xacro:if>
+	
+        <xacro:include filename="$(find hyq_description)/urdfs/leg/new_calibration_plate.urdf.xacro"/>
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
         <xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro">
@@ -121,7 +124,9 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 		parent="trunk"
 		imu_name="trunk_imu"
 		imu_topic="trunk_imu_1/data"
-		update_rate="250">
+                update_rate="250"
+                frame_name="trunk_imu"
+                >
 		<!-- old URDF -->
 		<!--origin xyz="0.290 0.000 0.0999214" rpy="0 ${-PI} 0"/ -->	
 		<!-- new URDF with ideal values from CAD -->
@@ -139,9 +144,12 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 
     	<xacro:kvh_1775_imu
                 parent="trunk"
-                imu_name="kvh_imu"
-                imu_topic="kvh_imu/data"
-                update_rate="250">
+                imu_name="trunk_imu2"
+                imu_topic="trunk_imu_2/data"
+                update_rate="250"
+                frame_name="trunk_imu2"
+                >
+
 	    <!-- OLD URDF with manually created cylinder -->	
             <!--origin xyz="0.352845 0.0029 0.0503678" rpy="0 ${-PI} 0"/-->
 
@@ -169,11 +177,42 @@ is the world frame). For more, see http://ros.org/wiki/xacro -->
 
 
 	<!-- Asus Xtion Pro -->
-	<xacro:asus_xtion_camera name="asus" parent="trunk">
+        <!--xacro:asus_xtion_camera name="asus" parent="trunk">
 		<origin xyz="0.660678 -0.00571526 0.0705706" rpy="0.0364271 1.00115 0.0827391"/>
-	</xacro:asus_xtion_camera>
+        </xacro:asus_xtion_camera-->
 
+        <xacro:d435_camera parent="trunk" prefix="realsense/front">
+            <!-- "Guess" of camera location -->
+            <!-- origin xyz="0.5 0.0 -0.10" rpy="0 ${PI/4} 0"/ -->
+
+            <!-- LF calibration trials using ipopt -->
+            <!-- origin xyz="0.556849 0.0275077 -0.0799648" rpy=" rpy="-0.0872665 0.791739 0.0872665"/>
+            <origin xyz="0.557156 0.0299427 -0.0775026" rpy=" rpy="-0.0327945 0.799206 -0.0252025"/>
+            <origin xyz="0.541865 0.0322597 -0.0730521" rpy=" rpy="-0.0447015 0.755414 -0.00943697"/>
+            <origin xyz="0.552173 0.0360462 -0.0749277" rpy=" rpy="-0.0640513 0.774692 0.0103402"/>
+            <origin xyz="0.55039 0.0327616 -0.0749135" rpy=" rpy="-0.0513261 0.773668 0.00448148"/ -->
+
+            <!-- Average of trials -->
+            <origin xyz="0.552 0.032 -0.076" rpy="-0.056 0.766 -0.007"/>
+        </xacro:d435_camera>
+
+        <xacro:d435_camera parent="trunk" prefix="realsense/back">
+            <!-- origin xyz="-0.5 -0.0 -0.10" rpy="0 ${PI/4} ${PI}"/ -->
+            <!-- Rear calibration failed, using approximate values from front camera -->
+            <origin xyz="-0.552 0.0 -0.076" rpy="0 ${PI/4} ${PI}"/>
+        </xacro:d435_camera>
+	
     </xacro:if>
+
+    <!--xacro:new_calibration_plate_xacro parent="rh_lowerleg">
+        <origin xyz="0.39 -0.01 0.1" rpy="${-PI/2} 0 0"/>
+    </xacro:new_calibration_plate_xacro-->
+
+
+    <!-- Numbers from Chundri Aug. 2019 -->
+    <!-- xacro:new_calibration_plate_xacro parent="lf_lowerleg">
+        <origin xyz="0.39415 0.00775 -0.1" rpy="${PI/2} 0 0"/>
+    </xacro:new_calibration_plate_xacro -->
 
 </robot>
 

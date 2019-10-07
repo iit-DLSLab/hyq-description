@@ -34,8 +34,8 @@
 	<arg if="$(arg debug)" name="script_type" value="debug"/>
 
 	<!-- Start gazebo server-->
-	<node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
-		args="$(arg command_arg1) $(arg command_arg2) $(arg full_world_name)" />
+        <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
+		args="$(arg command_arg1) $(arg command_arg2) $(arg full_world_name) --verbose" />
 	
 	<!-- Start gazebo client -->
 	<group if="$(arg gui)">
@@ -56,12 +56,5 @@
 	<!-- Get robot to 0 position -->
         <node name="goto0" pkg="hyq_description" type="go0" args="3.0"  />
 
-	<!-- Start the stereo processing for the simulated multisense -->
-	<group if="$(arg sensors)">
-		<node ns="multisense/camera" name="stereo_proc" pkg="stereo_image_proc" type="stereo_image_proc" respawn="false" output="log">
-			<param name="disparity_range" type="int" value="128"/>
-			<param name="approximate_sync" type="bool" value="false"/>
-		</node>
-	</group>
 </launch>
 
