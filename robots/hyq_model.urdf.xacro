@@ -12,8 +12,7 @@
 
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
 	<xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro"/>
-        <xacro:include filename="$(find sensors_description)/urdfs/sensors/microstrain_3dmgx425_imu.urdf.xacro"/>
-
+      
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
 	<!-- The first use of a macro. This one was defined in trunk.urdf.xacro above.

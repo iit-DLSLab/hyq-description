@@ -12,14 +12,12 @@
 	<arg name="gui" default="true"/>
 	<arg name="headless" default="false"/>
 	<arg name="debug" default="false"/>
-	<arg name="dls_empty_world" default="true"/>
+
 	<arg name="world_name" default="empty.world"/>
-        <arg name="task_period" default="0.004"/>
-	<arg name="arm" default="false"/>
-
-        <arg if="$(arg dls_empty_world)" name="full_world_name" default="$(find dls_gazebo)/worlds/$(arg world_name)"/>
-	<arg unless="$(arg dls_empty_world)" name="full_world_name" default="worlds/$(arg world_name)"/>
-
+    <arg name="task_period" default="0.004"/>
+	
+    <arg  name="full_world_name" default="$(find ros_impedance_controller)/worlds/$(arg world_name)"/>
+	
 	<!-- Set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
 		<param name="/use_sim_time" value="true" />
@@ -44,10 +42,9 @@
 
 	<!-- Send hyq urdf to parameter server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload.launch">
-		<arg name="sensors" value="$(arg sensors)" />
 		<arg name="internal_wrench" value="$(arg internal_wrench)" />
-                <arg name="task_period" value="$(arg task_period)" />
-		<arg name="arm" value="$(arg arm)" />
+        <arg name="task_period" value="$(arg task_period)" />
+		
 	</include>
 
 	<!-- Spawn a robot into Gazebo -->
