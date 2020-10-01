@@ -14,9 +14,9 @@
 	<arg name="debug" default="false"/>
 
 	<arg name="world_name" default="empty.world"/>
-    <arg name="task_period" default="0.004"/>
+        <arg name="task_period" default="0.004"/>
 	
-    <arg  name="full_world_name" default="$(find ros_impedance_controller)/worlds/$(arg world_name)"/>
+        <arg  name="full_world_name" default="$(find ros_impedance_controller)/worlds/$(arg world_name)"/>
 	
 	<!-- Set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
