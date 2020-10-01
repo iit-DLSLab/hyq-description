@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:arg name="task_period" default="0.004"/>
 
 	<gazebo>
 		<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
 			<robotNamespace>/hyq</robotNamespace>
-			<robotSimType>dls_gazebo_interface/DlsRobotHwSim</robotSimType>
-			<controlPeriod>0.004</controlPeriod>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			<legacyModeNS>true</legacyModeNS>
+            <controlPeriod>$(arg task_period)</controlPeriod>
 		</plugin>
 
 		<plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
@@ -18,7 +20,7 @@
 			<rpyOffsets>0 0 0</rpyOffsets>
 			<gaussianNoise>0</gaussianNoise>
 			<alwaysOn>true</alwaysOn>
-			<updateRate>250.0</updateRate>
+                        <updateRate>${1/ $(arg task_period)}</updateRate>
 		</plugin>
 	</gazebo>
 

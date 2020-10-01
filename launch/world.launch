@@ -12,12 +12,12 @@
 	<arg name="gui" default="true"/>
 	<arg name="headless" default="false"/>
 	<arg name="debug" default="false"/>
-	<arg name="dls_empty_world" default="true"/>
+
 	<arg name="world_name" default="empty.world"/>
-
-	<arg if="$(arg dls_empty_world)" name="full_world_name" default="$(find dls_gazebo)/worlds/$(arg world_name)"/>
-	<arg unless="$(arg dls_empty_world)" name="full_world_name" default="worlds/$(arg world_name)"/>
-
+        <arg name="task_period" default="0.004"/>
+	
+        <arg  name="full_world_name" default="$(find ros_impedance_controller)/worlds/$(arg world_name)"/>
+	
 	<!-- Set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
 		<param name="/use_sim_time" value="true" />
@@ -32,8 +32,8 @@
 	<arg if="$(arg debug)" name="script_type" value="debug"/>
 
 	<!-- Start gazebo server-->
-	<node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
-		args="$(arg command_arg1) $(arg command_arg2) $(arg full_world_name)" />
+        <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
+		args="$(arg command_arg1) $(arg command_arg2) $(arg full_world_name) --verbose" />
 	
 	<!-- Start gazebo client -->
 	<group if="$(arg gui)">
@@ -42,22 +42,16 @@
 
 	<!-- Send hyq urdf to parameter server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload.launch">
-		<arg name="sensors" value="$(arg sensors)" />
 		<arg name="internal_wrench" value="$(arg internal_wrench)" />
+        <arg name="task_period" value="$(arg task_period)" />
+		
 	</include>
 
 	<!-- Spawn a robot into Gazebo -->
-	<node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.65"/>
+        <node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.65"/>
 
 	<!-- Get robot to 0 position -->
-	<node name="goto0" pkg="hyq_description" type="go0" args="10.0"  />
+        <node name="goto0" pkg="hyq_description" type="go0" args="3.0"  />
 
-	<!-- Start the stereo processing for the simulated multisense -->
-	<group if="$(arg sensors)">
-		<node ns="multisense/camera" name="stereo_proc" pkg="stereo_image_proc" type="stereo_image_proc" respawn="false" output="log">
-			<param name="disparity_range" type="int" value="128"/>
-			<param name="approximate_sync" type="bool" value="false"/>
-		</node>
-	</group>
 </launch>
 
