@@ -116,7 +116,9 @@
 				<geometry>
 					<mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
 				</geometry>
-				<material name="white"/>
+				<material name="White">
+					<color rgba="1.0 1.0 1.0 1.0"/>
+				</material>
 			</visual>
 			<collision>
 			    <origin xyz="${lowerleg_length/2.0} 0 0" rpy="0 ${-PI/2}  0"/>
@@ -137,7 +139,9 @@
 				<geometry>
 					<sphere radius="0.02175" />
 				</geometry>
-				<material name="black" />
+				<material name="Black" >
+					<color rgba="0.0 0.0 0.0 1.0"/>
+				</material>
 			</visual>
 		</link>
 		
