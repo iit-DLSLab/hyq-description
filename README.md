@@ -1,12 +1,43 @@
-# hyq-description
+hyq-description
+=======
+
+Introduction
+=======
 This package contains the description (mechanical, kinematic, visual, etc.) of the different HyQ robots. The files in this package are parsed and used by a variety of other components. Most users will not interact directly with this package.
 
-Issue so far:
+Build
+=======
+```bash
+catkin_make
+source devel/setup.bash
+```
 
-rviz.launch
-No such file or directory: /home/steven/terrain_ws/src/hyq-description/robots/hyq_model_ordered.urdf.xacro [Errno 2] No such file or directory: '/home/steven/terrain_ws/src/hyq-description/robots/hyq_model_ordered.urdf.xacro'
-RLException: while processing /home/steven/terrain_ws/src/hyq-description/launch/upload.launch:
-Invalid <param> tag: Cannot load command parameter [hyq/robot_model]: command [['/opt/ros/noetic/lib/xacro/xacro', '--inorder', '/home/steven/terrain_ws/src/hyq-description/robots/hyq_model_ordered.urdf.xacro']] returned with code [2].
+Usage
+=======
+### Show the HyQ robot
+```bash
+roslaunch hyq_description rviz.launch
+```
 
-world.launch
-need to install ros_impedance_controller
+### Show the world map
+```bash
+roslaunch hyq_description world.launch
+```
+This package requires the dependency on the ros_impedance_control package.
+
+Citation
+=======
+An overview of the theoretiacl and implementation details has been published in [https://journals.sagepub.com/doi/10.1177/0959651811402275]. To cite hyq-description in your academic research you can use the following BibTex entry:
+
+	@ARTICLE{semini11hyqdesignjsce,
+		AUTHOR = {Semini, Claudio and Tsagarakis, Nikos G. and Guglielmino, Emanuele and Focchi, Michele and Cannella, Ferdinando and Caldwell, Darwin G.},
+		TITLE = {Design of HyQ - a Hydraulically and Electrically Actuated Quadruped Robot},
+		JOURNAL = {IMechE Part I: Journal of Systems and Control Engineering},
+		YEAR = {2011},
+		VOLUME = {225},
+		PAGES = {831-849},
+		NUMBER = {6},
+		OWNER = {CSemini},
+		TIMESTAMP = {2011.02.20},
+		DOI = {10.1177/0959651811402275},
+	}
