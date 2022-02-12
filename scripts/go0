@@ -18,15 +18,15 @@ def unpause(gazebo_namespace):
 		rospy.loginfo("Calling service %s/unpause_physics"%gazebo_namespace)
 		resp = unpause_physics()
 		return
-	except rospy.ServiceException, e:
-		print "Service call failed: %s"%e
+	except rospy.ServiceException as e:
+		print("Service call failed: %s"%e)
 
 
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
 		sleep_time = 0.0
 	else:
-		print sys.argv[1]
+		print(sys.argv[1])
 		sleep_time = float(sys.argv[1])
 
 	# Defined the variables
@@ -79,14 +79,14 @@ if __name__ == "__main__":
 	try:
 		success = gazebo_interface.set_model_configuration_client(model_name, param_name, 
                                                                   joint_names, joint_positions, gazebo_namespace)
-	except rospy.ServiceException, e:
-		print "set model configuration service call failed: %s"%e
+	except rospy.ServiceException as e:
+		print("set model configuration service call failed: %s"%e)
 
 	rospy.wait_for_service('%s/unpause_physics'%(gazebo_namespace))
 	try:
 		success = unpause(gazebo_namespace)
-	except rospy.ServiceException, e:
-		print "unpause physics service call failed: %s"%e
+	except rospy.ServiceException as e:
+		print("unpause physics service call failed: %s"%e)
 
 	rospy.init_node('go0', anonymous=True)
 	rospy.sleep(1)
