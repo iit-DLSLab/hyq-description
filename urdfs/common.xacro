@@ -48,6 +48,7 @@
 	<xacro:property name="ixy_hipassembly" value="-0.00004"/>
 	<xacro:property name="ixz_hipassembly" value="-0.00159"/>
 	<xacro:property name="iyz_hipassembly" value="-0.00005"/>
+
 	<!-- Upper leg -->
 	<xacro:property name="xcom_upperleg" value="0.15074"/>
 	<xacro:property name="ycom_upperleg" value="0.02625"/>
@@ -59,6 +60,7 @@
 	<xacro:property name="ixy_upperleg" value="-0.00302"/>
 	<xacro:property name="ixz_upperleg" value="0.0001"/>
 	<xacro:property name="iyz_upperleg" value="0.00002"/>
+	
 	<!-- Lower leg -->
 	<xacro:property name="xcom_lowerleg" value="0.1254"/>
 	<xacro:property name="ycom_lowerleg" value="0.00004"/>
@@ -71,9 +73,9 @@
 	<xacro:property name="ixz_lowerleg" value="-0.00001"/>
 	<xacro:property name="iyz_lowerleg" value="-0.0"/>
 
-        <!-- arm position-->
-        <xacro:property name="x_arm" value="0.66"/>
-        <xacro:property name="z_arm" value="0.1"/>
-        <xacro:property name="pitch_arm" value="0.17"/>
+    <!-- arm position-->
+    <xacro:property name="x_arm" value="0.66"/>
+    <xacro:property name="z_arm" value="0.1"/>
+    <xacro:property name="pitch_arm" value="0.17"/>
 
 </robot>

@@ -16,7 +16,7 @@
 	<arg name="world_name" default="empty.world"/>
         <arg name="task_period" default="0.004"/>
 	
-        <arg  name="full_world_name" default="$(find ros_impedance_controller)/worlds/$(arg world_name)"/>
+        <arg  name="full_world_name" default="worlds/$(arg world_name)"/>
 	
 	<!-- Set use_sim_time flag -->
 	<group if="$(arg use_sim_time)">
@@ -32,7 +32,7 @@
 	<arg if="$(arg debug)" name="script_type" value="debug"/>
 
 	<!-- Start gazebo server-->
-        <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
+    <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
 		args="$(arg command_arg1) $(arg command_arg2) $(arg full_world_name) --verbose" />
 	
 	<!-- Start gazebo client -->
@@ -48,10 +48,10 @@
 	</include>
 
 	<!-- Spawn a robot into Gazebo -->
-        <node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.65"/>
+    <node name="spawn_hyq_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model hyq -z 0.65"/>
 
 	<!-- Get robot to 0 position -->
-        <node name="goto0" pkg="hyq_description" type="go0" args="3.0"  />
+    <node name="goto0" pkg="hyq_description" type="go0" args="3.0" />
 
 </launch>
 

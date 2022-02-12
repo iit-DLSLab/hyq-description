@@ -1,13 +1,11 @@
 <?xml version="1.0" ?>
 <launch>
 
-	<arg name="sensors" default="true"/>
 	<arg name="gui" default="true"/>
 	<arg name="rviz_conf" default="$(find hyq_description)/rviz/hyq_model_tf.rviz"/>
 
 	<!-- send hyq urdf to param server and spawn it -->
 	<include file="$(find hyq_description)/launch/upload.launch">
-		<arg name="sensors" value="$(arg sensors)" />
 	</include>
 
 	<!-- publish the joint and robot states -->
@@ -19,7 +17,7 @@
 	</group>
 
 	<node name="robot_state_publisher" pkg="robot_state_publisher"
-		type="state_publisher" respawn="true">
+		type="robot_state_publisher" respawn="true">
 		<param name="publish_frequency" value="200" />
 		<param name="rate" value="200" />
 	</node>

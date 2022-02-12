@@ -8,18 +8,17 @@
 
 	<!-- send the robot description file -->
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
-	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq_ordered.yarf"/>
+	<param name="/hyq/robot_config" value="$(find hyq_description)/yarf/hyq.yarf"/>
 
-
-        <!-- send hyq urdf to param server -->
-        <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.urdf.xacro'
-         load_force_sensors:=$(arg internal_wrench) task_period:=$(arg task_period)"/>
+    <!-- send hyq urdf to param server -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find hyq_description)/robots/hyq.urdf.xacro'
+    	load_force_sensors:=$(arg internal_wrench) task_period:=$(arg task_period)"/>
 
 	<!-- This is to have joints ordered according to our convention LF RF LH RH -->
-	<param name="hyq/robot_model" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq_model_ordered.urdf.xacro'"/>
+	<param name="hyq/robot_model" command="$(find xacro)/xacro '$(find hyq_description)/robots/hyq.urdf.xacro'"/>
 
-        <!-- send hyq semantic description srdf to param server -->
-        <param name="robot_semantic_description" command="$(find xacro)/xacro --inorder '$(find hyq_description)/robots/hyq.srdf.xacro' " />
+    <!-- send hyq semantic description srdf to param server -->
+    <param name="robot_semantic_description" command="$(find xacro)/xacro '$(find hyq_description)/robots/hyq.srdf.xacro' " />
 
 
 </launch>

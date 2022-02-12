@@ -4,25 +4,22 @@
 
 	<xacro:arg name="task_period" default="0.004"/>
 
-
 	<!-- This argument allows us to load joint sensors that measure the internal wrenches -->
 	<xacro:arg name="load_force_sensors" default="false"/>
 
 	<!-- The following included files set up definitions of parts of the robot body -->
 	<xacro:include filename="$(find hyq_description)/urdfs/common.xacro"/>
 
-	
 	<!-- HyQ trunk -->
 	<xacro:include filename="$(find hyq_description)/urdfs/trunk/trunk.urdf.xacro"/>
 
 	<!-- HyQ legs -->
 	<xacro:include filename="$(find hyq_description)/urdfs/leg/leg.urdf.xacro"/>
-
 	
 	<!-- generic simulator_gazebo plugins for starting mechanism control, ros time -->
-        <xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro">
-             <xacro:arg name="task_period" value="$(arg task_period)"/>
-        </xacro:include>
+    <xacro:include filename="$(find hyq_description)/gazebo/gazebo.urdf.xacro">
+        <xacro:arg name="task_period" value="$(arg task_period)"/>
+    </xacro:include>
 
 	<!-- Now we can start using the macros included above to define the actual HyQ -->
 
