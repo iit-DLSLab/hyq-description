@@ -23,7 +23,6 @@ roslaunch hyq_description rviz.launch
 ```bash
 roslaunch hyq_description world.launch
 ```
-world launch file still have a lot of issues.
 
 Citation
 =======
